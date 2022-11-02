@@ -1,1 +1,2 @@
 /* pages/my/my.wxss */
+@import '../weui.wxss';

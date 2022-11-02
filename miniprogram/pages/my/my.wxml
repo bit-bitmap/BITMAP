@@ -1,2 +1,18 @@
 <!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<view class="page" data-weui-theme="{{theme}}">
+	<view class="page__bd">
+		<view class="weui-panel weui-panel_access">
+			<view class="weui-panel__bd">
+				<navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+					<view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+						<image class="weui-media-box__thumb" src="{{avatar}}" />
+					</view>
+					<view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+						<view class="weui-media-box__title">My Name</view>
+						<view class="weui-media-box__desc">My personal info</view>
+					</view>
+				</navigator>
+			</view>
+		</view>
+	</view>
+</view>
