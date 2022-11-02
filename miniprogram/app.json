@@ -1,0 +1,52 @@
+{
+    "pages": [
+      "pages/info/info",
+      "pages/category/category",
+      "pages/my/my",
+      "pages/logs/logs"
+    ],
+    "subPackages": [
+        {
+            "root": "packageLoad",
+            "pages": [
+                "page/loadin/loadin"
+            ]
+        }
+    ],
+    "window": {
+      "navigationBarBackgroundColor": "#D4BEF5",
+      "navigationBarTextStyle": "black",
+      "navigationBarTitleText": "BIT",
+      "backgroundColor": "#F0EEF6"
+    },
+    "tabBar": {
+        "color": "#E1D9EC",
+        "selectedColor": "#373244",
+        "list": [
+          {
+            "pagePath": "pages/info/info",
+            "iconPath": "images/info.png",
+            "selectedIconPath": "images/infoset.png",
+            "text": "主页"
+          },
+          {
+            "pagePath": "pages/category/category",
+            "iconPath": "images/category.png",
+            "selectedIconPath": "images/categoryset.png",
+            "text": "分类"
+          },
+          {
+            "pagePath": "pages/my/my",
+            "iconPath": "images/my.png",
+            "selectedIconPath": "images/myset.png",
+            "text": "我"
+          }
+       ]
+    },
+    "networkTimeout": {
+      "request": 10000,
+      "downloadFile": 10000
+    },
+    "debug": true,
+    "sitemapLocation": "sitemap.json"
+  }

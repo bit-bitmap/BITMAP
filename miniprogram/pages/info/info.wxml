@@ -1,0 +1,4 @@
+<!--pages/info/info.wxml-->
+<text>pages/info/info.wxml</text>
+<view> {{ message }} </view>
+<button bindtap="clickMe">点击我</button>
