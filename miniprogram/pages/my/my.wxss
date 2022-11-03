@@ -1,2 +1,18 @@
 /* pages/my/my.wxss */
 @import '../weui.wxss';
+
+page {
+	background-color: var(--weui-BG-0);
+}
+
+.placeholder {
+	margin: 5px;
+	text-align: center;
+	line-height: 2em;
+	color: var(--weui-FG-1);
+}
+
+.box {
+	margin: 20px;
+	background-color: var(--weui-BG-2);
+}

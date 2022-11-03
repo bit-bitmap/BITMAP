@@ -1,6 +1,6 @@
 <!--pages/my/my.wxml-->
 <view class="page" data-weui-theme="{{theme}}">
-	<view class="page__bd">
+	<view class="page__bd page-weui page__bd_spacing">
 		<view class="weui-panel weui-panel_access">
 			<view class="weui-panel__bd">
 				<navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
@@ -11,8 +11,38 @@
 						<view class="weui-media-box__title">My Name</view>
 						<view class="weui-media-box__desc">My personal info</view>
 					</view>
+					<button class="mini-btn" type="mini" bindtap="onEdit">Edit</button>
 				</navigator>
 			</view>
 		</view>
+		<view class="weui-flex box">
+			<block wx:for="{{iconList}}" wx:key="*this">
+				<navigator url="" class="weui-flex__item">
+					<view class="placeholder">
+						<mp-icon icon="{{item.icon}}" color="{{item.color}}" size="{{item.size}}"></mp-icon>
+						<view>{{item.name}}</view>
+					</view>
+				</navigator>
+			</block>
+		</view>
+		<view class="weui-panel weui-panel_access box">
+			<block wx:for="{{contactList}}" wx:key="*this">
+				<view class="weui-panel__bd">
+					<navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+						<view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+							<image class="weui-media-box__thumb" src="{{item.avatar}}" />
+						</view>
+						<view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+							<view class="weui-media-box__title">{{item.name}}</view>
+							<view class="weui-media-box__desc">{{item.message}}</view>
+						</view>
+						<view class="weui-media-box__desc">{{item.timeString}}</view>
+					</navigator>
+				</view>
+			</block>
+		</view>
 	</view>
+	<mp-dialog title="test" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
+		<view>test content</view>
+	</mp-dialog>
 </view>

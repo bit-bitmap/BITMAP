@@ -1,11 +1,55 @@
 // pages/my/my.js
+const colorLight = 'rgba(0, 0, 0, .9)'
+const colorDark = 'rgba(255, 255, 255, .8)'
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        iconList: [
+            {
+                icon: 'bellring-on',
+                color: colorLight,
+                size: 25,
+                name: '关注'
+            },
+            {
+                icon: 'contacts',
+                color: colorLight,
+                size: 25,
+                name: '粉丝'
+            },
+            {
+                icon: 'email',
+                color: colorLight,
+                size: 25,
+                name: '通知'
+            }
+        ],
+        contactList: [
+            {
+                avatar: "../../images/收藏.png",
+                name: '联系人1',
+                message: '您吃了吗您内？',
+                time: 1111111111,
+                timeString: ''
+            },
+            {
+                avatar: "../../images/categoryset.png",
+                name: '联系人2',
+                message: 'Hello World!',
+                time: 111111111,
+                timeString: ''
+            },
+            {
+                avatar: "../../images/myset.png",
+                name: '联系人3',
+                message: 'O-oooooooooo AAAAE-A-A-I-A-U- JO-oooooooooooo',
+                time: 11111111,
+                timeString: ''
+            }
+        ]
     },
 
     /**
@@ -13,6 +57,19 @@ Page({
      */
     onLoad(options) {
         this.setData({ avatar: "../../images/myset.png" })
+        for (var i = 0; i < this.data.contactList.length; i++) {
+            var date = new Date(this.data.contactList[i].time * 1000)
+            this.setData({
+                ["contactList[" + i + "].timeString"]: date.toDateString()
+            })
+        }
+    },
+    onEdit() {
+        this.setData({ dialogShow: true })
+        this.setData({ buttons: [{ text: '取消' }, { text: '确定' }] })
+    },
+    tapDialogButton() {
+        this.setData({ dialogShow: false })
     },
 
     /**
