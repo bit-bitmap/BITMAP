@@ -1,6 +1,7 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 
+# Linguist overrides
 *.wxml linguist-language=html
-
 *.wxss linguist-language=css
+weui.wxss -linguist-detectable
