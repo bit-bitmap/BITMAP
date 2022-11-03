@@ -2,17 +2,17 @@
 @import '../weui.wxss';
 
 page {
-	background-color: var(--weui-BG-0);
-}
-
-.placeholder {
-	margin: 5px;
-	text-align: center;
-	line-height: 2em;
-	color: var(--weui-FG-1);
+    background-color: var(--weui-BG-0);
 }
 
 .box {
-	margin: 20px;
-	background-color: var(--weui-BG-2);
+    margin: 5px;
+    text-align: center;
+    line-height: 2em;
+    color: var(--weui-TAG-TEXT-BLACK);
+}
+
+.card {
+    margin: 20px;
+    background-color: var(--weui-BG-2);
 }
