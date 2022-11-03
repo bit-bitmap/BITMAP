@@ -4,4 +4,4 @@
 # Linguist overrides
 *.wxml linguist-language=html
 *.wxss linguist-language=css
-weui.wxss -linguist-detectable
+miniprogram/pages/weui.wxss -linguist-detectable
