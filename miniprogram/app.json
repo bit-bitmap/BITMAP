@@ -1,10 +1,12 @@
 {
     "pages": [
-      "pages/info/info",
-      "pages/category/category",
-      "pages/my/my",
-      "pages/upload/upload",
-      "pages/logs/logs"
+        "pages/info/info",
+        "pages/category/category",
+        "pages/my/my",
+        "pages/my/about/about",
+        "pages/my/settings/settings",
+        "pages/upload/upload",
+        "pages/logs/logs"
     ],
     "subPackages": [
         {
@@ -15,48 +17,48 @@
         }
     ],
     "window": {
-      "navigationBarTextStyle": "black",
-      "navigationBarTitleText": "BIT",
-      "navigationBarBackgroundColor": "#E1D9EC",
-      "backgroundColor": "#E1D9EC"
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "BIT",
+        "navigationBarBackgroundColor": "#E1D9EC",
+        "backgroundColor": "#E1D9EC"
     },
     "tabBar": {
         "color": "#E1D9EC",
         "selectedColor": "#373244",
         "list": [
-          {
-            "pagePath": "pages/info/info",
-            "iconPath": "images/info.png",
-            "selectedIconPath": "images/infoset.png",
-            "text": "主页"
-          },
-          {
-            "pagePath": "pages/upload/upload",
-            "iconPath": "images/upload.png",
-            "selectedIconPath": "images/uploadset.png",
-            "text": "上传"
-          },
-          {
-            "pagePath": "pages/category/category",
-            "iconPath": "images/category.png",
-            "selectedIconPath": "images/categoryset.png",
-            "text": "分类"
-          },
-          {
-            "pagePath": "pages/my/my",
-            "iconPath": "images/my.png",
-            "selectedIconPath": "images/myset.png",
-            "text": "我"
-          }
-       ]
+            {
+                "pagePath": "pages/info/info",
+                "iconPath": "images/info.png",
+                "selectedIconPath": "images/infoset.png",
+                "text": "主页"
+            },
+            {
+                "pagePath": "pages/upload/upload",
+                "iconPath": "images/upload.png",
+                "selectedIconPath": "images/uploadset.png",
+                "text": "上传"
+            },
+            {
+                "pagePath": "pages/category/category",
+                "iconPath": "images/category.png",
+                "selectedIconPath": "images/categoryset.png",
+                "text": "分类"
+            },
+            {
+                "pagePath": "pages/my/my",
+                "iconPath": "images/my.png",
+                "selectedIconPath": "images/myset.png",
+                "text": "我"
+            }
+        ]
     },
     "networkTimeout": {
-      "request": 10000,
-      "downloadFile": 10000
+        "request": 10000,
+        "downloadFile": 10000
     },
     "debug": true,
     "sitemapLocation": "sitemap.json",
     "useExtendedLib": {
-      "weui": true
-  }
+        "weui": true
+    }
 }
