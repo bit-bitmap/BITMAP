@@ -1,1 +1,28 @@
 /* pages/info/info.wxss */
+
+page {
+    background-color: var(--weui-BG-0);
+}
+
+.swiper-container{
+    height: 100px;
+    margin: 5%;
+}
+
+.item{
+    height: 100%;
+    line-height: 100px;
+    text-align: center;
+}
+
+.swiper-container :nth-child(1) .item{
+    background-color:lightblue;
+}
+
+.swiper-container :nth-child(2) .item{
+    background-color:lightgoldenrodyellow;
+}
+
+.swiper-container :nth-child(3) .item{
+    background-color:lightgreen;
+}

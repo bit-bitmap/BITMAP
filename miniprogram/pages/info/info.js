@@ -1,12 +1,16 @@
 // pages/info/info.js
+const colorDark = 'rgba(255, 255, 255, .8)'
+const colorLight = 'rgba(0, 0, 0, .9)'
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        message: 'Hello MINA!'
+        
     },
+
 
     /**
      * 生命周期函数--监听页面加载

@@ -1,4 +1,18 @@
 <!--pages/info/info.wxml-->
-<text>pages/info/info.wxml</text>
-<view> {{ message }} </view>
-<button bindtap="clickMe">点击我</button>
+<view class="page">
+    <view class="page__bd">
+        <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
+    </view>
+</view>
+
+<swiper class="swiper-container" indicator-dots="true" indicator-color="white" indicator-active-color="gray" autoplay="true" >
+    <swiper-item>
+        <view class="item" >官方新闻1</view>
+    </swiper-item>
+    <swiper-item>
+        <view class="item" >官方新闻2</view>
+    </swiper-item>
+    <swiper-item>
+        <view class="item" >官方新闻3</view>
+    </swiper-item>
+</swiper>
