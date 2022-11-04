@@ -26,3 +26,41 @@ page {
 .swiper-container :nth-child(3) .item{
     background-color:lightgreen;
 }
+
+
+.list-item {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgb(238, 238, 238);
+    background-color: #fff;
+    width: 90%;
+    border: rgb(226, 185, 226);
+    margin: 5%;
+    margin-top: 1px;
+}
+.list-title {
+    padding: 15px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #222226;
+}
+
+.list-desc {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px 10px 10px;
+    font-size: 15px;
+    color: #999aaa;
+}
+
+.list-item:first-child {
+    border-top: none;
+}
+
+
+scroll-view ::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+    color: transparent;
+}

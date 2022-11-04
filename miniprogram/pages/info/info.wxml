@@ -16,3 +16,16 @@
         <view class="item" >官方新闻3</view>
     </swiper-item>
 </swiper>
+
+<scroll-view class="right-scroll-view" scroll-y :style="{height: wh + 'px'}">
+    <view class="list-item" v-for="(article, index) in articlesList" :key="index">
+        <navigator class="cate-url" :url="'../article/article?id=' + article.id">
+            <view class="list-title">{{article.title | ellipsis(30)}}</view>
+            <view class="list-desc">
+                <view>{{article.views}} 阅读 · {{article.commentCount}} 评论</view>
+                <view>{{article.createdAt | date_format}}</view>
+            </view>
+        </navigator>
+    </view>
+</scroll-view> 
+
