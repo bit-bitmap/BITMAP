@@ -1,10 +1,26 @@
 <!--pages/upload/upload.wxml-->
-<form>
- <textarea class="title-written" value="{{textwritten}}" placeholder="好的标题让别人更容易关注你~" maxlength="15">
- </textarea>
- <textarea class="text-written" value="{{textwritten}}" placeholder="这一刻的想法……">
- </textarea>
+<view class="container-upload">
+ <form>
+  <view class="remind-subtitle">起一个好标题吧</view>
+  <view class="title-written">
+   <textarea value="{{titlewritten}}" placeholder="好的标题让别人更容易关注你~" bindinput="inputNum" maxlength="15" minlength="2"></textarea>
+   <text class="limit-number">{{titleNum}}/15</text>
+  </view>
+  <view class="remind-subtitle">精彩资讯呈现</view>
+  <view class="text-written">
+    <!-- <textarea value="{{textwritten}}" placeholder="请输入你的内容" maxlength="-1" minlength="5"></textarea> -->
+    <info-Editor id="editor" bind:input="onBindInputEditor" bind:ready="onBindReadyEditor" placeholder="请作答。。。"></info-Editor>
+  </view>
+  <view class="remind-subtitle">分类选择</view>
+  <view class="choose-category">
+   <text>学习</text>
+   <text>生活</text>
+   <text>运动</text>
+   <text>美食</text>
+   <text>活动</text>
+  </view>
+ </form>
  <button class="button-upload" form-type="submit" hover-class="change-button-upload">
- 发表
- </button>
-</form>
+  <icon type="success_no_circle" size="15" color="black"></icon>
+ 发表</button>
+</view>

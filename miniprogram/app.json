@@ -15,10 +15,10 @@
         }
     ],
     "window": {
-      "navigationBarBackgroundColor": "#D4BEF5",
       "navigationBarTextStyle": "black",
       "navigationBarTitleText": "BIT",
-      "backgroundColor": "#F0EEF6"
+      "navigationBarBackgroundColor": "#E1D9EC",
+      "backgroundColor": "#E1D9EC"
     },
     "tabBar": {
         "color": "#E1D9EC",
