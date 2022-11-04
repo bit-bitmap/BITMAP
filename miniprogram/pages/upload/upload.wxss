@@ -1,1 +1,31 @@
 /* pages/upload/upload.wxss */
+page{
+  background-color: #F0EEF6;
+}
+
+.title-written {
+  width: 90%;
+  height: 50rpx;
+  margin: 20rpx auto;
+  border-radius: 3%;
+  background-color: #E1D5EC;
+  padding: 25rpx;
+}
+.text-written {
+  width: 90%;
+  height: 300rpx;
+  margin: 20rpx auto;
+  border-radius: 3%;
+  background-color: #E1D5EC;
+  padding: 25rpx;
+}
+
+.button-upload {
+  width: 20%;
+  background-color: #E1D9EC;
+  font-size: 14px;
+  border-radius: 10%;
+}
+.change-button-upload{
+  background-color: #e5e2eb;
+}

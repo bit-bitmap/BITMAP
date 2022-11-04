@@ -1,2 +1,10 @@
 <!--pages/upload/upload.wxml-->
-<text>pages/upload/upload.wxml</text>
+<form>
+ <textarea class="title-written" value="{{textwritten}}" placeholder="好的标题让别人更容易关注你~" maxlength="15">
+ </textarea>
+ <textarea class="text-written" value="{{textwritten}}" placeholder="这一刻的想法……">
+ </textarea>
+ <button class="button-upload" form-type="submit" hover-class="change-button-upload">
+ 发表
+ </button>
+</form>

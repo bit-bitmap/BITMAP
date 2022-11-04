@@ -32,8 +32,8 @@
           },
           {
             "pagePath": "pages/upload/upload",
-            "iconPath": "images/info.png",
-            "selectedIconPath": "images/infoset.png",
+            "iconPath": "images/upload.png",
+            "selectedIconPath": "images/uploadset.png",
             "text": "上传"
           },
           {
