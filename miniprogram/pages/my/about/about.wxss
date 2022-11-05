@@ -1,8 +1,9 @@
 /* pages/my/about/about.wxss */
 @import '../../weui.wxss';
+
 .aboutLogo {
-	height: 100rpx;
-	width: 100rpx;
-	margin: 200rpx auto 0;
-	
+    height: 100rpx;
+    width: 100rpx;
+    margin: 200rpx auto 0;
+
 }
