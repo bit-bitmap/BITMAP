@@ -9,15 +9,11 @@
   <view class="remind-subtitle">精彩资讯呈现</view>
   <view class="text-written">
     <!-- <textarea value="{{textwritten}}" placeholder="请输入你的内容" maxlength="-1" minlength="5"></textarea> -->
-    <info-Editor id="editor" bind:input="onBindInputEditor" bind:ready="onBindReadyEditor" placeholder="请作答。。。"></info-Editor>
+    <info-Editor id="editor" bindinput="onBindInputEditor" bindready="onBindReadyEditor" placeholder="开始输入"></info-Editor>
   </view>
   <view class="remind-subtitle">分类选择</view>
   <view class="choose-category">
-   <text>学习</text>
-   <text>生活</text>
-   <text>运动</text>
-   <text>美食</text>
-   <text>活动</text>
+   <button class="buttom-category" hover-class="change-button-category" bindtap="gotoCategory">click here!</button>
   </view>
  </form>
  <button class="button-upload" form-type="submit" hover-class="change-button-upload">

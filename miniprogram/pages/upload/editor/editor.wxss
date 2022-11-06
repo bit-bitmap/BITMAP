@@ -42,17 +42,10 @@
   padding: 0 10px;
   height: 40px;
   width: 95%;
-  margin: 10rpx auto;
-  /* position: fixed; */
-  left: 0;
-  right: 100%;
-  bottom: 0;
-  display: flex;
-  align-items: center;
+  margin: 10rpx auto; 
   justify-content: space-between;
-  border: 1px solid #E1D5EC;
-  border-radius: 3%;
-  padding-bottom: constant(safe-area-inset-bottom);
+   border: 1px solid #E1D5EC;
+  border-radius: 5%; 
+  padding-bottom: constant(safe-area-inset-bottom); 
   padding-bottom: env(safe-area-inset-bottom);
 }
-
