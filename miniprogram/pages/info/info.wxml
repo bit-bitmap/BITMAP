@@ -18,12 +18,12 @@
 </swiper>
 
 <scroll-view class="right-scroll-view" scroll-y :style="{height: wh + 'px'}">
-    <view class="list-item" v-for="(article, index) in articlesList" :key="index">
-        <navigator class="cate-url" :url="'../article/article?id=' + article.id">
-            <view class="list-title">{{article.title | ellipsis(30)}}</view>
+    <view class="list-item" wx:for="{{articleList}}" >
+        <navigator class="cate-url" :url="/pages/info/info">
+            <view class="list-title">{{item.title}}</view>
+            <view class="list-content">{{item.content}}</view>
             <view class="list-desc">
-                <view>{{article.views}} 阅读 · {{article.commentCount}} 评论</view>
-                <view>{{article.createdAt | date_format}}</view>
+                <view>{{item.views}} 阅读 · {{item.commentCount}} 评论</view>
             </view>
         </navigator>
     </view>

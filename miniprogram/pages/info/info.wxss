@@ -43,6 +43,14 @@ page {
     color: #222226;
 }
 
+.list-content {
+    margin-top: -5%;
+    padding: 15px 10px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #222226;
+}
+
 .list-desc {
     display: flex;
     justify-content: space-between;
