@@ -57,8 +57,9 @@ Page({
         }
     },
     onEdit() {
-        this.setData({ dialogShow: true })
-        this.setData({ buttons: [{ text: '取消' }, { text: '确定' }] })
+        wx.navigateTo({
+          url: 'profile/profile',
+        })
     },
     tapDialogButton() {
         this.setData({ dialogShow: false })

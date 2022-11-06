@@ -4,6 +4,7 @@
         "pages/category/category",
         "pages/my/my",
         "pages/my/about/about",
+        "pages/my/profile/profile",
         "pages/my/settings/settings",
         "pages/upload/upload",
         "pages/logs/logs"

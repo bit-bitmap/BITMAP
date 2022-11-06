@@ -73,8 +73,3 @@
         </view>
     </view>
 </view>
-
-<!--Test Dialog-->
-<mp-dialog title="test" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
-    <view>test content</view>
-</mp-dialog>
