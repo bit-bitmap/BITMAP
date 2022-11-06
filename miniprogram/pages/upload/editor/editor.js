@@ -2,12 +2,12 @@ Component({
   properties: {
       placeholder: String
   },
-  onShareAppMessage() {
-    return {
-      title: 'editor',
-      path: 'packageEditor/pages/form/editor/editor'
-    }
-  },
+//   onShareAppMessage() {
+//     return {
+//       title: 'editor',
+//       path: 'packageEditor/pages/form/editor/editor'
+//     }
+//   },
   data: {
     formats: {},
     readOnly: false,
@@ -18,6 +18,7 @@ Component({
     safeHeight: 0,
     toolBarHeight: 50,
   },
+  methods: {
   readOnlyChange() {
     this.setData({
       readOnly: !this.data.readOnly
@@ -178,4 +179,5 @@ setContents(val) {
       }
     })
   }
+}
 })

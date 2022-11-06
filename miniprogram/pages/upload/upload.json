@@ -1,6 +1,6 @@
 {
     "usingComponents": {
-        "info-Editor": "/packageEditor/editor/editor"
+        "info-Editor": "editor/editor"
     },
     "navigationBarTitleText": "发表资讯",
     "navigationBarBackgroundColor": "#E1D9EC",

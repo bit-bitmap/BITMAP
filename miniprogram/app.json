@@ -7,15 +7,8 @@
         "pages/my/profile/profile",
         "pages/my/settings/settings",
         "pages/upload/upload",
-        "pages/logs/logs"
-    ],
-    "subPackages": [
-        {
-            "root": "packageLoad",
-            "pages": [
-                "page/loadin/loadin"
-            ]
-        }
+        "pages/logs/logs",
+        "pages/upload/editor/editor"
     ],
     "window": {
         "navigationBarTextStyle": "black",
