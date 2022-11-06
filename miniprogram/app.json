@@ -8,10 +8,7 @@
         "pages/my/settings/settings",
         "pages/upload/upload",
         "pages/logs/logs",
-<<<<<<< Updated upstream
-=======
         "pages/upload/choose_category/category",
->>>>>>> Stashed changes
         "pages/upload/editor/editor"
     ],
     "window": {

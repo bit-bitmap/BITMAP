@@ -2,15 +2,13 @@ Component({
   properties: {
       placeholder: String
   },
-<<<<<<< Updated upstream:miniprogram/pages/upload/editor/editor.js
+
 //   onShareAppMessage() {
 //     return {
 //       title: 'editor',
 //       path: 'packageEditor/pages/form/editor/editor'
 //     }
 //   },
-=======
->>>>>>> Stashed changes:miniprogram/packageEditor/editor/editor.js
   data: {
     formats: {},
     readOnly: false,
@@ -22,10 +20,7 @@ Component({
     toolBarHeight: 50,
   },
   methods: {
-<<<<<<< Updated upstream:miniprogram/pages/upload/editor/editor.js
-=======
 
->>>>>>> Stashed changes:miniprogram/packageEditor/editor/editor.js
   readOnlyChange() {
     this.setData({
       readOnly: !this.data.readOnly
