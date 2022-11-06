@@ -1,0 +1,2 @@
+/* pages/my/pages/settings.wxss */
+@import '../../weui.wxss';

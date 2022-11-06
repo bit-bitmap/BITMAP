@@ -1,4 +1,7 @@
-Page({
+Component({
+  properties: {
+      placeholder: String
+  },
   onShareAppMessage() {
     return {
       title: 'editor',
@@ -92,12 +95,33 @@ Page({
     const navigationBarHeight = isIOS ? 44 : 48
     return statusBarHeight + navigationBarHeight
   },
+
+//编辑器内容改变时触发
+onBindInput(e) {
+    this.triggerEvent('input',e.detail.html)
+},
+//编辑器失去焦点时触发
+onBindBlur(e) {
+    this.triggerEvent('blur',e.detail)
+},
+
   onEditorReady() {
     const that = this
     wx.createSelectorQuery().select('#editor').context(function (res) {
       that.editorCtx = res.context
     }).exec()
   },
+
+//初始化编辑器内容，html和delta同时存在时仅delta生效
+setContents(val) {
+    this.editorCtx.setContents({
+        html: val,
+        success: function() {
+            console.log('setContents success')
+        }
+    })
+},
+
   blur() {
     this.editorCtx.blur()
   },

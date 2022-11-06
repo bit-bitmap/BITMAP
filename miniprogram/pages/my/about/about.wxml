@@ -1,0 +1,13 @@
+<!--pages/my/about/about.wxml-->
+<view class="page" data-weui-theme="{{theme}}">
+    <view class="weui-flex">
+        <image class="aboutLogo" src="../../../images/myset.png" />
+    </view>
+    <mp-form-page title="BitMap" subtitle="这是应用介绍" />
+    <view class="weui-footer weui-footer_fixed-bottom">
+        <view class="weui-footer__links">
+            <navigator url="" class="weui-footer__link">BitMap项目主页</navigator>
+        </view>
+        <view class="weui-footer__text">Copyright © 2022 BitMap</view>
+    </view>
+</view>

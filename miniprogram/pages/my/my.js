@@ -1,6 +1,4 @@
 // pages/my/my.js
-const colorLight = 'rgba(0, 0, 0, .9)'
-const colorDark = 'rgba(255, 255, 255, .8)'
 Page({
 
     /**
@@ -10,20 +8,14 @@ Page({
         iconList: [
             {
                 icon: 'bellring-on',
-                color: colorLight,
-                size: 25,
                 name: '关注'
             },
             {
                 icon: 'contacts',
-                color: colorLight,
-                size: 25,
                 name: '粉丝'
             },
             {
                 icon: 'email',
-                color: colorLight,
-                size: 25,
                 name: '通知'
             }
         ],
@@ -55,7 +47,7 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad(options) {
+    onLoad() {
         this.setData({ avatar: "../../images/myset.png" })
         for (var i = 0; i < this.data.contactList.length; i++) {
             var date = new Date(this.data.contactList[i].time * 1000)

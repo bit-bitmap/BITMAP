@@ -1,4 +1,6 @@
 {
+  "component": true,
+  "usingComponents": {},
   "navigationBarTitleText": "editor",
   "disableScroll": true
 }

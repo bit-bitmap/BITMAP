@@ -13,7 +13,7 @@
                         <view class="weui-media-box__title">My Name</view>
                         <view class="weui-media-box__desc">My personal info</view>
                     </view>
-                    <button class="mini-btn" type="mini" bindtap="onEdit">Edit</button>
+                    <button bindtap="onEdit">Edit</button>
                 </navigator>
             </view>
         </view>
@@ -22,7 +22,7 @@
         <view class="weui-flex card">
             <block wx:for="{{iconList}}" wx:key="name">
                 <navigator url="" class="weui-flex__item box">
-                    <mp-icon icon="{{item.icon}}" color="{{item.color}}" size="{{item.size}}"></mp-icon>
+                    <mp-icon icon="{{item.icon}}" size="25" />
                     <view>{{item.name}}</view>
                 </navigator>
             </block>
@@ -45,10 +45,36 @@
                 </view>
             </block>
         </view>
-    </view>
 
-    <!--Test Dialog-->
-    <mp-dialog title="test" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
-        <view>test content</view>
-    </mp-dialog>
+        <view class="weui-panel">
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_small-appmsg">
+                    <view class="weui-cells weui-cells_in-small-appmsg">
+                        <!--Settings-->
+                        <navigator url="settings/settings" class="weui-cell weui-cell_access"
+                            hover-class="weui-cell_active">
+                            <view class="weui-cell__hd">
+                                <mp-icon icon="setting" size="25" style="margin-right: 16px;vertical-align:middle;" />
+                            </view>
+                            <view class="weui-cell__bd weui-cell_primary">设置</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                        </navigator>
+                        <!--About-->
+                        <navigator url="about/about" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                            <view class="weui-cell__hd">
+                                <mp-icon icon="info" size="25" style="margin-right: 16px;vertical-align:middle;" />
+                            </view>
+                            <view class="weui-cell__bd weui-cell_primary">关于</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access">版本 0.0.1</view>
+                        </navigator>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
 </view>
+
+<!--Test Dialog-->
+<mp-dialog title="test" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
+    <view>test content</view>
+</mp-dialog>

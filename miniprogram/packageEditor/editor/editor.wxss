@@ -6,9 +6,7 @@ page>view {
 }
 
 .container {
-  position: absolute; 
-  top: 0; 
-  left: 0; 
+  /* position: absolute;  */
   width: 100%;
 }
 
@@ -21,6 +19,9 @@ page>view {
   overflow: auto;
   padding: 10px 10px 20px 10px;
   border: 1px solid #ECECEC;
+  border-radius: 3%;
+  margin: 0rpx auto;
+  font-size: 14px;
   -webkit-overflow-scrolling: touch; /* 惯性滚动 */
 }
 
@@ -39,18 +40,18 @@ page>view {
 .toolbar {
   box-sizing: border-box;
   padding: 0 10px;
-  height: 50px;
-  width: 100%;
-  position: fixed;
+  height: 40px;
+  width: 95%;
+  margin: 10rpx auto;
+  /* position: fixed; */
   left: 0;
   right: 100%;
   bottom: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid #ECECEC;
-  border-left: none;
-  border-right: none;
+  border: 1px solid #E1D5EC;
+  border-radius: 3%;
   padding-bottom: constant(safe-area-inset-bottom);
   padding-bottom: env(safe-area-inset-bottom);
 }

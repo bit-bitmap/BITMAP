@@ -1,5 +1,5 @@
 <view class="container" style="height:{{editorHeight}}px;">
-	<editor id="editor" class="ql-container" placeholder="{{placeholder}}" bindstatuschange="onStatusChange" bindready="onEditorReady">
+	<editor id="editor" class="ql-container" placeholder="{{placeholder}}" bindstatuschange="onStatusChange" bindready="onEditorReady" bindblur="onBindBlur" bindinput="onBindInput">
 	</editor>
 </view>
 
