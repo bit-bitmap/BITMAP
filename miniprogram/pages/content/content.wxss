@@ -1,0 +1,53 @@
+/* pages/content/content.wxss */
+page{
+    background-color: #F0EEF6;
+}
+
+
+/* 标题栏 */
+.title{
+    border: 4rpx solid indigo;
+    font-size: 48rpx;
+    font-weight: bold;
+    margin: 10rpx;
+    padding: 10rpx;
+    border-radius: 13rpx;
+    color:rebeccapurple;
+}
+
+/* 主要内容 */
+.information .content1{
+    border-radius: 13rpx;
+    line-height: 50rpx;
+    text-indent: 2em;
+    text-align: justify;
+    font-size: 35rpx;
+    margin: 10rpx;
+    margin-top: 20rpx;
+    padding: 10rpx;
+}
+
+.information view{
+    background-color:#F0EEF6;
+    height: 600rpx;
+    overflow-y: scroll;
+}
+
+.information text{
+    border: 4rpx solid indigo;
+    color: indigo;
+    font-weight: bold;
+}
+
+/* 底栏 */
+.bottom image{
+    margin: 10rpx;
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.bottom{
+    position: fixed;
+    bottom: 0%;
+    right: 0%;
+}

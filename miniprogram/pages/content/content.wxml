@@ -1,0 +1,21 @@
+<!--pages/content/content.wxml-->
+
+<!--标题栏-->
+<view class = "title">资讯标题</view>
+
+<!--内容-->
+<view class = "information">
+    <view class = "content1">资讯内容资讯内容资讯内容资讯内容资讯内容资讯内容资讯内容资讯内容资讯内容资讯内容资讯内容资讯内容资讯内容资讯内容资讯内容资讯内容资讯内容资讯内容资讯内容资讯内容资讯内容资讯内容</view>
+    <text class="content1">评论区</text>
+
+</view>
+
+<!--底栏-->
+<view class = "bottom">
+    <navigator url="../comment/comment">
+        <image src="../../images/pinglun.png"></image>
+    </navigator>
+    <image src="{{imgurl1}}" bindtap="clickMe"></image>
+    <image src="{{imgurl2}}" bindtap="favorMe"></image>
+</view>
+
