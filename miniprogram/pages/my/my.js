@@ -1,24 +1,23 @@
 // pages/my/my.js
-var app = getApp()
+const app = getApp()
+const db = wx.cloud.database()
+const account = db.collection("account")
+import utils from "../../utils.js"
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        myInfo: {
+            avatar: "",
+            name: "",
+            info: ""
+        },
         iconList: [
-            {
-                icon: 'bellring-on',
-                name: '关注'
-            },
-            {
-                icon: 'contacts',
-                name: '粉丝'
-            },
-            {
-                icon: 'email',
-                name: '通知'
-            }
+            { icon: 'bellring-on', name: '关注' },
+            { icon: 'contacts', name: '粉丝' },
+            { icon: 'email', name: '通知' }
         ],
         contactList: [
             {
@@ -60,9 +59,9 @@ Page({
         const avatar = app.global.loginStatus
             ? "../../images/myset.png" : "../../images/my.png"
         const name = app.global.loginStatus
-            ? "My Name" : "Please login"
+            ? this.data.myInfo.name : "Please login"
         const info = app.global.loginStatus
-            ? "My personal info" : ""
+            ? this.data.myInfo.info : ""
 
         this.setData({
             loginStatus: app.global.loginStatus,
@@ -84,7 +83,15 @@ Page({
     /**
      * 点击登录按钮
      */
-    onLogin() {
+    async onLogin() {
+        // 获取 openid
+        let res = await account.where({ _openid: app.global.openid }).get()
+        let id = res.data[0]._id
+        // 获取 id
+        res = await account.doc(id).get()
+        console.log(res)
+        this.data.myInfo.info = res.data.info
+        this.data.myInfo.name = res.data.name
         app.global.loginStatus = true
         // Refresh page with login status
         this.onShow()
