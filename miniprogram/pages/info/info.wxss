@@ -70,3 +70,13 @@ scroll-view ::-webkit-scrollbar {
     height: 0;
     color: transparent;
 }
+
+.page__bd {
+  padding-bottom: 40px
+}
+
+.weui-media-box__info__meta {
+  margin-top: 3%;
+}
+
+
