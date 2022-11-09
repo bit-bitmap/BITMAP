@@ -4,7 +4,7 @@ App({
      */ 
     global: {
         openid: '',
-        loginStatus: ''
+        loginStatus: false
     },
 
     /**

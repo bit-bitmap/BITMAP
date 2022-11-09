@@ -4,5 +4,6 @@
         "mp-cells": "weui-miniprogram/cells/cells",
         "mp-form": "weui-miniprogram/form/form",
         "mp-form-page": "weui-miniprogram/form-page/form-page"
-    }
+    },
+    "navigationBarTitleText": "编辑资料"
 }

@@ -1,6 +1,6 @@
 <!--pages/my/pages/settings.wxml-->
 <view class="page" data-weui-theme="{{theme}}">
-    <mp-form-page title="个人信息与设置" subtitle="">
+    <mp-form-page title="设置" subtitle="">
 
         <!--App settings-->
         <mp-form id="form" rules="{{rules}}" models="{{formData}}">
@@ -13,8 +13,8 @@
 
         <!--Save buttons-->
         <view class="weui-flex" slot="button">
-            <button type="default" bindtap="onEdit" style="width: 250rpx;">重置</button>
-            <button type="primary" bindtap="onEdit" style="width: 250rpx;">保存</button>
+            <button wx:if="{{loginStatus}}" type="warn" bindtap="onLogout" style="width: 250rpx;">退出登录</button>
+            <button type="primary" bindtap="" style="width: 250rpx;">保存</button>
         </view>
 
     </mp-form-page>

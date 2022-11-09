@@ -1,4 +1,5 @@
 // pages/my/my.js
+var app = getApp()
 Page({
 
     /**
@@ -48,27 +49,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad() {
-        this.setData({ avatar: "../../images/myset.png" })
-        for (var i = 0; i < this.data.contactList.length; i++) {
-            var date = new Date(this.data.contactList[i].time * 1000)
-            this.setData({
-                ["contactList[" + i + "].timeString"]: date.toDateString()
-            })
-        }
-    },
-    onEdit() {
-        wx.navigateTo({
-          url: 'profile/profile',
-        })
-    },
-    tapDialogButton() {
-        this.setData({ dialogShow: false })
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady() {
 
     },
 
@@ -76,41 +56,46 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
+        // Initialize info panel
+        const avatar = app.global.loginStatus
+            ? "../../images/myset.png" : "../../images/my.png"
+        const name = app.global.loginStatus
+            ? "My Name" : "Please login"
+        const info = app.global.loginStatus
+            ? "My personal info" : ""
 
+        this.setData({
+            loginStatus: app.global.loginStatus,
+            avatar: avatar,
+            name: name,
+            info: info
+        })
+
+        // Initialize contact list
+        for (let i = 0; i < this.data.contactList.length; i++) {
+            let date = new Date(this.data.contactList[i].time * 1000)
+            this.setData({
+                ["contactList[" + i + "].timeString"]: date.toDateString()
+            })
+        }
+    },
+
+
+    /**
+     * 点击登录按钮
+     */
+    onLogin() {
+        app.global.loginStatus = true
+        // Refresh page with login status
+        this.onShow()
     },
 
     /**
-     * 生命周期函数--监听页面隐藏
+     * 点击编辑按钮
      */
-    onHide() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
+    onEdit() {
+        wx.navigateTo({
+            url: 'profile/profile',
+        })
     }
 })

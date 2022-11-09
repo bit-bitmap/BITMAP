@@ -10,10 +10,11 @@
                         <image class="weui-media-box__thumb" src="{{avatar}}" />
                     </view>
                     <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                        <view class="weui-media-box__title">My Name</view>
-                        <view class="weui-media-box__desc">My personal info</view>
+                        <view class="weui-media-box__title">{{name}}</view>
+                        <view class="weui-media-box__desc">{{info}}</view>
                     </view>
-                    <button bindtap="onEdit">Edit</button>
+                    <button wx:if="{{loginStatus}}" bindtap="onEdit">Edit</button>
+                    <button wx:else bindtap="onLogin">Log in</button>
                 </navigator>
             </view>
         </view>

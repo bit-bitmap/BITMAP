@@ -33,8 +33,8 @@
 
         <!--Save buttons-->
         <view class="weui-flex" slot="button">
-            <button type="default" bindtap="onEdit" style="width: 250rpx;">重置</button>
-            <button type="primary" bindtap="onEdit" style="width: 250rpx;">保存</button>
+            <button type="default" bindtap="" style="width: 250rpx;">重置</button>
+            <button type="primary" bindtap="" style="width: 250rpx;">保存</button>
         </view>
 
     </mp-form-page>
