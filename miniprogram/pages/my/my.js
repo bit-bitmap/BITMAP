@@ -84,12 +84,11 @@ Page({
      * 点击登录按钮
      */
     async onLogin() {
-        // 获取 openid
+        // 使用 openid 获取 id
         let res = await account.where({ _openid: app.global.openid }).get()
-        let id = res.data[0]._id
-        // 获取 id
-        res = await account.doc(id).get()
-        console.log(res)
+        app.global.id = res.data[0]._id
+        // 使用 id 获取 个人信息
+        res = await account.doc(app.global.id).get()
         this.data.myInfo.info = res.data.info
         this.data.myInfo.name = res.data.name
         app.global.loginStatus = true

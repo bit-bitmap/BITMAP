@@ -4,37 +4,38 @@
     <mp-form-page title="个人信息" subtitle="">
 
         <!--Personal info-->
-        <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+        <mp-form id="form">
             <mp-cells title="基本信息" footer="">
-                <mp-cell prop="name" title="姓名" ext-class="">
-                    <input bindinput="formInputChange" data-field="name" class="weui-input" placeholder="请输入姓名" />
+                <mp-cell prop="username" title="姓名" ext-class="">
+                    <input bindinput="formInputChange" data-field="username" class="weui-input" placeholder="请输入姓名" />
                 </mp-cell>
                 <mp-cell prop="department" title="书院/学院" ext-class="">
-                    <input bindinput="formInputChange" data-field="qq" class="weui-input" placeholder="请输入书院/学院" />
+                    <input bindinput="formInputChange" data-field="department" class="weui-input"
+                        placeholder="请输入书院/学院" />
                 </mp-cell>
-                <mp-cell prop="mobile" title="手机号" ext-class=" weui-cell_vcode">
-                    <input bindinput="formInputChange" data-field="mobile" class="weui-input" placeholder="请输入手机号" />
-                    <button slot="footer" type="default" class="weui-vcode-btn">获取验证码</button>
+                <mp-cell prop="phone" title="手机号" ext-class=" weui-cell_vcode">
+                    <input bindinput="formInputChange" data-field="phone" class="weui-input" placeholder="请输入手机号" />
+                    <!--<button slot="footer" type="default" class="weui-vcode-btn">获取验证码</button>-->
                 </mp-cell>
                 <mp-cell prop="date" title="生日" ext-class="">
-                    <picker data-field="date" mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01"
-                        bindchange="bindDateChange">
-                        <view class="weui-input">{{date}}</view>
+                    <picker data-field="date" mode="date" value="{{form.date}}" bindchange="formInputChange">
+                        <view class="weui-input">{{form.date}}</view>
                     </picker>
                 </mp-cell>
             </mp-cells>
             <mp-cells title="个人简介" footer="">
                 <mp-cell title="" ext-class="">
-                    <textarea class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
-                    <view class="weui-textarea-counter">0/200</view>
+                    <textarea bindinput="formInputChange" class="weui-textarea" data-field="description"
+                        placeholder="请输入文本" />
+                    <view class="weui-textarea-counter">{{textCounter}}/200</view>
                 </mp-cell>
             </mp-cells>
         </mp-form>
 
         <!--Save buttons-->
         <view class="weui-flex" slot="button">
-            <button type="default" bindtap="" style="width: 250rpx;">重置</button>
-            <button type="primary" bindtap="" style="width: 250rpx;">保存</button>
+            <button type="default" bindtap="onCancel" style="width: 250rpx;">取消</button>
+            <button type="primary" bindtap="onSave" style="width: 250rpx;">保存</button>
         </view>
 
     </mp-form-page>

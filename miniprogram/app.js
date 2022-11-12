@@ -1,9 +1,10 @@
 App({
     /**
      * 小程序全局变量
-     */ 
+     */
     global: {
-        openid: '',
+        openid: "",
+        id: "",
         loginStatus: false
     },
 
@@ -18,8 +19,8 @@ App({
 
         // 获取 open id
         wx.cloud.callFunction({
-            name: 'quickstartFunctions',
-            data: { type: 'getOpenId' }
+            name: "quickstartFunctions",
+            data: { type: "getOpenId" }
         }).then(res => {
             this.global.openid = res.result.openid
         }).catch(err => {
