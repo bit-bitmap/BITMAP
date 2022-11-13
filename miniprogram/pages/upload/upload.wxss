@@ -18,7 +18,7 @@ page{
     background-color: #E1D5EC;
     border-radius: 3%;
     margin: 10rpx auto;
-    width: 90%;
+    /* width: 90%; */
     height: 50rpx;
     flex-direction: row;
     justify-content: right;
@@ -76,9 +76,27 @@ page{
   width: 30%;
   background-color: #E1D9EC;
   /* font-size: 14px; */
-  border-radius: 10%;
+  border-radius: 5%;
   margin: 10rpx auto;
 }
 .change-button-upload{
   background-color: #e5e2eb;
 }
+
+/* .item image{
+width: 220rpx;
+height: 220rpx;
+}
+.list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.item{
+  width: 33.3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20rpx;
+  /* flex-direction: column; */
+/* }  */

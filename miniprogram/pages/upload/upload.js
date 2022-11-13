@@ -1,4 +1,6 @@
 // pages/upload/upload.js
+let upbase=[]
+let db=wx.cloud.database()
 Page({
 
     /**
@@ -10,7 +12,8 @@ Page({
       textwritten: "",
       titleplaceholder:"好的标题让别人更容易关注你~",
       textplaceholder:"至少5个字嗷~",
-      Imagespath:[]
+      Imagespath:[],
+      src:[]
     },
 
 //标题字数动态监测
@@ -62,17 +65,51 @@ viewimage(){
 //将图片上传到云数据库
 handleUpImagesCloud(){
   let that=this
-  wx.cloud.uploadFile({
-    //上传多张图片
-    cloudPath: 'example.png',  //上传图片到云存储的命名
-    filePath: '', //图片的临时地址
-    success: res => {
+  wx.showLoading({
+    title: '上传中',
+  })
+  let time=Date.parse(new Date())/1000
+  console.log(that.data.Imagespath.length)
+  for(let i=0;i<that.data.Imagespath.length;i++) {
+    wx.cloud.uploadFile({
+      //上传多张图片-时间戳，保证用户上传的图片不会重复
+      cloudPath: 'example.png/'+time+i,  //上传图片到云存储的命名
+      filePath: that.data.Imagespath[i], //图片的临时地址
+    }).then(res => {
       // get resource ID
-      console.log(res.fileID)
-    },
-    fail: err => {
+      wx.showToast({
+        title: '上传成功',
+      })
+      // console.log(res.fileID,i)
+      upbase[i]=res.fileID
+    }).catch(error => {
       // handle error
+      console.log(error)
+    })
+  }
+},
+
+upbase(){
+  console.log("upbase的值",upbase)
+  db.collection("baseimage_test").add({
+    data:{
+      src:upbase
     }
+  }).then(res=>{
+    wx.showToast({
+      title: '上传成功',
+    })
+  })
+},
+//显示数据库中的图片
+basemessage(){
+  let that=this
+  db.collection("baseimage_test").get()
+  .then(res=>{
+    // console.log(res)
+    that.setData({
+      src:res.data
+    })
   })
 },
 

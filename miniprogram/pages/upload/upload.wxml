@@ -14,10 +14,13 @@
   <view class="uploadimages-title">上传图片（最多9张）</view>
   <view class="Images-tool">
       <button bindtap="handleUpImages">+</button>          
-        <view class="up_img_item" wx:for="{{Imagespath}}"  bindtap="handleRemoveImages" data-index="{{index}}">
+        <view class="up_img_item" wx:for="{{src[0].src}}" wx:key="*this" bindtap="handleRemoveImages">
         <image bindtap="viewimage" src="{{item}}" ></image>
         </view>
     </view>
+    <button bindtap="handleUpImagesCloud">Cloudinfo-Editor</button>
+    <button bindtap="upbase">数据库</button>
+    <button bindtap="basemessage">显示 数据库</button>
  </form>
  <!-- 点击分类按键选择 -->
  <view class="remind-subtitle">分类选择</view>

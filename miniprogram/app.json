@@ -8,8 +8,6 @@
         "pages/my/settings/settings",
         "pages/upload/upload",
         "pages/logs/logs",
-        "pages/upload/choose_category/category",
-        "pages/upload/editor/editor",
         "pages/comment/comment",
         "pages/content/content"
     ],
