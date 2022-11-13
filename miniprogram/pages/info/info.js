@@ -19,7 +19,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad() {
-        wx.cloud.database().collection("articlelist")
+        wx.cloud.database().collection("articlelist").where({flag:true})
         .get()
         .then(res=>{
             console.log("获取成功",res)
@@ -31,7 +31,7 @@ Page({
             console.log("获取失败",res)
         })
 
-        wx.cloud.database().collection("guanfanglist")
+        wx.cloud.database().collection("articlelist").where({guanfang:true})
         .get()
         .then(res=>{
             console.log("获取成功l ",res)
