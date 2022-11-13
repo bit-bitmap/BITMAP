@@ -9,7 +9,17 @@
         "pages/upload/upload",
         "pages/logs/logs",
         "pages/upload/choose_category/category",
-        "pages/upload/editor/editor"
+        "pages/upload/editor/editor",
+        "pages/comment/comment",
+        "pages/content/content"
+    ],
+    "subPackages": [
+        {
+            "root": "packageLoad",
+            "pages": [
+                "page/loadin/loadin"
+            ]
+        }
     ],
     "window": {
         "navigationBarTextStyle": "black",

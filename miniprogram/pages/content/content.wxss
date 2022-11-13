@@ -6,13 +6,19 @@ page{
 
 /* 标题栏 */
 .title{
-    border: 4rpx solid indigo;
     font-size: 48rpx;
-    font-weight: bold;
     margin: 10rpx;
     padding: 10rpx;
     border-radius: 13rpx;
     color:rebeccapurple;
+}
+.title view{
+    border-radius: 13rpx;
+    font-weight: bold;
+}
+.title text{
+    color: gray;
+    font-size: 28rpx;
 }
 
 /* 主要内容 */

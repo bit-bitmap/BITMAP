@@ -3,40 +3,37 @@ const colorDark = 'rgba(255, 255, 255, .8)'
 const colorLight = 'rgba(0, 0, 0, .9)'
 
 Page({
-
     /**
      * 页面的初始数据
      */
     data: {
-        articleList:[
-            {
-                title: "关于软件工程学习",
-                content: "学软工，找高琪, 学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪",
-                views: 50,
-                commentCount: 8,
-                image: "../../images/收藏.png"
-            },
-            {
-                title: "养猪教程",
-                content: "吃就完了，吃就完了，吃就完了，吃就完了，吃就完了，吃就完了。",
-                views: 875,
-                commentCount: 67
-            },
-            {
-                title: "学服好吃的",
-                content: "百丽宫哪有好吃的，别吃了减肥吧兄弟",
-                views: 666,
-                commentCount: 91
-            }
-        ]
+        datalist:[]
     },
-
-
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad(options) {
+    onLoad() {
+        wx.cloud.database().collection("articlelist")
+        .get()
+        .then(res=>{
+            console.log("获取成功",res)
+            this.setData({
+                datalist:res.data
+            })
+        })
+        .catch(res=>{
+            console.log("获取失败",res)
+        })
+    },
 
+    /**
+     * 跳转到详情页
+     */
+    goContent(event){
+        console.log("点击获取的数据",event.currentTarget.dataset.id)
+        wx.navigateTo({
+            url: '/pages/content/content?id='+event.currentTarget.dataset.id,
+          })
     },
 
     /**
