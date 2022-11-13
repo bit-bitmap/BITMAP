@@ -1,9 +1,0 @@
-<!--pages/comment/comment.wxml-->
-<view class="commentwriten">
-    <textarea placeholder="请输入你的想法" maxlength="100" bindinput="inputNum"></textarea>
-    <text class="limit-number">{{titleNum}}/100</text>
-</view>
-
-<navigator url="../content/content">
-    <button>发布评论</button>
-</navigator>

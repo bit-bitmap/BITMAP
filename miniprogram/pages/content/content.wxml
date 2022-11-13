@@ -9,15 +9,25 @@
 <!--内容-->
 <view class = "information">
     <view class = "content1">{{detail.detail}}</view>
-    <text class="content1">评论区</text>
+    <view class="tip">评论区</view>
+        <block wx:for="{{comments}}" wx:key="index">
+            <view class="commentItem">
+                <text>{{item.who}}：</text>   
+                <text>{{item.content}}</text>
+            </view>   
+        </block>
+</view>
 
+
+<!--发布评论-->
+<view class="commIn">
+    <input value="{{titlewritten}}" placeholder="请输入评论内容" bindinput="getContent" maxlength="50" minlength="2"></input>
+    <text class="limit-number">{{titleNum}}/50</text>
+    <button bindtap="contentUp">发布评论</button>
 </view>
 
 <!--底栏-->
-<view class = "bottom">
-    <navigator url="../comment/comment">
-        <image src="../../images/pinglun.png"></image>
-    </navigator>
+<view class = "bottom" >
     <image src="{{imgurl1}}" bindtap="clickMe"></image>
     <image src="{{imgurl2}}" bindtap="favorMe"></image>
 </view>

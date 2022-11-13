@@ -35,16 +35,36 @@ page{
 
 .information view{
     background-color:#F0EEF6;
-    height: 600rpx;
-    overflow-y: scroll;
 }
 
-.information text{
-    border: 4rpx solid indigo;
+.information tip{
+    margin-top: 30rpx;
     color: indigo;
     font-weight: bold;
 }
 
+/* 评论区 */
+.tip{
+    margin-top: 20rpx;
+    color: indigo;
+    font-weight: bold;
+    font-size: 42rpx;
+}
+.commentItem{
+    margin-left: 25rpx;
+    margin-top: 20rpx;
+    overflow-y: scroll;
+}
+.commIn{
+    border: solid white;
+    margin-top: 100rpx;
+}
+.commIn text{
+    color: gray;
+}
+.commIn button{
+    margin: 30rpx;
+}
 /* 底栏 */
 .bottom image{
     margin: 10rpx;

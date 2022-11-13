@@ -1,40 +1,18 @@
-// pages/info/info.js
-const colorDark = 'rgba(255, 255, 255, .8)'
-const colorLight = 'rgba(0, 0, 0, .9)'
-
+// packageLoad/page/loadin/loadin.js
 Page({
+
     /**
      * 页面的初始数据
      */
     data: {
-        datalist:[],   
-        
-    },
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad() {
-        wx.cloud.database().collection("articlelist")
-        .get()
-        .then(res=>{
-            console.log("获取成功",res)
-            this.setData({
-                datalist:res.data
-            })
-        })
-        .catch(res=>{
-            console.log("获取失败",res)
-        })
+
     },
 
     /**
-     * 跳转到详情页
+     * 生命周期函数--监听页面加载
      */
-    goContent(event){
-        console.log("点击获取的数据",event.currentTarget.dataset.id)
-        wx.navigateTo({
-            url: '/pages/content/content?id='+event.currentTarget.dataset.id,
-          })
+    onLoad(options) {
+
     },
 
     /**
