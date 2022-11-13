@@ -33,6 +33,7 @@ Page({
         }).catch(err => {
             console.log(err)
         })
+        wx.hideLoading()
     },
 
     /**
@@ -52,28 +53,10 @@ Page({
                 ? this.data.myInfo.info
                 : ""
         })
-
-        // 更新个人文章列表
-        let articles = []
-        if (app.global.loginStatus) {
-            // 获取个人文章 id 列表
-            const ids = (
-                await account.doc(app.global.id).get()
-            ).data.articles
-            // 显示文章数量不超过 3 个
-            const length = (ids.length < 3) ? ids.length : 3
-            // 根据 id 列表获取每篇文章的信息
-            for (let i = 0; i < length; i++) {
-                const article = (
-                    await articlelist.doc(ids[i]).get()
-                ).data
-                articles.push(article)
-            }
-        }
-        this.setData({
-            articles: articles
-        })
-        wx.hideLoading()
+        if (!app.global.loginStatus)
+            this.setData({
+                articles: []
+            })
     },
 
 
@@ -98,7 +81,8 @@ Page({
             this.data.myInfo.info = data.info
             this.data.myInfo.name = data.name
             app.global.loginStatus = true
-            this.onShow()
+            await this.onShow()
+            await this.refreshArticles()
         } else {
             // 显示注册提示
             wx.showModal({
@@ -114,6 +98,7 @@ Page({
                 console.log(err)
             })
         }
+        wx.hideLoading()
     },
 
     /**
@@ -122,6 +107,38 @@ Page({
     onEdit() {
         wx.navigateTo({
             url: 'profile/profile?edit',
+        })
+    },
+    /**
+     * 页面相关事件处理函数--监听用户下拉动作
+    */
+    async onPullDownRefresh() {
+        if (app.global.loginStatus) {
+            await this.onLogin()
+        }
+        wx.stopPullDownRefresh()
+    },
+
+    async refreshArticles() {
+        // 更新个人文章列表
+        let articles = []
+        if (app.global.loginStatus) {
+            // 获取个人文章 id 列表
+            const ids = (
+                await account.doc(app.global.id).get()
+            ).data.articles
+            // 显示文章数量不超过 3 个
+            const length = (ids.length < 3) ? ids.length : 3
+            // 根据 id 列表获取每篇文章的信息
+            for (let i = 0; i < length; i++) {
+                const article = (
+                    await articlelist.doc(ids[i]).get()
+                ).data
+                articles.push(article)
+            }
+        }
+        this.setData({
+            articles: articles
         })
     }
 })
