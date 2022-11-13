@@ -5,8 +5,14 @@ page {
 }
 
 .swiper-container{
-    height: 100px;
-    margin: 5%;
+    height: 150px;
+    width: 100%;
+    margin: 4%;
+}
+
+.gf-image{
+  height: 150px;
+  width: 92%;
 }
 
 .item{

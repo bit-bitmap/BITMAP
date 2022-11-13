@@ -7,13 +7,13 @@
 
 <swiper class="swiper-container" indicator-dots="true" indicator-color="white" indicator-active-color="gray" autoplay="true" >
     <swiper-item>
-        <view class="item" >官方新闻1</view>
+      <image class="gf-image" src="../../images/gf1.jpg" mode="scaleToFill" />
     </swiper-item>
     <swiper-item>
-        <view class="item" >官方新闻2</view>
+      <image class="gf-image" src="../../images/gf2.jpg" mode="scaleToFill" />
     </swiper-item>
     <swiper-item>
-        <view class="item" >官方新闻3</view>
+      <image class="gf-image" src="../../images/gf3.jpg" mode="scaleToFill" />
     </swiper-item>
 </swiper>
 
