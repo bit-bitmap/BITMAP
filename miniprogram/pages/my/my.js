@@ -2,7 +2,7 @@
 const app = getApp()
 const db = wx.cloud.database()
 const account = db.collection("account")
-import utils from "../../utils.js"
+const articlelist = db.collection("articlelist")
 Page({
 
     /**
@@ -14,34 +14,7 @@ Page({
             name: "",
             info: ""
         },
-        iconList: [
-            { icon: 'bellring-on', name: '关注' },
-            { icon: 'contacts', name: '粉丝' },
-            { icon: 'email', name: '通知' }
-        ],
-        contactList: [
-            {
-                avatar: "../../images/收藏.png",
-                name: '联系人1',
-                message: '您吃了吗您内？',
-                time: 1111111111,
-                timeString: ''
-            },
-            {
-                avatar: "../../images/categoryset.png",
-                name: '联系人2',
-                message: 'Hello World!',
-                time: 111111111,
-                timeString: ''
-            },
-            {
-                avatar: "../../images/myset.png",
-                name: '联系人3',
-                message: 'O-oooooooooo AAAAE-A-A-I-A-U- JO-oooooooooooo',
-                time: 11111111,
-                timeString: ''
-            }
-        ]
+        articles: []
     },
 
     /**
@@ -54,7 +27,7 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow() {
+    async onShow() {
         // Initialize info panel
         const avatar = app.global.loginStatus
             ? "../../images/myset.png" : "../../images/my.png"
@@ -70,13 +43,21 @@ Page({
             info: info
         })
 
-        // Initialize contact list
-        for (let i = 0; i < this.data.contactList.length; i++) {
-            let date = new Date(this.data.contactList[i].time * 1000)
-            this.setData({
-                ["contactList[" + i + "].timeString"]: date.toDateString()
-            })
+        // 更新个人文章列表
+        if (app.global.loginStatus) {
+            // 获取个人文章 id
+            const ids = (await account.doc(app.global.id).get()).data.articles
+            // 显示文章数量不超过 3 个
+            const length = (ids.length < 3) ? ids.length : 3
+            // 获取每篇文章的信息
+            let articles = []
+            for (let i = 0; i < length; i++) {
+                let article = (await articlelist.doc(ids[i]).get()).data
+                articles.push(article)
+            }
+            this.setData({ articles: articles })
         }
+
     },
 
 
@@ -84,13 +65,15 @@ Page({
      * 点击登录按钮
      */
     async onLogin() {
-        // 使用 openid 获取 id
-        let res = await account.where({ _openid: app.global.openid }).get()
-        app.global.id = res.data[0]._id
-        // 使用 id 获取 个人信息
-        res = await account.doc(app.global.id).get()
-        this.data.myInfo.info = res.data.info
-        this.data.myInfo.name = res.data.name
+        // 使用 openid 获取个人信息
+        let data = (
+            await account.where({
+                _openid: app.global.openid
+            }).get()
+        ).data[0]
+        app.global.id = data._id
+        this.data.myInfo.info = data.info
+        this.data.myInfo.name = data.name
         app.global.loginStatus = true
         // Refresh page with login status
         this.onShow()
