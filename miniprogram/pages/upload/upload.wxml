@@ -1,22 +1,31 @@
 <!--pages/upload/upload.wxml-->
 <view class="container-upload">
  <form>
-  <view class="remind-subtitle">起一个好标题吧</view>
+  <view class="remind-subtitle">起一个标题吧</view>
   <view class="title-written">
-   <textarea value="{{titlewritten}}" placeholder="好的标题让别人更容易关注你~" bindinput="inputNum" maxlength="15" minlength="2"></textarea>
-   <text class="limit-number">{{titleNum}}/15</text>
+   <textarea value="{{titlewritten}}" placeholder="{{titleplaceholder}}" bindinput="inputNum" maxlength="15" minlength="2"></textarea>
+   <view class="limit-number">{{titleNum}}/15</view>
   </view>
   <view class="remind-subtitle">精彩资讯呈现</view>
   <view class="text-written">
-    <!-- <textarea value="{{textwritten}}" placeholder="请输入你的内容" maxlength="-1" minlength="5"></textarea> -->
-    <info-Editor id="editor" bindinput="onBindInputEditor" bindready="onBindReadyEditor" placeholder="开始输入"></info-Editor>
+    <textarea value="{{textwritten}}" placeholder="{{textplaceholder}}" maxlength="-1" minlength="5"></textarea>
+    <!-- <info-Editor id="editor" bindinput="onBindInputEditor" bindready="onBindReadyEditor" placeholder="{{textplaceholder}}"></info-Editor> -->
   </view>
-  <view class="remind-subtitle">分类选择</view>
-  <view class="choose-category">
-   <button class="buttom-category" hover-class="change-button-category" bindtap="gotoCategory">click here!</button>
-  </view>
+  <view class="uploadimages-title">上传图片（最多9张）</view>
+  <view class="Images-tool">
+      <button bindtap="handleUpImages">+</button>          
+        <view class="up_img_item" wx:for="{{Imagespath}}"  bindtap="handleRemoveImages" data-index="{{index}}">
+        <image bindtap="viewimage" src="{{item}}" ></image>
+        </view>
+    </view>
  </form>
- <button class="button-upload" form-type="submit" hover-class="change-button-upload">
+ <!-- 点击分类按键选择 -->
+ <view class="remind-subtitle">分类选择</view>
+  <view class="choose-category">
+   <button class="button-category" hover-class="change-button-category" bindtap="gotoCategory">click here</button>
+  </view>
+  <!-- 点击发表 返回首页 -->
+ <button class="button-upload" form-type="submit" hover-class="change-button-upload" bindtap="handleFormSubmit">
   <icon type="success_no_circle" size="15" color="black"></icon>
- 发表</button>
+发表</button>
 </view>
