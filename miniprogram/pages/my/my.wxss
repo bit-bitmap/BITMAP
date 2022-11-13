@@ -4,16 +4,3 @@
 page {
     background-color: var(--weui-BG-0);
 }
-
-.box {
-    margin: 10rpx;
-    text-align: center;
-    line-height: 2rem;
-    color: var(--weui-TAG-TEXT-BLACK);
-}
-
-.card {
-    margin: 40rpx;
-    border-radius: 10rpx;
-    background-color: var(--weui-BG-2);
-}
