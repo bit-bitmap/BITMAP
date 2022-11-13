@@ -21,7 +21,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad() {
-
+        wx.showLoading({
+            title: '加载中',
+        })
     },
 
     /**
@@ -59,7 +61,10 @@ Page({
                 articles.push(article)
             }
         }
-        this.setData({ articles: articles })
+        this.setData({
+            articles: articles
+        })
+        wx.hideLoading()
     },
 
 
@@ -67,10 +72,13 @@ Page({
      * 点击登录按钮
      */
     async onLogin() {
+        wx.showLoading({
+            title: '加载中'
+        })
         // 使用 openid 获取个人信息
         const res = (
             await account.where({
-                _openid: ""//app.global.openid
+                _openid: app.global.openid
             }).get()
         )
         const data = res.data[0]
@@ -105,7 +113,7 @@ Page({
      */
     onEdit() {
         wx.navigateTo({
-            url: 'profile/profile',
+            url: 'profile/profile?edit',
         })
     }
 })

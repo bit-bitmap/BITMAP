@@ -5,14 +5,11 @@ page{
 
 .container-upload {
     position: relative;  
-    width: 100%;  
-    height: 100%;  
-    margin-top: 20rpx;
+    padding: 20rpx;
 }
 
 .remind-subtitle {
     text-align: center;
-    font-size: 14px;
     font-weight: bold;
 }
 
@@ -26,44 +23,61 @@ page{
     flex-direction: row;
     justify-content: right;
     padding: 25rpx;
-    font-size: 14px;
 }
 .limit-number {
     color: grey;
     font-size: 14px;
 }
 
-.choose-category {
-    display: flex;
-    flex-wrap: wrap;
-}
-.choose-category text {
-    width: 15%;
-    padding: 6rpx;
-    align-items: center;
-    text-align: center;
-    background-color: #E1D5EC;
-    margin: 10rpx auto;
-    border-radius: 10%;
-    font-size: 14px;
-}
-
-/* .text-written {
-  width: 90%;
+.text-written {
+  /* width: 90%; */
   display: flex;
   flex-wrap: wrap;
   margin: 10rpx auto;
   border-radius: 3%;
   background-color: #E1D5EC;
   padding: 25rpx;
-  font-size: 14px;
+}
+
+/* 上传图片按键 */
+.Images-tool button{
+  margin: 0;
+  width: 90px;
+  height: 90px;
+  font-size: 60px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  color: #E6E6E6;
+}
+/* .up_img_item{
+
 } */
 
-.button-upload {
-  width: 25%;
+/* 分类选择按键 */
+.choose-category {
+  display: flex;
+  flex-wrap: wrap;
+}
+.button-category {
+  width: 80%;
   background-color: #E1D9EC;
-  font-size: 14px;
+  border-radius: 3%;
+  margin: 10rpx auto;
+}
+.change-button-category{
+  background-color: #e5e2eb;
+}
+/* 发表 */
+.button-upload {
+  width: 30%;
+  background-color: #E1D9EC;
+  /* font-size: 14px; */
   border-radius: 10%;
+  margin: 10rpx auto;
 }
 .change-button-upload{
   background-color: #e5e2eb;
