@@ -7,7 +7,30 @@ Page({
      * 页面的初始数据
      */
     data: {
-        datalist:[]
+        datalist:[
+            
+        ],
+        articles:[
+            {
+                title: "关于软件工程学习",
+                content: "学软工，找高琪, 学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪",
+                views: 50,
+                commentCount: 8,
+                image: "../../images/收藏.png"
+            },
+            {
+                title: "养猪教程",
+                content: "吃就完了，吃就完了，吃就完了，吃就完了，吃就完了，吃就完了。",
+                views: 875,
+                commentCount: 67
+            },
+            {
+                title: "学服好吃的",
+                content: "百丽宫哪有好吃的，别吃了减肥吧兄弟",
+                views: 666,
+                commentCount: 91
+            }
+        ]
     },
     /**
      * 生命周期函数--监听页面加载

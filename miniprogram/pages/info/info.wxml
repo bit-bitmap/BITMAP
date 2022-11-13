@@ -18,16 +18,16 @@
 </swiper>
 
 <view class="page__bd">
-    <view class="weui-panel" wx:for="{{datalist}}" > 
+    <view class="weui-panel" wx:for="{{datalist}}" >
+        <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">   
             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" bindtap="goContent" data-id="{{item._id}}">
                 <view class="weui-media-box__title">{{item.title}}</view>
-                <view class="weui-media-box__desc">{{item.content}}</view>
-                <view class="weui-media-box__desc">{{item.views}} 阅读 · {{item.commentCount}} 评论</view>
+                <view class="weui-media-box__desc">{{item.detail}}</view>
+                <view class="weui-media-box__desc">{{item.views}} 阅读 · {{item.comments.length}} 评论</view>
             </view>
             <view wx:if= "{{item.image}}"   class="weui-media-box__hd weui-media-box__hd_in-appmsg">
                 <image class="weui-media-box__thumb" src="{{item.image}}" />
             </view>
+        </navigator>
     </view>
 </view>
-
-

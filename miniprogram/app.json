@@ -13,14 +13,7 @@
         "pages/comment/comment",
         "pages/content/content"
     ],
-    "subPackages": [
-        {
-            "root": "packageLoad",
-            "pages": [
-                "page/loadin/loadin"
-            ]
-        }
-    ],
+
     "window": {
         "navigationBarTextStyle": "black",
         "navigationBarTitleText": "BIT",
