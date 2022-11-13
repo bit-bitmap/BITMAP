@@ -13,7 +13,6 @@
         "pages/comment/comment",
         "pages/content/content"
     ],
-
     "window": {
         "navigationBarTextStyle": "black",
         "navigationBarTitleText": "BIT",

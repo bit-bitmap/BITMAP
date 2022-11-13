@@ -14,7 +14,7 @@ Page({
             name: "",
             info: ""
         },
-        articles: []
+        registerDlgBtn: [{ text: '取消' }, { text: '注册' }],
     },
 
     /**
@@ -28,36 +28,38 @@ Page({
      * 生命周期函数--监听页面显示
      */
     async onShow() {
-        // Initialize info panel
-        const avatar = app.global.loginStatus
-            ? "../../images/myset.png" : "../../images/my.png"
-        const name = app.global.loginStatus
-            ? this.data.myInfo.name : "Please login"
-        const info = app.global.loginStatus
-            ? this.data.myInfo.info : ""
-
+        // 更新个人信息
         this.setData({
             loginStatus: app.global.loginStatus,
-            avatar: avatar,
-            name: name,
-            info: info
+            avatar: app.global.loginStatus
+                ? "../../images/myset.png"
+                : "../../images/my.png",
+            name: app.global.loginStatus
+                ? this.data.myInfo.name
+                : "Please login",
+            info: app.global.loginStatus
+                ? this.data.myInfo.info
+                : ""
         })
 
         // 更新个人文章列表
+        let articles = []
         if (app.global.loginStatus) {
-            // 获取个人文章 id
-            const ids = (await account.doc(app.global.id).get()).data.articles
+            // 获取个人文章 id 列表
+            const ids = (
+                await account.doc(app.global.id).get()
+            ).data.articles
             // 显示文章数量不超过 3 个
             const length = (ids.length < 3) ? ids.length : 3
-            // 获取每篇文章的信息
-            let articles = []
+            // 根据 id 列表获取每篇文章的信息
             for (let i = 0; i < length; i++) {
-                let article = (await articlelist.doc(ids[i]).get()).data
+                const article = (
+                    await articlelist.doc(ids[i]).get()
+                ).data
                 articles.push(article)
             }
-            this.setData({ articles: articles })
         }
-
+        this.setData({ articles: articles })
     },
 
 
@@ -66,17 +68,36 @@ Page({
      */
     async onLogin() {
         // 使用 openid 获取个人信息
-        let data = (
+        const res = (
             await account.where({
-                _openid: app.global.openid
+                _openid: ""//app.global.openid
             }).get()
-        ).data[0]
-        app.global.id = data._id
-        this.data.myInfo.info = data.info
-        this.data.myInfo.name = data.name
-        app.global.loginStatus = true
-        // Refresh page with login status
-        this.onShow()
+        )
+        const data = res.data[0]
+        console.log(res)
+        // 判断是否注册
+        if (data) {
+            // 刷新用户信息
+            app.global.id = data._id
+            this.data.myInfo.info = data.info
+            this.data.myInfo.name = data.name
+            app.global.loginStatus = true
+            this.onShow()
+        } else {
+            // 显示注册提示
+            wx.showModal({
+                title: "您尚未注册",
+                content: "现在注册？"
+            }).then(res => {
+                if (res.confirm) {
+                    wx.navigateTo({
+                        url: 'profile/profile',
+                    })
+                }
+            }).catch(err => {
+                console.log(err)
+            })
+        }
     },
 
     /**
