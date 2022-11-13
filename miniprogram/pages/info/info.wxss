@@ -79,4 +79,16 @@ scroll-view ::-webkit-scrollbar {
   margin-top: 3%;
 }
 
+.weui-media-box_thumb {
+    margin-right: 0%;
+    margin-left: 5%;
+}
+
+.weui-panel {
+	background-color: var(--weui-BG-2);
+	margin-top: 0px;
+	position: relative;
+	overflow: hidden
+}
+
 
