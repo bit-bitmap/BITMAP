@@ -25,7 +25,7 @@ Page({
         wx.showLoading({
             title: '加载中'
         })
-        if (options.edit) {
+        if (options.edit && app.global.loginStatus) {
             // 获取个人信息并填入
             let data = (await account.doc(app.global.id).get()).data
             this.setData({
@@ -48,8 +48,9 @@ Page({
         // 根据输入框的 field 更新相应变量
         const { field } = e.currentTarget.dataset
         this.setData({
-            ["form.${field}"]: e.detail.value
+            [`form.${field}`]: e.detail.value
         })
+        console.log(this.data.form)
         // 更新输入框计数器
         if (field == "info") {
             this.setData({
@@ -68,8 +69,22 @@ Page({
     /**
      * 保存按钮事件处理函数
      */
-    onSave() {
-        // todo：上传信息
+    async onSave() {
+        wx.showLoading({
+            title: '加载中'
+        })
+        const form = this.data.form
+        const res = await account.doc(app.global.id).update({
+            data: {
+                birthday: form.birthday,
+                college: form.department,
+                info: form.info,
+                phone: form.phone,
+                name: form.username
+            }
+        })
+        console.log(res)
+        wx.hideLoading()
         wx.navigateBack()
     },
 

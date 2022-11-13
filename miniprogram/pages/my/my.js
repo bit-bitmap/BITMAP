@@ -13,8 +13,7 @@ Page({
             avatar: "",
             name: "",
             info: ""
-        },
-        registerDlgBtn: [{ text: '取消' }, { text: '注册' }],
+        }
     },
 
     /**
@@ -23,6 +22,16 @@ Page({
     onLoad() {
         wx.showLoading({
             title: '加载中',
+        })
+
+        // 获取 open id
+        wx.cloud.callFunction({
+            name: "quickstartFunctions",
+            data: { type: "getOpenId" }
+        }).then(res => {
+            app.global.openid = res.result.openid
+        }).catch(err => {
+            console.log(err)
         })
     },
 
@@ -82,7 +91,6 @@ Page({
             }).get()
         )
         const data = res.data[0]
-        console.log(res)
         // 判断是否注册
         if (data) {
             // 刷新用户信息
