@@ -7,29 +7,12 @@ Page({
      * 页面的初始数据
      */
     data: {
+        info: "",
         datalist:[
             
         ],
-        articles:[
-            {
-                title: "关于软件工程学习",
-                content: "学软工，找高琪, 学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪学软工，找高琪",
-                views: 50,
-                commentCount: 8,
-                image: "../../images/收藏.png"
-            },
-            {
-                title: "养猪教程",
-                content: "吃就完了，吃就完了，吃就完了，吃就完了，吃就完了，吃就完了。",
-                views: 875,
-                commentCount: 67
-            },
-            {
-                title: "学服好吃的",
-                content: "百丽宫哪有好吃的，别吃了减肥吧兄弟",
-                views: 666,
-                commentCount: 91
-            }
+        guanfang:[
+            
         ]
     },
     /**
@@ -42,6 +25,18 @@ Page({
             console.log("获取成功",res)
             this.setData({
                 datalist:res.data
+            })
+        })
+        .catch(res=>{
+            console.log("获取失败",res)
+        })
+
+        wx.cloud.database().collection("guanfanglist")
+        .get()
+        .then(res=>{
+            console.log("获取成功l ",res)
+            this.setData({
+                guanfang:res.data
             })
         })
         .catch(res=>{
