@@ -109,6 +109,7 @@ Page({
             url: 'profile/profile?edit',
         })
     },
+
     /**
      * 页面相关事件处理函数--监听用户下拉动作
     */
@@ -127,14 +128,16 @@ Page({
             const ids = (
                 await account.doc(app.global.id).get()
             ).data.articles
-            // 显示文章数量不超过 3 个
-            const length = (ids.length < 3) ? ids.length : 3
-            // 根据 id 列表获取每篇文章的信息
-            for (let i = 0; i < length; i++) {
-                const article = (
-                    await articlelist.doc(ids[i]).get()
-                ).data
-                articles.push(article)
+            if (ids) {
+                // 显示文章数量不超过 3 个
+                const length = (ids.length < 3) ? ids.length : 3
+                // 根据 id 列表获取每篇文章的信息
+                for (let i = 0; i < length; i++) {
+                    const article = (
+                        await articlelist.doc(ids[i]).get()
+                    ).data
+                    articles.push(article)
+                }
             }
         }
         this.setData({

@@ -74,16 +74,22 @@ Page({
             title: '加载中'
         })
         const form = this.data.form
-        const res = await account.doc(app.global.id).update({
-            data: {
-                birthday: form.birthday,
-                college: form.department,
-                info: form.info,
-                phone: form.phone,
-                name: form.username
-            }
-        })
-        console.log(res)
+        const data = {
+            birthday: form.birthday,
+            college: form.department,
+            info: form.info,
+            phone: form.phone,
+            name: form.username
+        }
+        if (app.global.loginStatus) {
+            await account.doc(app.global.id).update({
+                data
+            })
+        } else {
+            await account.add({
+                data
+            })
+        }
         wx.hideLoading()
         wx.navigateBack()
     },
