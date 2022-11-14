@@ -6,11 +6,13 @@ page{
 .container-upload {
     position: relative;  
     padding: 20rpx;
+    padding-top: 5rpx;
 }
 
 .remind-subtitle {
     text-align: center;
     font-weight: bold;
+    margin: 10rpx;
 }
 
 .title-written {
@@ -39,19 +41,45 @@ page{
   padding: 25rpx;
 }
 
+/* 图片九宫格 */
+.Images-tool{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.Images-disp{
+    width: 33.3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10rpx;
+    position: relative;
+    /* flex-direction: column; */
+}
+.Images-disp image{
+    width: 220rpx;
+    height: 220rpx;
+    border-radius: 5%;
+}
+.Images-disp icon{
+    position: absolute;
+    width: -22rpx;
+    height: -22rpx;
+}
+
 /* 上传图片按键 */
-.Images-tool button{
-  margin: 0;
-  width: 90px;
-  height: 90px;
-  font-size: 60px;
+.button-uploadimages{
+  margin-top: 10rpx;
+  width: 220rpx;
+  height: 220rpx;
+  font-size: 90px;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 20rpx;
-  margin-top: 20rpx;
   color: #E6E6E6;
+  position: relative;
+  border-radius: 5%;
 }
 /* .up_img_item{
 
@@ -73,30 +101,12 @@ page{
 }
 /* 发表 */
 .button-upload {
-  width: 30%;
+  width: 25%;
   background-color: #E1D9EC;
   /* font-size: 14px; */
-  border-radius: 5%;
+  border-radius: 30rpx;
   margin: 10rpx auto;
 }
 .change-button-upload{
   background-color: #e5e2eb;
 }
-
-/* .item image{
-width: 220rpx;
-height: 220rpx;
-}
-.list{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-.item{
-  width: 33.3%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20rpx;
-  /* flex-direction: column; */
-/* }  */
