@@ -1,18 +1,9 @@
-<!--pages/info/info.wxml-->
-
+<!--pages/search/search.wxml-->
 <view class="searchbox" >
-    <view class="text">搜索</view>
     <view class = "search" >
-        <navigator url="../search/search">点我就能搜索</navigator>
+        <input type="text" focus="true"  placeholder="点击此处进行搜索" bindinput="searchinput"  ></input>
     </view>
 </view>
-
-<swiper class="swiper-container" indicator-dots="true" indicator-color="white" indicator-active-color="gray" autoplay="true" wx:if="{{!info}}" >
-    <swiper-item wx:for="{{guanfang}}"  bindtap="goContent" data-id="{{item._id}}">
-      <image class="gf-image" src="{{item.image}}" mode="scaleToFill" />
-    </swiper-item>
-</swiper>
-
 
 <view class="page__bd">
     <view class="weui-panel" wx:for="{{datalist}}" >

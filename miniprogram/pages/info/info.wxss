@@ -4,6 +4,28 @@ page {
     background-color: var(--weui-BG-0);
 }
 
+.searchbox{
+    height: 55px;
+    background-color: #fff;
+    align-items: center;
+    display: flex;
+}
+
+.text{
+    width: 100rpx;
+    text-align: center;
+}
+
+.search{
+    background-color: #f1f1f1;
+    color:black;
+    flex: 1;
+    margin-right: 5%;
+    font-size: 28rpx;
+    padding: 6px;
+    border-radius: 15rpx;
+}
+
 .swiper-container{
     height: 150px;
     width: 100%;

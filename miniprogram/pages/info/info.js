@@ -44,7 +44,11 @@ Page({
             })
         })
     },
-
+    
+    //搜索函数
+    search(){
+        
+    },
 
     // getData: function(num) {
     //     wx.cloud.database().collection("articlelist")

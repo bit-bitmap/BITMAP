@@ -1,6 +1,6 @@
 {
     "pages": [
-        "pages/content/content", 
+        "pages/content/content",
         "pages/info/info",
         "pages/category/category",
         "pages/my/my",
@@ -10,7 +10,8 @@
         "pages/upload/upload",
         "pages/logs/logs",
         "pages/upload/choose_category/category",
-        "pages/upload/editor/editor"
+        "pages/upload/editor/editor",
+        "pages/search/search"
     ],
     "window": {
         "navigationBarTextStyle": "black",
