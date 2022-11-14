@@ -14,6 +14,10 @@
                     <input bindinput="formInputChange" data-field="department" class="weui-input" placeholder="请输入书院/学院"
                         value="{{form.department}}" />
                 </mp-cell>
+                <mp-cell prop="grade" title="年级">
+                    <input bindinput="formInputChange" data-field="grade" class="weui-input" placeholder="请输入年级"
+                        value="{{form.grade}}" />
+                </mp-cell>
                 <mp-cell prop="phone" title="手机号">
                     <input bindinput="formInputChange" data-field="phone" class="weui-input" placeholder="请输入手机号"
                         value="{{form.phone}}" />

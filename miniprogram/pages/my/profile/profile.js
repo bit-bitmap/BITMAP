@@ -11,6 +11,7 @@ Page({
         form: {
             username: "",
             department: "",
+            grade: "",
             phone: "",
             date: "",
             description: ""
@@ -32,6 +33,7 @@ Page({
                 form: {
                     username: data.name,
                     department: data.college,
+                    grade: data.grade,
                     phone: data.phone,
                     birthday: data.birthday,
                     info: data.info
@@ -50,7 +52,6 @@ Page({
         this.setData({
             [`form.${field}`]: e.detail.value
         })
-        console.log(this.data.form)
         // 更新输入框计数器
         if (field == "info") {
             this.setData({
@@ -77,6 +78,7 @@ Page({
         const data = {
             birthday: form.birthday,
             college: form.department,
+            grade: form.grade,
             info: form.info,
             phone: form.phone,
             name: form.username
