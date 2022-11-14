@@ -13,51 +13,50 @@ Page({
             avatar: "",
             name: "",
             info: ""
-        },
-        articles: []
+        }
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad() {
+        wx.showLoading({
+            title: '加载中',
+        })
 
+        // 获取 open id
+        wx.cloud.callFunction({
+            name: "quickstartFunctions",
+            data: { type: "getOpenId" }
+        }).then(res => {
+            app.global.openid = res.result.openid
+        }).catch(err => {
+            console.log(err)
+        })
+        wx.hideLoading()
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     async onShow() {
-        // Initialize info panel
-        const avatar = app.global.loginStatus
-            ? "../../images/myset.png" : "../../images/my.png"
-        const name = app.global.loginStatus
-            ? this.data.myInfo.name : "Please login"
-        const info = app.global.loginStatus
-            ? this.data.myInfo.info : ""
-
+        // 更新个人信息
         this.setData({
             loginStatus: app.global.loginStatus,
-            avatar: avatar,
-            name: name,
-            info: info
+            avatar: app.global.loginStatus
+                ? "../../images/myset.png"
+                : "../../images/my.png",
+            name: app.global.loginStatus
+                ? this.data.myInfo.name
+                : "Please login",
+            info: app.global.loginStatus
+                ? this.data.myInfo.info
+                : ""
         })
-
-        // 更新个人文章列表
-        if (app.global.loginStatus) {
-            // 获取个人文章 id
-            const ids = (await account.doc(app.global.id).get()).data.articles
-            // 显示文章数量不超过 3 个
-            const length = (ids.length < 3) ? ids.length : 3
-            // 获取每篇文章的信息
-            let articles = []
-            for (let i = 0; i < length; i++) {
-                let article = (await articlelist.doc(ids[i]).get()).data
-                articles.push(article)
-            }
-            this.setData({ articles: articles })
-        }
-
+        if (!app.global.loginStatus)
+            this.setData({
+                articles: []
+            })
     },
 
 
@@ -65,18 +64,41 @@ Page({
      * 点击登录按钮
      */
     async onLogin() {
+        wx.showLoading({
+            title: '加载中'
+        })
         // 使用 openid 获取个人信息
-        let data = (
+        const res = (
             await account.where({
                 _openid: app.global.openid
             }).get()
-        ).data[0]
-        app.global.id = data._id
-        this.data.myInfo.info = data.info
-        this.data.myInfo.name = data.name
-        app.global.loginStatus = true
-        // Refresh page with login status
-        this.onShow()
+        )
+        const data = res.data[0]
+        // 判断是否注册
+        if (data) {
+            // 刷新用户信息
+            app.global.id = data._id
+            this.data.myInfo.info = data.info
+            this.data.myInfo.name = data.name
+            app.global.loginStatus = true
+            await this.onShow()
+            await this.refreshArticles()
+        } else {
+            // 显示注册提示
+            wx.showModal({
+                title: "您尚未注册",
+                content: "现在注册？"
+            }).then(res => {
+                if (res.confirm) {
+                    wx.navigateTo({
+                        url: 'profile/profile',
+                    })
+                }
+            }).catch(err => {
+                console.log(err)
+            })
+        }
+        wx.hideLoading()
     },
 
     /**
@@ -84,7 +106,42 @@ Page({
      */
     onEdit() {
         wx.navigateTo({
-            url: 'profile/profile',
+            url: 'profile/profile?edit',
+        })
+    },
+
+    /**
+     * 页面相关事件处理函数--监听用户下拉动作
+    */
+    async onPullDownRefresh() {
+        if (app.global.loginStatus) {
+            await this.onLogin()
+        }
+        wx.stopPullDownRefresh()
+    },
+
+    async refreshArticles() {
+        // 更新个人文章列表
+        let articles = []
+        if (app.global.loginStatus) {
+            // 获取个人文章 id 列表
+            const ids = (
+                await account.doc(app.global.id).get()
+            ).data.articles
+            if (ids) {
+                // 显示文章数量不超过 3 个
+                const length = (ids.length < 3) ? ids.length : 3
+                // 根据 id 列表获取每篇文章的信息
+                for (let i = 0; i < length; i++) {
+                    const article = (
+                        await articlelist.doc(ids[i]).get()
+                    ).data
+                    articles.push(article)
+                }
+            }
+        }
+        this.setData({
+            articles: articles
         })
     }
 })

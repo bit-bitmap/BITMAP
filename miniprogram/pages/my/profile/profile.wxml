@@ -6,27 +6,33 @@
         <!--Personal info-->
         <mp-form id="form">
             <mp-cells title="基本信息" footer="">
-                <mp-cell prop="username" title="姓名" ext-class="">
-                    <input bindinput="formInputChange" data-field="username" class="weui-input" placeholder="请输入姓名" />
+                <mp-cell prop="username" title="姓名">
+                    <input bindinput="formInputChange" data-field="username" class="weui-input" placeholder="请输入姓名"
+                        value="{{form.username}}" />
                 </mp-cell>
-                <mp-cell prop="department" title="书院/学院" ext-class="">
-                    <input bindinput="formInputChange" data-field="department" class="weui-input"
-                        placeholder="请输入书院/学院" />
+                <mp-cell prop="department" title="书院/学院">
+                    <input bindinput="formInputChange" data-field="department" class="weui-input" placeholder="请输入书院/学院"
+                        value="{{form.department}}" />
                 </mp-cell>
-                <mp-cell prop="phone" title="手机号" ext-class=" weui-cell_vcode">
-                    <input bindinput="formInputChange" data-field="phone" class="weui-input" placeholder="请输入手机号" />
+                <mp-cell prop="grade" title="年级">
+                    <input bindinput="formInputChange" data-field="grade" class="weui-input" placeholder="请输入年级"
+                        value="{{form.grade}}" />
+                </mp-cell>
+                <mp-cell prop="phone" title="手机号">
+                    <input bindinput="formInputChange" data-field="phone" class="weui-input" placeholder="请输入手机号"
+                        value="{{form.phone}}" />
                     <!--<button slot="footer" type="default" class="weui-vcode-btn">获取验证码</button>-->
                 </mp-cell>
-                <mp-cell prop="date" title="生日" ext-class="">
-                    <picker data-field="date" mode="date" value="{{form.date}}" bindchange="formInputChange">
-                        <view class="weui-input">{{form.date}}</view>
+                <mp-cell prop="birthday" title="生日">
+                    <picker data-field="birthday" mode="date" bindchange="formInputChange">
+                        <view class="weui-input">{{form.birthday}}</view>
                     </picker>
                 </mp-cell>
             </mp-cells>
             <mp-cells title="个人简介" footer="">
-                <mp-cell title="" ext-class="">
-                    <textarea bindinput="formInputChange" class="weui-textarea" data-field="description"
-                        placeholder="请输入文本" />
+                <mp-cell title="">
+                    <textarea bindinput="formInputChange" class="weui-textarea" data-field="info"
+                        placeholder="请输入文本" value="{{form.info}}" />
                     <view class="weui-textarea-counter">{{textCounter}}/200</view>
                 </mp-cell>
             </mp-cells>

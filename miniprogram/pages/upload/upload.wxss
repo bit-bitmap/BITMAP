@@ -5,15 +5,14 @@ page{
 
 .container-upload {
     position: relative;  
-    width: 100%;  
-    height: 100%;  
-    margin-top: 20rpx;
+    padding: 20rpx;
+    padding-top: 5rpx;
 }
 
 .remind-subtitle {
     text-align: center;
-    font-size: 14px;
     font-weight: bold;
+    margin: 10rpx;
 }
 
 .title-written {
@@ -21,49 +20,92 @@ page{
     background-color: #E1D5EC;
     border-radius: 3%;
     margin: 10rpx auto;
-    width: 90%;
+    /* width: 90%; */
     height: 50rpx;
     flex-direction: row;
     justify-content: right;
     padding: 25rpx;
-    font-size: 14px;
 }
 .limit-number {
     color: grey;
     font-size: 14px;
 }
 
-.choose-category {
-    display: flex;
-    flex-wrap: wrap;
-}
-.choose-category text {
-    width: 15%;
-    padding: 6rpx;
-    align-items: center;
-    text-align: center;
-    background-color: #E1D5EC;
-    margin: 10rpx auto;
-    border-radius: 10%;
-    font-size: 14px;
-}
-
-/* .text-written {
-  width: 90%;
+.text-written {
+  /* width: 90%; */
   display: flex;
   flex-wrap: wrap;
   margin: 10rpx auto;
   border-radius: 3%;
   background-color: #E1D5EC;
   padding: 25rpx;
-  font-size: 14px;
+}
+
+/* 图片九宫格 */
+.Images-tool{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.Images-disp{
+    width: 33.3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10rpx;
+    position: relative;
+    /* flex-direction: column; */
+}
+.Images-disp image{
+    width: 220rpx;
+    height: 220rpx;
+    border-radius: 5%;
+}
+.Images-disp icon{
+    position: absolute;
+    width: -22rpx;
+    height: -22rpx;
+}
+
+/* 上传图片按键 */
+.button-uploadimages{
+  margin-top: 10rpx;
+  width: 220rpx;
+  height: 220rpx;
+  font-size: 90px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #E6E6E6;
+  position: relative;
+  border-radius: 5%;
+}
+/* .up_img_item{
+
 } */
 
+/* 分类选择按键 */
+.choose-category {
+  display: flex;
+  flex-wrap: wrap;
+}
+.button-category {
+  width: 80%;
+  background-color: #E1D9EC;
+  border-radius: 3%;
+  margin: 10rpx auto;
+}
+.change-button-category{
+  background-color: #e5e2eb;
+}
+/* 发表 */
 .button-upload {
   width: 25%;
   background-color: #E1D9EC;
-  font-size: 14px;
-  border-radius: 10%;
+  /* font-size: 14px; */
+  border-radius: 30rpx;
+  margin: 10rpx auto;
 }
 .change-button-upload{
   background-color: #e5e2eb;

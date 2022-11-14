@@ -5,17 +5,12 @@
     </view>
 </view>
 
-<swiper class="swiper-container" indicator-dots="true" indicator-color="white" indicator-active-color="gray" autoplay="true" >
-    <swiper-item>
-      <image class="gf-image" src="../../images/gf1.jpg" mode="scaleToFill" />
-    </swiper-item>
-    <swiper-item>
-      <image class="gf-image" src="../../images/gf2.jpg" mode="scaleToFill" />
-    </swiper-item>
-    <swiper-item>
-      <image class="gf-image" src="../../images/gf3.jpg" mode="scaleToFill" />
+<swiper class="swiper-container" indicator-dots="true" indicator-color="white" indicator-active-color="gray" autoplay="true" wx:if="{{!info}}" >
+    <swiper-item wx:for="{{guanfang}}"  bindtap="goContent" data-id="{{item._id}}">
+      <image class="gf-image" src="{{item.image}}" mode="scaleToFill" />
     </swiper-item>
 </swiper>
+
 
 <view class="page__bd">
     <view class="weui-panel" wx:for="{{datalist}}" >

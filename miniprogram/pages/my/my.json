@@ -1,6 +1,6 @@
 {
+    "enablePullDownRefresh": true,
     "usingComponents": {
-        "mp-icon": "weui-miniprogram/icon/icon",
-        "mp-dialog": "weui-miniprogram/dialog/dialog"
+        "mp-icon": "weui-miniprogram/icon/icon"
     }
 }

@@ -11,9 +11,7 @@
         "pages/logs/logs",
         "pages/upload/choose_category/category",
         "pages/upload/editor/editor"
-
     ],
-
     "window": {
         "navigationBarTextStyle": "black",
         "navigationBarTitleText": "BIT",
