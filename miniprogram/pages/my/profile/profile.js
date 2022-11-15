@@ -75,6 +75,14 @@ Page({
             title: '加载中'
         })
         const form = this.data.form
+        if (form.info.length > 100) {
+            await wx.hideLoading()
+            await wx.showToast({
+                title: '个人简介太长啦',
+                icon: 'error'
+            })
+            return
+        }
         const data = {
             birthday: form.birthday,
             college: form.department,
