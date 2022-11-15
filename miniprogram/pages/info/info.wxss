@@ -21,6 +21,7 @@ page {
     color:black;
     flex: 1;
     margin-right: 5%;
+    margin-left: 5%;
     font-size: 28rpx;
     padding: 6px;
     border-radius: 15rpx;

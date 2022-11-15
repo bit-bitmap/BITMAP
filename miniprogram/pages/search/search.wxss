@@ -1,7 +1,12 @@
 /* pages/search/search.wxss */
+
+page {
+    background-color: var(--weui-BG-0);
+}
+
 .searchbox{
     height: 55px;
-    background-color: rgb(204, 166, 188);
+    background-color: #fff;
     align-items: center;
     display: flex;
 }
