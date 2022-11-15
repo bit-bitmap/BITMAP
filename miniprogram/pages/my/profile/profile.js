@@ -1,7 +1,7 @@
 // pages/my/profile/profile.js
 const app = getApp()
 const db = wx.cloud.database()
-const account = db.collection("account")
+const account = db.collection('account')
 Page({
 
     /**
@@ -9,23 +9,22 @@ Page({
      */
     data: {
         form: {
-            username: "",
-            department: "",
-            grade: "",
-            phone: "",
-            date: "",
-            description: ""
+            username: '',
+            department: '',
+            grade: '',
+            phone: '',
+            date: '',
+            description: ''
         },
-        textCounter: 0
+        textCount: 0
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     async onLoad(options) {
-        wx.showLoading({
-            title: '加载中'
-        })
+        wx.showLoading()
+        // 若传入参数包含 edit，用户已登录，则获取已有资料
         if (options.edit && app.global.loginStatus) {
             // 获取个人信息并填入
             let data = (await account.doc(app.global.id).get()).data
@@ -38,7 +37,7 @@ Page({
                     birthday: data.birthday,
                     info: data.info
                 },
-                textCounter: data.info.length
+                textCount: data.info.length
             })
         }
     },
@@ -53,9 +52,9 @@ Page({
             [`form.${field}`]: e.detail.value
         })
         // 更新输入框计数器
-        if (field == "info") {
+        if (field == 'info') {
             this.setData({
-                textCounter: e.detail.value.length
+                textCount: e.detail.value.length
             })
         }
     },
@@ -71,10 +70,18 @@ Page({
      * 保存按钮事件处理函数
      */
     async onSave() {
-        wx.showLoading({
-            title: '加载中'
-        })
+        wx.showLoading()
         const form = this.data.form
+        // 判断个人简介字数是否超限
+        if (form.info.length > 100) {
+            await wx.hideLoading()
+            await wx.showToast({
+                title: '个人简介太长啦',
+                icon: 'error'
+            })
+            return
+        }
+        // 将上传数据包装为对象
         const data = {
             birthday: form.birthday,
             college: form.department,

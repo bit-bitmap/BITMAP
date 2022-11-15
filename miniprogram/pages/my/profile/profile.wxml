@@ -31,9 +31,10 @@
             </mp-cells>
             <mp-cells title="个人简介" footer="">
                 <mp-cell title="">
-                    <textarea bindinput="formInputChange" class="weui-textarea" data-field="info"
-                        placeholder="请输入文本" value="{{form.info}}" />
-                    <view class="weui-textarea-counter">{{textCounter}}/200</view>
+                    <textarea bindinput="formInputChange" class="weui-textarea" data-field="info" placeholder="请输入文本"
+                        value="{{form.info}}">
+                    </textarea>
+                    <view class="weui-textarea-counter">{{textCount}}/100</view>
                 </mp-cell>
             </mp-cells>
         </mp-form>

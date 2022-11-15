@@ -1,8 +1,8 @@
 // pages/my/my.js
 const app = getApp()
 const db = wx.cloud.database()
-const account = db.collection("account")
-const articlelist = db.collection("articlelist")
+const account = db.collection('account')
+const articlelist = db.collection('articlelist')
 Page({
 
     /**
@@ -10,29 +10,25 @@ Page({
      */
     data: {
         myInfo: {
-            avatar: "",
-            name: "",
-            info: ""
+            avatar: '',
+            name: '',
+            info: ''
         }
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad() {
-        wx.showLoading({
-            title: '加载中',
-        })
-
+    async onLoad() {
+        wx.showLoading()
         // 获取 open id
-        wx.cloud.callFunction({
-            name: "quickstartFunctions",
-            data: { type: "getOpenId" }
-        }).then(res => {
-            app.global.openid = res.result.openid
-        }).catch(err => {
-            console.log(err)
-        })
+        const result = (await wx.cloud.callFunction({
+            name: 'quickstartFunctions',
+            data: {
+                type: 'getOpenId'
+            }
+        })).result
+        app.global.openid = result.openid
         wx.hideLoading()
     },
 
@@ -44,14 +40,14 @@ Page({
         this.setData({
             loginStatus: app.global.loginStatus,
             avatar: app.global.loginStatus
-                ? "../../images/myset.png"
-                : "../../images/my.png",
+                ? '../../images/myset.png'
+                : '../../images/my.png',
             name: app.global.loginStatus
                 ? this.data.myInfo.name
-                : "Please login",
+                : 'Please login',
             info: app.global.loginStatus
                 ? this.data.myInfo.info
-                : "",
+                : '',
             _openid: app.global.openid
         })
         if (!app.global.loginStatus)
@@ -65,16 +61,13 @@ Page({
      * 点击登录按钮
      */
     async onLogin() {
-        wx.showLoading({
-            title: '加载中'
-        })
+        wx.showLoading()
         // 使用 openid 获取个人信息
-        const res = (
+        const data = (
             await account.where({
                 _openid: app.global.openid
             }).get()
-        )
-        const data = res.data[0]
+        ).data[0]
         // 判断是否注册
         if (data) {
             // 刷新用户信息
@@ -87,8 +80,8 @@ Page({
         } else {
             // 显示注册提示
             wx.showModal({
-                title: "您尚未注册",
-                content: "现在注册？"
+                title: '您尚未注册',
+                content: '现在注册？'
             }).then(res => {
                 if (res.confirm) {
                     wx.navigateTo({

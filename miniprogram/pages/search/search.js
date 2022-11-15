@@ -1,4 +1,5 @@
 // pages/search/search.js
+let db = wx.cloud.database()
 Page({
 
     /**
@@ -6,6 +7,7 @@ Page({
      */
     data: {
         showRecommend: true, // 是否显示推荐列表
+        searchFocus: true, // 搜索框是否自动聚焦
         pagesize: 3,
         datalist: [],
         recommandlist: [] // 推荐列表
@@ -15,14 +17,16 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        const hasOptions = Object.keys(options).length > 0
         this.setData({
             // 若有传入参数，则不显示推荐列表
-            showRecommend: Object.keys(options).length == 0,
+            showRecommend: !hasOptions,
+            searchFocus: !hasOptions,
             options
         })
         console.log(options)
         // 给推荐列表拉取数据
-        wx.cloud.database().collection("articlelist")
+        db.collection("articlelist")
             .where({ flag: true })
             .orderBy('like', 'desc')
             .limit(this.data.pagesize)
@@ -40,18 +44,21 @@ Page({
         const inputvalue = e.detail.value;
         console.log(inputvalue)
         if (inputvalue) {
-            wx.cloud.database().collection("articlelist")
-                .where({
-                    title: wx.cloud.database().RegExp({
+            // 将标题关键词和传入参数合并为一个对象
+            const conditions = Object.assign(
+                this.data.options,
+                {
+                    title: db.RegExp({
                         regexp: inputvalue,
                         options: 'i'
                     }),
-                    flag: true,
-                    _openid: this.data.options._openid
+                    flag: true
                 })
+            db.collection("articlelist")
+                .where(conditions)
                 .get()
                 .then(res => {
-                    console.log("获取到了", res, this.data.options._openid)
+                    console.log("获取到了", res)
                     this.setData({
                         datalist: res.data
                     })
