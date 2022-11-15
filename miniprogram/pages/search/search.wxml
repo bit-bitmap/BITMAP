@@ -5,6 +5,18 @@
     </view>
 </view>
 
+<view class="recommandbox">
+    <view class="recommandbox-top">大家都在搜</view>
+    <block wx:for="{{recommandlist}}">
+        <view class="recommand-content" bindtap="goContent" data-id="{{item._id}}">
+        <!--界面跳转 -->
+          <navigator url="/pages/info/info">
+            <text>{{item.title}}</text>
+          </navigator>
+        </view>
+      </block>
+</view>
+
 <view class="page__bd">
     <view class="weui-panel" wx:for="{{datalist}}" >
         <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">   

@@ -8,6 +8,9 @@ Page({
         pagesize:3,
         datalist:[
 
+        ],
+        recommandlist:[
+
         ]
     },
 
@@ -15,7 +18,16 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-       
+        wx.cloud.database().collection("articlelist")
+        .where({flag:true})
+        .limit(this.data.pagesize)
+        .get()
+        .then(res=>{
+            console.log("获取成功l ",res)
+            this.setData({
+                recommandlist:res.data
+            })
+        })
     },
 
     searchinput:function(e){
