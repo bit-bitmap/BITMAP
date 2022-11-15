@@ -118,7 +118,7 @@ page{
 }
 .choose-categorysmall .catesmall-blocks {
     background-color: #E1D5EC;
-    width: 55px;
+    width: 60px;
     margin: 10rpx;
     padding: 10rpx;
     display: flex;
@@ -126,7 +126,7 @@ page{
     align-items: center;
 }
 .choose-categorysmall .catesmall-blocks text {
-    font-size: 30rpx;
+    font-size: 27rpx;
 }
 
 /* .button-category {
@@ -142,8 +142,8 @@ page{
 /* 发表 */
 .container-upload .buttons-upload {
     position: relative;
-    margin: 0rpx auto;
-    margin-bottom: 10rpx;
+    margin: 10rpx auto;
+    /* margin-bottom: 10rpx; */
     width: 70%;
     display: flex;
     justify-content: space-around;
