@@ -13,7 +13,7 @@
   </view>
 
   <!-- 上传图片 -->
-  <view class="uploadimages-title">上传图片（最多8张）</view>
+  <!-- <view class="uploadimages-title">上传图片（最多8张）</view> -->
   <view class="Images-tool">        
         <view class="Images-disp" wx:for="{{Imagespath}}" wx:key="*this">
          <image bindtap="viewimage" mode="aspectFill" src="{{item}}" data-index="{{index}}"></image>
@@ -23,15 +23,19 @@
     </view>
 
  <!-- 点击分类按键选择 -->
- <view class="remind-subtitle">选一选分类</view>
-  <view class="choose-category">
-   <button class="button-category" hover-class="change-button-category" bindtap="actionchoosecate">{{buttoncatedisp}}</button>
-   <choosecate id="upcate"></choosecate>
+  <!-- <view class="remind-subtitle">选一选分类</view> -->
+  <view class="choose-categorybig">
+    <radio-group>
+    <radio class="radio" wx:for-items="{{choosecate}}" wx:key="id" value="{{item.id}}" checked="{{item.choose}}" color="#E18AEC">{{item.name}}</radio>
+  </radio-group>
+  </view>
+  <view class="choose-categorysmall">
+   <view class="catesmall-blocks" wx:for="{{studycate}}" wx:key="id" value="{{item.id}}" bindtap="smallcateschoose"><text>{{item.subname}}</text></view>
   </view>
 
   <!-- 点击保存或发表 返回个人页 等待审核 -->
   <view class="buttons-upload">
-    <button class="button-save" hover-class="change-button-upload" bindtap="handleFormSave">
+    <button class="button-save" hover-class="change-button-upload" bindtap="handleFormSubmitImages">
      <icon type="waiting" size="15" color="black"></icon>
     保存</button>
     <button class="button-upload" hover-class="change-button-upload" bindtap="handleFormSubmit">
