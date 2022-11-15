@@ -6,7 +6,7 @@
     </view>
 </view>
 
-<swiper class="swiper-container" indicator-dots="true" indicator-color="white" indicator-active-color="gray" autoplay="true" wx:if="{{!info}}" >
+<swiper class="swiper-container" indicator-dots="true" indicator-color="white" indicator-active-color="gray" autoplay="true" wx:if="{{!info}}" circular="true">
     <swiper-item wx:for="{{guanfang}}"  bindtap="goContent" data-id="{{item._id}}">
       <image class="gf-image" src="{{item.image[0]}}" mode="scaleToFill" />
     </swiper-item>

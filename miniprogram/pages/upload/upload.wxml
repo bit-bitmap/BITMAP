@@ -1,58 +1,70 @@
 <!--pages/upload/upload.wxml-->
 <view class="container-upload">
-  <view class="remind-subtitle">起一个标题吧</view>
-  <view class="title-written">
-   <textarea value="{{titlewritten}}" placeholder="{{titleplaceholder}}" bindinput="inputtitleNum" maxlength="15" minlength="2"></textarea>
-   <view class="limit-number">{{titleNum}}/15</view>
-  </view>
-  <view class="remind-subtitle">精彩资讯呈现</view>
-  <view class="text-written-container">
-   <view class="text-written">
-    <textarea value="{{textwritten}}" placeholder="{{textplaceholder}}" bindinput="inputtext" maxlength="-1" minlength="5"></textarea>
-   </view>
-  </view>
-
-  <!-- 上传图片 -->
-  <!-- <view class="uploadimages-title">上传图片（最多8张）</view> -->
-  <view class="Images-tool">        
-        <view class="Images-disp" wx:for="{{Imagespath}}" wx:key="*this">
-         <image bindtap="viewimage" mode="aspectFill" src="{{item}}" data-index="{{index}}"></image>
-         <icon type="clear" size="18" color="#E18AEC" bindtap="handleRemoveImages" data-index="{{index}}"></icon>
+    <view class="remind-subtitle">起一个标题吧</view>
+    <view class="title-written">
+        <textarea value="{{titlewritten}}" placeholder="{{titleplaceholder}}" bindinput="inputtitleNum" maxlength="15" minlength="2"></textarea>
+        <view class="limit-number">{{titleNum}}/15</view>
+    </view>
+    <view class="remind-subtitle">精彩资讯呈现</view>
+    <view class="text-written-container">
+        <view class="text-written">
+            <textarea value="{{textwritten}}" placeholder="{{textplaceholder}}" bindinput="inputtext" maxlength="-1" minlength="5"></textarea>
         </view>
-        <button wx:if="{{isNineImages}}" bindtap="handleUpImages">+</button>  
     </view>
 
- <!-- 点击分类按键选择 -->
-  <!-- <view class="remind-subtitle">选一选分类</view> -->
-  <view class="choose-categorybig">
-    <radio-group bindchange="handlecatechoose">
-    <radio class="radio" wx:for-items="{{choosecate}}" wx:key="id" value="{{item.id}}" checked="{{item.choose}}" color="#E18AEC">{{item.name}}</radio>
-  </radio-group>
-  </view>
-  <view class="choose-categorysmall">
-   <view class="catesmall-blocks" wx:if="{{usercatebig==0}}" wx:for="{{studycate}}" wx:key="id" value="{{item.subid}}" bindtap="smallcateschoose" style="{{item.checked?'background-color:#E18AEC;':'background-color:#E1D5EC'}}"><text>{{item.subname}}</text></view>
-  </view>
-  <view class="choose-categorysmall">
-   <view class="catesmall-blocks" wx:if="{{usercatebig==1}}" wx:for="{{lifecate}}" wx:key="id" value="{{item.subid}}" bindtap="smallcateschoose" style="{{item.checked?'background-color:#E18AEC;':'background-color:#E1D5EC'}}"><text>{{item.subname}}</text></view>
-  </view>
-  <view class="choose-categorysmall">
-   <view class="catesmall-blocks" wx:if="{{usercatebig==2}}" wx:for="{{sportcate}}" wx:key="id" value="{{item.subid}}" bindtap="smallcateschoose" style="{{item.checked?'background-color:#E18AEC;':'background-color:#E1D5EC'}}"><text>{{item.subname}}</text></view>
-  </view>
-  <view class="choose-categorysmall">
-   <view class="catesmall-blocks" wx:if="{{usercatebig==3}}" wx:for="{{foodcate}}" wx:key="id" value="{{item.subid}}" bindtap="smallcateschoose" style="{{item.checked?'background-color:#E18AEC;':'background-color:#E1D5EC'}}"><text>{{item.subname}}</text></view>
-  </view>
-  <view class="choose-categorysmall">
-   <view class="catesmall-blocks" wx:if="{{usercatebig==4}}" wx:for="{{activitycate}}" wx:key="id" value="{{item.subid}}" bindtap="smallcateschoose" style="{{item.checked?'background-color:#E18AEC;':'background-color:#E1D5EC'}}"><text>{{item.subname}}</text></view>
-  </view>
+    <!-- 上传图片 -->
+    <!-- <view class="uploadimages-title">上传图片（最多8张）</view> -->
+    <view class="Images-tool">
+        <view class="Images-disp" wx:for="{{Imagespath}}" wx:key="*this">
+            <image bindtap="viewimage" mode="aspectFill" src="{{item}}" data-index="{{index}}"></image>
+            <icon type="clear" size="18" color="#E18AEC" bindtap="handleRemoveImages" data-index="{{index}}"></icon>
+        </view>
+        <button wx:if="{{isEightImages}}" bindtap="handleUpImages">+</button>
+    </view>
 
-  <!-- 点击保存或发表 返回个人页 等待审核 -->
-  <view class="buttons-upload">
-    <button class="button-save" hover-class="change-button-upload" bindtap="handleFormSubmitImages">
+    <!-- 点击分类按键选择 -->
+    <!-- <view class="remind-subtitle">选一选分类</view> -->
+    <!-- 大类 -->
+    <view class="choose-categorybig">
+        <radio-group bindchange="handlecatechoose">
+            <radio class="radio" wx:for-items="{{choosecate}}" wx:key="id" value="{{item.id}}" checked="{{item.choose}}" color="#E18AEC">{{item.name}}</radio>
+        </radio-group>
+    </view>
+    <!-- 小类 -->
+    <view class="choose-categorysmall">
+        <checkbox-group bindchange="smallcateschoose">
+            <checkbox class="catesmall-blocks" wx:if="{{usercatebig==0}}" wx:for="{{studycate}}" wx:key="id" value="{{item.subid}}"  color="#E18AEC">{{item.subname}}</checkbox>
+        </checkbox-group>
+    </view>
+    <view class="choose-categorysmall">
+        <checkbox-group bindchange="smallcateschoose">
+            <checkbox class="catesmall-blocks" wx:if="{{usercatebig==1}}" wx:for="{{lifecate}}" wx:key="id" value="{{item.subid}}"  color="#E18AEC">{{item.subname}}</checkbox>
+        </checkbox-group>
+    </view>
+    <view class="choose-categorysmall">
+        <checkbox-group bindchange="smallcateschoose">
+            <checkbox class="catesmall-blocks" wx:if="{{usercatebig==2}}" wx:for="{{sportcate}}" wx:key="id" value="{{item.subid}}"  color="#E18AEC">{{item.subname}}</checkbox>
+        </checkbox-group>
+    </view>
+    <view class="choose-categorysmall">
+        <checkbox-group bindchange="smallcateschoose">
+            <checkbox class="catesmall-blocks" wx:if="{{usercatebig==3}}" wx:for="{{foodcate}}" wx:key="id" value="{{item.subid}}"  color="#E18AEC">{{item.subname}}</checkbox>
+        </checkbox-group>
+    </view>
+    <view class="choose-categorysmall">
+        <checkbox-group bindchange="smallcateschoose">
+            <checkbox class="catesmall-blocks" wx:if="{{usercatebig==4}}" wx:for="{{activitycate}}" wx:key="id" value="{{item.subid}}"  color="#E18AEC">{{item.subname}}</checkbox>
+        </checkbox-group>
+    </view>
+
+    <!-- 点击保存或发表 返回个人页 等待审核 -->
+    <view class="buttons-upload">
+        <!-- <button class="button-save" hover-class="change-button-upload" bindtap="handleFormSubmitImages">
      <icon type="waiting" size="15" color="black"></icon>
-    保存</button>
-    <button class="button-upload" hover-class="change-button-upload" bindtap="handleFormSubmit">
-    <icon type="success_no_circle" size="15" color="black"></icon>
-    发表</button>
-  </view>
+    保存</button> -->
+        <button class="button-upload" hover-class="change-button-upload" bindtap="handleFormSubmit">
+            <icon type="success_no_circle" size="15" color="black"></icon>
+            发表
+        </button>
+    </view>
 </view>
-

@@ -1,6 +1,5 @@
 {
     "usingComponents": {},
     "navigationBarTitleText": "发表资讯",
-    "navigationBarBackgroundColor": "#E1D9EC",
-    "backgroundColor": "#E1D9EC"
+    "navigationBarBackgroundColor": "#E1D9EC"
 }
