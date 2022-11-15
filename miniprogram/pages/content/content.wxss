@@ -43,9 +43,16 @@ page{
     font-weight: bold;
 }
 .swiperImage {
-    margin: 20rpx;
+    margin: 30rpx;
     height: 550rpx;
     border-radius: 10rpx;
+    display: flex;
+}
+.al-image{
+    border-radius: 20rpx;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 /* 评论区 */
 .tip{
