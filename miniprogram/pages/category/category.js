@@ -15,21 +15,8 @@ Page({
           url: "/pages/category/info1/info1"
         })
 
-//       if(lujing=="201qushi"){
-//         wx.switchTab({
-//    url: '/pages/my/my',
-//  })
-//   }
     },
-    // gotoo2(e){
-    //     console.log(e)
-    //     var lujing=e.currentTarget.dataset.lujing
-    //     if(lujing=="201qushi"){
-    //           wx.switchTab({
-    //      url: '/pages/my/my',
-    //    })
-    //     }
-    //   },
+
 
   data: {
     cateItems:[]
