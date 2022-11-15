@@ -6,6 +6,8 @@ let comments = []
 let like = 0
 let ID = ''
 let OpenID = ''
+let commentsname = ''
+const app = getApp()
 Page({
 
     /**
@@ -19,6 +21,7 @@ Page({
         imgurl2:"../../images/like-no.png",
         comments:[],
         name:'',
+        commentname:'',
         likes:0
     },
     /**
@@ -57,6 +60,23 @@ Page({
         }).catch(res=>{
             console.log("接收失败",res)
         })
+        /**
+         * 获取登录ID
+         */
+        wx.cloud.callFunction({
+            name: "quickstartFunctions",
+            data: { type: "getOpenId" }
+        }).then(res => {
+            app.global.openid = res.result.openid
+            console.log("获取openid成功", app.global.openid)
+            OpenID = app.global.openid
+        }).catch(err => {
+            console.log("获取openid失败", err)
+        })
+        /**
+         * 获取用户名
+         */
+        
     },
 
     /**
@@ -124,6 +144,16 @@ Page({
         this.setData({
             titleNum: length
         });
+        wx.cloud.database().collection("account").where({
+            _openid:app.global.openid
+        }).get()
+        .then(res=>{
+            console.log("获取用户名成功",res.data[0].name)
+            commentsname = res.data[0].name
+            console.log("获取用户名成功",commentsname)
+        }).catch(res=>{
+            console.log("获取用户名失败",res)
+        })
     },
 
     contentUp(){
@@ -135,7 +165,7 @@ Page({
             return
         }
         let commentItem = {}
-        commentItem.who = '小六'
+        commentItem.who = commentsname
         commentItem.content = pinglun
         let commentArr = this.data.comments
         commentArr.push(commentItem)
