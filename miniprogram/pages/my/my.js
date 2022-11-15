@@ -51,7 +51,8 @@ Page({
                 : "Please login",
             info: app.global.loginStatus
                 ? this.data.myInfo.info
-                : ""
+                : "",
+            _openid: app.global.openid
         })
         if (!app.global.loginStatus)
             this.setData({
