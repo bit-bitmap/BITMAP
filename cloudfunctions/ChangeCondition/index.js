@@ -24,7 +24,8 @@ exports.main = async (event, context) => {
         return await cloud.database().collection("articlelist").doc(event.id)
         .update({
             data:{
-                dianzan : event.dianzan
+                dianzan : event.dianzan,
+                like : event.like
             }
         })
         .then(res=>{

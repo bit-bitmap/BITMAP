@@ -43,8 +43,9 @@ page{
     font-weight: bold;
 }
 .swiperImage {
-    margin-bottom: 50rpx;
+    margin: 20rpx;
     height: 550rpx;
+    border-radius: 10rpx;
 }
 /* 评论区 */
 .tip{
@@ -79,4 +80,7 @@ page{
     position: fixed;
     bottom: 0%;
     right: 0%;
+}
+.bottom text{
+    color:gray;
 }

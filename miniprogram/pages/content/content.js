@@ -17,6 +17,7 @@ Page({
         imgurl1:"../../images/shoucang-no.png",
         imgurl2:"../../images/like-no.png",
         comments:[],
+        likes:0
     },
     /**
      * 生命周期函数--监听页面加载
@@ -32,10 +33,11 @@ Page({
             dianzan = res.data.dianzan
             shoucang = res.data.shoucang
             this.setData({
+                likes:like,
                 detail:res.data,
                 imgurl2: dianzan ? "../../images/like-yes.png" : "../../images/like-no.png",
                 imgurl1: shoucang ? "../../images/shoucang-yes.png" : "../../images/shoucang-no.png",
-                comments: res.data.comments
+                comments: res.data.comments,
             })
         })
         .catch(res=>{
@@ -67,19 +69,31 @@ Page({
         })
     },
     favorMe(){
+        console.log("获取点赞状态",like)
         this.setData({
             imgurl2: dianzan ? "../../images/like-no.png" : "../../images/like-yes.png"
         })
         dianzan = !dianzan
+        if(dianzan==true){
+            like++
+        }else{
+            like--
+        }
+        console.log("获取点赞状态",like)
+        this.setData({
+            likes:like
+        })
+        let likenum = this.data.likes
         wx.cloud.callFunction({
             name:"ChangeCondition",
             data:{
                 action:"dianzan",
                 id:ID,
-                dianzan:dianzan
+                dianzan:dianzan,
+                like:likenum
             }
         }).then(res=>{
-            console.log("改变点赞状态成功",res)
+            console.log("改变点赞状态成功",like)
         })
         .catch(res=>{
             console.log("改变点赞状态失败",res)

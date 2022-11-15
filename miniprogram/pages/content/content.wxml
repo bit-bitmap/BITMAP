@@ -11,7 +11,7 @@
     <view class = "content1">{{detail.detail}}</view>
     <swiper class="swiperImage" indicator-dots="true" indicator-color="white" indicator-active-color="gray" autoplay="false" wx:if="{{!info}}">
         <swiper-item data-id="{{item._id}}">
-            <image class="al-image" src="{{detail.image}}" mode="aspectFit" show-menu-by-longpress="true"></image>
+            <image class="al-image" src="{{detail.image}}" mode="scaleToFill" show-menu-by-longpress="true"></image>
         </swiper-item>
     </swiper>
     <view class="tip">评论区</view>
@@ -35,5 +35,6 @@
 <view class = "bottom" >
     <image src="{{imgurl1}}" bindtap="clickMe"></image>
     <image src="{{imgurl2}}" bindtap="favorMe"></image>
+    <text>{{likes}}</text>
 </view>
 
