@@ -8,7 +8,7 @@ Page({
      */
     data: {
         isEndOfList: false,
-        pagesize: 3,
+        pagesize: 100,
         pagenum : 1,
         info: "",
         datalist:[
