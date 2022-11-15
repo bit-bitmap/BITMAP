@@ -6,6 +6,7 @@ Page({
      */
     data: {
         info:'',
+        recommand:'',   //当有搜索内容时不显示推荐
         pagesize:3,
         datalist:[
 
@@ -22,6 +23,7 @@ Page({
         //给推荐列表拉取数据
         wx.cloud.database().collection("articlelist")
         .where({flag:true})
+        .orderBy('like','desc')
         .limit(this.data.pagesize)
         .get()
         .then(res=>{
@@ -50,12 +52,14 @@ Page({
             .then(res => {
                 console.log("获取到了",res)
                 this.setData({
-                    datalist:res.data
+                    datalist:res.data,
+                    recommand:'1'
                 })
             })
         } else {
             this.setData({
-                datalist:[]
+                datalist:[],
+                recommand:''
             })
         }
     },
