@@ -122,7 +122,7 @@ Page({
             const ids = (
                 await account.doc(app.global.id).get()
             ).data.articles
-            if (ids) {
+            if (ids.length) {
                 // 显示文章数量不超过 3 个
                 const length = (ids.length < 3) ? ids.length : 3
                 // 根据 id 列表获取每篇文章的信息

@@ -277,10 +277,9 @@ randomWord() {undefined
     async upbaseImagesDB() {
         console.log("upbase的值", upbaseimages)
         let that = this;
-        var articleidget=that.randomWord()
-         await db.collection("articlelist").add({
+        var articleidget=( await db.collection("articlelist").add({
             data: {
-                articleid: articleidget,
+                // articleid: articleidget,
                 image: upbaseimages,
                 title: upbasetitle,
                 detail: upbasetext,
@@ -292,22 +291,27 @@ randomWord() {undefined
                 shoucang: false,
                 comments: []
             }
-        })
-
+        }))._id
+console.log(articleidget)
         wx.showToast({
             title: '上传成功',
         })
-        var userarticle = []
+        // var userarticle = []
         console.log(articleidget)
         upbasearticlesID = articleidget
-        userarticle = (await db.collection("account").where({
-            _openid: app.global.openid
-        }).get()).data.article
+        console.log(app.global.id)
+        let userarticle = (await db.collection("account").doc(app.global.id).get()).data.articles
+        const ids = (
+            await db.collection("account").doc(app.global.id).get()
+        ).data.articles
+        console.log(ids)
         console.log(userarticle)
-        db.collection("account").where({
-            _openid: app.global.openid
-        })
-        // .update({ article: userarticle.push(upbasearticlesID) })
+        console.log(app.global.id)
+        userarticle.push(upbasearticlesID)
+        db.collection("account").doc(app.global.id).update({ 
+            data:{
+                articles: userarticle
+            }})
         //     .then(res => {
         //         wx.showToast({
         //             title: '上传成功',
