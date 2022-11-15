@@ -3,7 +3,7 @@
 <!--标题栏-->
 <view class = "title">
     <view>{{detail.title}}</view>
-    <text>作者：{{detail.author}}</text>
+    <text>作者：{{name}}</text>
 </view>
 
 <!--内容、图片展示-->

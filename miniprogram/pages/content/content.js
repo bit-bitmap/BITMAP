@@ -5,6 +5,8 @@ let pinglun = ''
 let comments = []
 let like = 0
 let ID = ''
+let OpenID = ''
+let artArr = []
 Page({
 
     /**
@@ -17,6 +19,7 @@ Page({
         imgurl1:"../../images/shoucang-no.png",
         imgurl2:"../../images/like-no.png",
         comments:[],
+        name:'',
         likes:0
     },
     /**
@@ -41,6 +44,18 @@ Page({
             })
         })
         .catch(res=>{
+            console.log("接收失败",res)
+        })
+        wx.cloud.database().collection("account").where({
+            articles:options.id
+        })
+        .get()
+        .then(res=>{
+            console.log("接收成功",res)
+            this.setData({
+                name:res.data[0].name
+            })
+        }).catch(res=>{
             console.log("接收失败",res)
         })
     },
