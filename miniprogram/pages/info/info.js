@@ -1,4 +1,4 @@
-// pages/info/info.js
+// pages/audit0/audit0.js
 const colorDark = 'rgba(255, 255, 255, .8)'
 const colorLight = 'rgba(0, 0, 0, .9)'
 
@@ -68,11 +68,11 @@ Page({
     /**
      * 跳转到详情页
      */
-    goContent(event){
+    goAudit(event){
         console.log("点击获取的数据",event.currentTarget.dataset.id)
         wx.navigateTo({
-            url: '/pages/content/content?id='+event.currentTarget.dataset.id,
-          })
+            url: '/pages/audit/audit?id='+event.currentTarget.dataset.id,
+        })
     },
 
     /**
@@ -185,5 +185,14 @@ Page({
      */
     onShareAppMessage() {
 
-    }
+    },
+
+    goContent(event){
+        console.log("点击获取的数据",event.currentTarget.dataset.id)
+        wx.navigateTo({
+            url: '/pages/content/content?id='+event.currentTarget.dataset.id,
+          })
+    },
+
 })
+
