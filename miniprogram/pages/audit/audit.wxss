@@ -1,0 +1,53 @@
+/* pages/audit/audit.wxss */
+page{
+    background-color: #F0EEF6;
+}
+
+
+/* 标题栏 */
+.title{
+    font-size: 48rpx;
+    margin: 10rpx;
+    padding: 10rpx;
+    border-radius: 13rpx;
+    color:rebeccapurple;
+}
+.title view{
+    border-radius: 13rpx;
+    font-weight: bold;
+}
+.title text{
+    color: gray;
+    font-size: 28rpx;
+}
+
+/* 主要内容 */
+.information .content1{
+    border-radius: 13rpx;
+    line-height: 50rpx;
+    text-indent: 2em;
+    text-align: justify;
+    font-size: 35rpx;
+    margin: 10rpx;
+    margin-top: 20rpx;
+    padding: 10rpx;
+}
+
+.information view{
+    background-color:#F0EEF6;
+}
+
+.information tip{
+    margin-top: 30rpx;
+    color: indigo;
+    font-weight: bold;
+}
+.swiperImage {
+    margin: 20rpx;
+    height: 550rpx;
+    border-radius: 10rpx;
+}
+
+.audit button{
+    margin: 30rpx;
+}

@@ -20,6 +20,21 @@ exports.main = async (event, context) => {
             console.log("改变收藏状态失败",res)
             return res
         })
+    }else if(event.action == 'shenhe'){
+        return await cloud.database().collection("articlelist").doc(event.id)
+        .update({
+            data:{
+                flag : event.flag,
+            }
+        })
+        .then(res=>{
+            console.log("改变审核状态成功",res)
+            return res
+        })
+        .catch(res=>{
+            console.log("改变审核状态失败",res)
+            return res
+        })
     }else if(event.action == 'dianzan'){
         return await cloud.database().collection("articlelist").doc(event.id)
         .update({

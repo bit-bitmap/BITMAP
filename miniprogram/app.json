@@ -11,6 +11,8 @@
         "pages/upload/choose_category/category",
         "pages/upload/editor/editor",
         "pages/search/search",
+        "pages/audit/audit",
+        "pages/audit0/audit0",
         "pages/category/info1/info1"
     ],
     "window": {

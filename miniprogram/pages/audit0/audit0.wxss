@@ -1,0 +1,91 @@
+/* pages/audit0/audit0.wxss */
+page {
+    background-color: var(--weui-BG-0);
+}
+
+.searchbox{
+    height: 55px;
+    background-color: #fff;
+    align-items: center;
+    display: flex;
+}
+
+.text{
+    width: 100rpx;
+    text-align: center;
+}
+
+.search{
+    background-color: #f1f1f1;
+    color:black;
+    flex: 1;
+    margin-right: 5%;
+    margin-left: 5%;
+    font-size: 28rpx;
+    padding: 6px;
+    border-radius: 15rpx;
+}
+
+.list-item {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgb(238, 238, 238);
+    background-color: #fff;
+    width: 100%;
+    border: rgb(226, 185, 226);
+}
+.list-title {
+    padding: 15px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #222226;
+}
+
+.list-content {
+    margin-top: -5%;
+    padding: 15px 10px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #222226;
+}
+
+.list-desc {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px 10px 10px;
+    font-size: 15px;
+    color: #999aaa;
+}
+
+.list-item:first-child {
+    border-top: none;
+}
+
+
+scroll-view ::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+
+.page__bd {
+  padding-bottom: 40px
+}
+
+.weui-media-box__info__meta {
+  margin-top: 3%;
+}
+
+.weui-media-box_thumb {
+    margin-right: 0%;
+    margin-left: 5%;
+}
+
+.weui-panel {
+	background-color: var(--weui-BG-2);
+	margin-top: 0px;
+	position: relative;
+	overflow: hidden
+}
+

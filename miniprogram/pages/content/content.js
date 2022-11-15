@@ -155,6 +155,6 @@ Page({
         }).catch(res=>{
             console.log("评论失败",res)
         })
-    }
+    },
 
 })
