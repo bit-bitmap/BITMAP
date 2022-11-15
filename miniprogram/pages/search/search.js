@@ -1,4 +1,5 @@
 // pages/search/search.js
+let db = wx.cloud.database()
 Page({
 
     /**
@@ -25,7 +26,7 @@ Page({
         })
         console.log(options)
         // 给推荐列表拉取数据
-        wx.cloud.database().collection("articlelist")
+        db.collection("articlelist")
             .where({ flag: true })
             .orderBy('like', 'desc')
             .limit(this.data.pagesize)
@@ -43,18 +44,21 @@ Page({
         const inputvalue = e.detail.value;
         console.log(inputvalue)
         if (inputvalue) {
-            wx.cloud.database().collection("articlelist")
-                .where({
-                    title: wx.cloud.database().RegExp({
+            // 将标题关键词和传入参数合并为一个对象
+            const conditions = Object.assign(
+                this.data.options,
+                {
+                    title: db.RegExp({
                         regexp: inputvalue,
                         options: 'i'
                     }),
-                    flag: true,
-                    _openid: this.data.options._openid
+                    flag: true
                 })
+            db.collection("articlelist")
+                .where(conditions)
                 .get()
                 .then(res => {
-                    console.log("获取到了", res, this.data.options._openid)
+                    console.log("获取到了", res)
                     this.setData({
                         datalist: res.data
                     })
