@@ -6,17 +6,11 @@
 </view>
 
 <!-- 若 showRecommend 为 true 且 datalist 为空则展示-->
-<view class="recommandbox" wx:if="{{showRecommend && datalist.length == 0}}">
-    <view class="recommandbox-top">大家都在搜</view>
-    <block wx:for="{{recommandlist}}" wx:key="_id">
-        <view class="recommand-content" bindtap="goContent" data-id="{{item._id}}">
-            <!--界面跳转 -->
-            <navigator url="/pages/info/info">
-                <text>{{item.title}}</text>
-            </navigator>
-        </view>
+<mp-cells ext-class="my-cells" wx:if="{{showRecommend && datalist.length == 0}}" title="大家都在搜">
+    <block wx:for="{{recommendList}}" wx:key="_id">
+            <mp-cell link value="{{item.title}}" footer="{{item.like}} 人赞过" bindtap="goContent" data-id="{{item._id}}"></mp-cell>
     </block>
-</view>
+</mp-cells>
 
 <view class="page__bd">
     <view class="weui-panel" wx:for="{{datalist}}" wx:key="_id">

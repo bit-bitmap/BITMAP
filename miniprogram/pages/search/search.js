@@ -10,7 +10,7 @@ Page({
         searchFocus: true, // 搜索框是否自动聚焦
         pagesize: 3,
         datalist: [],
-        recommandlist: [] // 推荐列表
+        recommendList: [] // 推荐列表
     },
 
     /**
@@ -35,7 +35,7 @@ Page({
             .then(res => {
                 console.log("获取成功l ", res)
                 this.setData({
-                    recommandlist: res.data
+                    recommendList: res.data
                 })
                 // 页面加载后手动进行一次“搜索”
                 this.searchinput({
