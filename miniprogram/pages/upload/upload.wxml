@@ -17,7 +17,7 @@
   <view class="Images-tool">        
         <view class="Images-disp" wx:for="{{Imagespath}}" wx:key="*this">
          <image bindtap="viewimage" mode="aspectFill" src="{{item}}" data-index="{{index}}"></image>
-         <icon type="clear" size="18" color="#E1D5EC" bindtap="handleRemoveImages" data-index="{{index}}"></icon>
+         <icon type="clear" size="18" color="#E18AEC" bindtap="handleRemoveImages" data-index="{{index}}"></icon>
         </view>
         <button wx:if="{{isNineImages}}" bindtap="handleUpImages">+</button>  
     </view>
@@ -25,12 +25,24 @@
  <!-- 点击分类按键选择 -->
   <!-- <view class="remind-subtitle">选一选分类</view> -->
   <view class="choose-categorybig">
-    <radio-group>
+    <radio-group bindchange="handlecatechoose">
     <radio class="radio" wx:for-items="{{choosecate}}" wx:key="id" value="{{item.id}}" checked="{{item.choose}}" color="#E18AEC">{{item.name}}</radio>
   </radio-group>
   </view>
   <view class="choose-categorysmall">
-   <view class="catesmall-blocks" wx:for="{{studycate}}" wx:key="id" value="{{item.id}}" bindtap="smallcateschoose"><text>{{item.subname}}</text></view>
+   <view class="catesmall-blocks" wx:if="{{usercatebig==0}}" wx:for="{{studycate}}" wx:key="id" value="{{item.subid}}" bindtap="smallcateschoose" style="{{item.checked?'background-color:#E18AEC;':'background-color:#E1D5EC'}}"><text>{{item.subname}}</text></view>
+  </view>
+  <view class="choose-categorysmall">
+   <view class="catesmall-blocks" wx:if="{{usercatebig==1}}" wx:for="{{lifecate}}" wx:key="id" value="{{item.subid}}" bindtap="smallcateschoose" style="{{item.checked?'background-color:#E18AEC;':'background-color:#E1D5EC'}}"><text>{{item.subname}}</text></view>
+  </view>
+  <view class="choose-categorysmall">
+   <view class="catesmall-blocks" wx:if="{{usercatebig==2}}" wx:for="{{sportcate}}" wx:key="id" value="{{item.subid}}" bindtap="smallcateschoose" style="{{item.checked?'background-color:#E18AEC;':'background-color:#E1D5EC'}}"><text>{{item.subname}}</text></view>
+  </view>
+  <view class="choose-categorysmall">
+   <view class="catesmall-blocks" wx:if="{{usercatebig==3}}" wx:for="{{foodcate}}" wx:key="id" value="{{item.subid}}" bindtap="smallcateschoose" style="{{item.checked?'background-color:#E18AEC;':'background-color:#E1D5EC'}}"><text>{{item.subname}}</text></view>
+  </view>
+  <view class="choose-categorysmall">
+   <view class="catesmall-blocks" wx:if="{{usercatebig==4}}" wx:for="{{activitycate}}" wx:key="id" value="{{item.subid}}" bindtap="smallcateschoose" style="{{item.checked?'background-color:#E18AEC;':'background-color:#E1D5EC'}}"><text>{{item.subname}}</text></view>
   </view>
 
   <!-- 点击保存或发表 返回个人页 等待审核 -->

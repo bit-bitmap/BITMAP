@@ -10,7 +10,7 @@ Page({
         searchFocus: true, // 搜索框是否自动聚焦
         pagesize: 3,
         datalist: [],
-        recommandlist: [] // 推荐列表
+        recommendList: [] // 推荐列表
     },
 
     /**
@@ -22,7 +22,8 @@ Page({
             // 若有传入参数，则不显示推荐列表
             showRecommend: !hasOptions,
             searchFocus: !hasOptions,
-            options
+            options,
+            hasOptions
         })
         console.log(options)
         // 给推荐列表拉取数据
@@ -34,7 +35,13 @@ Page({
             .then(res => {
                 console.log("获取成功l ", res)
                 this.setData({
-                    recommandlist: res.data
+                    recommendList: res.data
+                })
+                // 页面加载后手动进行一次“搜索”
+                this.searchinput({
+                    detail: {
+                        value: ''
+                    }
                 })
             })
     },
@@ -43,7 +50,9 @@ Page({
     searchinput(e) {
         const inputvalue = e.detail.value;
         console.log(inputvalue)
-        if (inputvalue) {
+        // 仅在搜索词不为空时进行搜索
+        // 有传入参数时也总是搜索，此时显示全部文章
+        if (inputvalue || this.data.hasOptions) {
             // 将标题关键词和传入参数合并为一个对象
             const conditions = Object.assign(
                 this.data.options,

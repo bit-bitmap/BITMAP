@@ -11,14 +11,6 @@ page {
     display: flex;
 }
 
-.recommand-content {
-    background-color: #f1f1f1;
-    margin: 3%;
-    margin-left: 5%;
-    margin-right: 5%;
-    border-radius: 12rpx;
-}
-
 .search {
     background-color: #f1f1f1;
     color: black;
@@ -28,9 +20,4 @@ page {
     font-size: 28rpx;
     padding: 6px;
     border-radius: 15rpx;
-}
-
-.recommandbox {
-    height: 150px;
-    background-color: #fff;
 }

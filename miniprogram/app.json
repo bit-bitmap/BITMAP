@@ -1,4 +1,5 @@
 {
+    "entryPagePath": "pages/info/info",
     "pages": [
         "pages/content/content",
         "pages/info/info",
