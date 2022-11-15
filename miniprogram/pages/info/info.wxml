@@ -8,7 +8,7 @@
 
 <swiper class="swiper-container" indicator-dots="true" indicator-color="white" indicator-active-color="gray" autoplay="true" wx:if="{{!info}}" >
     <swiper-item wx:for="{{guanfang}}"  bindtap="goContent" data-id="{{item._id}}">
-      <image class="gf-image" src="{{item.image}}" mode="scaleToFill" />
+      <image class="gf-image" src="{{item.image[0]}}" mode="scaleToFill" />
     </swiper-item>
 </swiper>
 
@@ -17,7 +17,7 @@
 <view class="page__bd">
     <view class="weui-panel" wx:for="{{datalist}}" >
         <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">   
-            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" bindtap="goAudit" data-id="{{item._id}}">
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" bindtap="goContent" data-id="{{item._id}}">
                 <view class="weui-media-box__title">{{item.title}}</view>
                 <view class="weui-media-box__desc">{{item.detail}}</view>
                 <view class="weui-media-box__desc">{{item.views}} 阅读 · {{item.comments.length}} 评论</view>

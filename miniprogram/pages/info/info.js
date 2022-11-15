@@ -8,7 +8,7 @@ Page({
      */
     data: {
         isEndOfList: false,
-        pagesize: 3,
+        pagesize: 5,
         pagenum : 1,
         info: "",
         datalist:[
@@ -49,7 +49,12 @@ Page({
     search(){
         
     },
-
+    goContent(event){
+        console.log("点击获取的数据",event.currentTarget.dataset.id)
+        wx.navigateTo({
+            url: '/pages/content/content?id='+event.currentTarget.dataset.id,
+          })
+    },
     // getData: function(num) {
     //     wx.cloud.database().collection("articlelist")
     //       .where({flag:true})
@@ -68,12 +73,6 @@ Page({
     /**
      * 跳转到详情页
      */
-    goAudit(event){
-        console.log("点击获取的数据",event.currentTarget.dataset.id)
-        wx.navigateTo({
-            url: '/pages/audit/audit?id='+event.currentTarget.dataset.id,
-        })
-    },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -187,12 +186,7 @@ Page({
 
     },
 
-    goContent(event){
-        console.log("点击获取的数据",event.currentTarget.dataset.id)
-        wx.navigateTo({
-            url: '/pages/content/content?id='+event.currentTarget.dataset.id,
-          })
-    },
+    
 
 })
 
