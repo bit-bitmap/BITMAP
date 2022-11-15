@@ -3,76 +3,88 @@ page{
   background-color: #F0EEF6;
 }
 
+/* 总容器 */
 .container-upload {
-    position: relative;  
-    padding: 20rpx;
-    padding-top: 5rpx;
+  padding: 20rpx;
+  padding-top: 10rpx;
 }
 
-.remind-subtitle {
-    text-align: center;
-    font-weight: bold;
-    margin: 10rpx;
+/* 副标题提示 */
+.container-upload .remind-subtitle {
+  text-align: center;
+  font-weight: bold;
 }
 
-.title-written {
-    display: flex;
+/* 标题输入 */
+.container-upload .title-written{
     background-color: #E1D5EC;
-    border-radius: 3%;
+    border-radius: 10rpx;
     margin: 10rpx auto;
     /* width: 90%; */
-    height: 50rpx;
+    display: flex;
     flex-direction: row;
     justify-content: right;
-    padding: 25rpx;
+    align-items: center;
+    padding: 10rpx;
+} 
+.container-upload .title-written textarea {
+  padding: 10rpx;
+  height: 40rpx;
 }
-.limit-number {
+.container-upload .limit-number {
     color: grey;
-    font-size: 14px;
-}
+} 
 
-.text-written {
+/* 资讯输入 */
+.container-upload .text-written { 
+  background-color: #E1D5EC;
+  border-radius: 10rpx;
+  margin: 10rpx auto;
   /* width: 90%; */
   display: flex;
-  flex-wrap: wrap;
-  margin: 10rpx auto;
-  border-radius: 3%;
-  background-color: #E1D5EC;
-  padding: 25rpx;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+  padding: 10rpx;
+}
+.container-upload .text-written textarea {
+    padding: 10rpx;
+    height: 240rpx;
 }
 
 /* 图片九宫格 */
-.Images-tool{
+.container-upload .Images-tool{ 
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    /* justify-content: center; */
 }
-.Images-disp{
-    width: 33.3%;
+.container-upload .Images-tool .Images-disp{
+    width: 21%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10rpx;
-    position: relative;
+    /* align-items: center; */
+    /* justify-content: space-around; */
+    margin: 5rpx 10rpx;
+    position: relative; 
     /* flex-direction: column; */
-}
-.Images-disp image{
-    width: 220rpx;
-    height: 220rpx;
+} 
+.container-upload .Images-tool .Images-disp image{
+    width: 150rpx;
+    height: 125rpx;
+    /* margin: 5rpx; */
     border-radius: 5%;
+    position: relative; 
 }
-.Images-disp icon{
+.container-upload .Images-tool .Images-disp icon{
     position: absolute;
-    width: -22rpx;
-    height: -22rpx;
+    /* width: -10rpx; */
 }
-
 /* 上传图片按键 */
-.button-uploadimages{
-  margin-top: 10rpx;
-  width: 220rpx;
-  height: 220rpx;
-  font-size: 90px;
+.container-upload .Images-tool button{
+  margin: 5rpx 10rpx;
+  width: 150rpx;
+  height: 125rpx;
+  font-size: 60px;
   padding: 0;
   display: flex;
   justify-content: center;
@@ -81,9 +93,6 @@ page{
   position: relative;
   border-radius: 5%;
 }
-/* .up_img_item{
-
-} */
 
 /* 分类选择按键 */
 .choose-category {
@@ -99,14 +108,28 @@ page{
 .change-button-category{
   background-color: #e5e2eb;
 }
+
 /* 发表 */
-.button-upload {
-  width: 25%;
-  background-color: #E1D9EC;
-  /* font-size: 14px; */
-  border-radius: 30rpx;
-  margin: 10rpx auto;
+.container-upload .buttons-upload {
+    position: fixed;
+    bottom: 0rpx;
+    left: 0rpx;
+    width: 100%;
 }
-.change-button-upload{
+.container-upload .buttons-upload .button-upload {
+  width: 50%;
+  background-color: #4fc4e7; 
+  /* font-size: 15px; */
+  /* border-radius: 30rpx; */
+  float: right;
+}
+.container-upload .buttons-upload .button-save {
+    width: 50%;
+    background-color: #e18aec; 
+    /* font-size: 15px; */
+    /* border-radius: 30rpx; */
+    float: left;
+  }
+.container-upload .buttons-upload .change-button-upload{
   background-color: #e5e2eb;
 }
