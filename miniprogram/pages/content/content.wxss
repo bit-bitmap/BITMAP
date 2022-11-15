@@ -42,7 +42,10 @@ page{
     color: indigo;
     font-weight: bold;
 }
-
+.swiperImage {
+    margin-bottom: 50rpx;
+    height: 550rpx;
+}
 /* 评论区 */
 .tip{
     margin-top: 20rpx;
