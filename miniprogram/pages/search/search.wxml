@@ -1,7 +1,7 @@
 <!--pages/search/search.wxml-->
 <view class="searchbox">
     <view class="search">
-        <input type="text" focus="true" placeholder="点击此处进行搜索" bindinput="searchinput"></input>
+        <input type="text" focus="{{searchFocus}}" placeholder="点击此处进行搜索" bindinput="searchinput"></input>
     </view>
 </view>
 

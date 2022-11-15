@@ -6,6 +6,7 @@ Page({
      */
     data: {
         showRecommend: true, // 是否显示推荐列表
+        searchFocus: true, // 搜索框是否自动聚焦
         pagesize: 3,
         datalist: [],
         recommandlist: [] // 推荐列表
@@ -15,9 +16,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        const hasOptions = Object.keys(options).length > 0
         this.setData({
             // 若有传入参数，则不显示推荐列表
-            showRecommend: Object.keys(options).length == 0,
+            showRecommend: !hasOptions,
+            searchFocus: !hasOptions,
             options
         })
         console.log(options)
