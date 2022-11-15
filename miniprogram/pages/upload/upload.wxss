@@ -1,4 +1,6 @@
 /* pages/upload/upload.wxss */
+@import '../weui.wxss';
+
 page{
   background-color: #F0EEF6;
 }
@@ -7,6 +9,7 @@ page{
 .container-upload {
   padding: 20rpx;
   padding-top: 10rpx;
+  padding-bottom: 5rpx;
 }
 
 /* 副标题提示 */
@@ -43,12 +46,13 @@ page{
   /* width: 90%; */
   display: flex;
   flex-direction: row;
-  justify-content: right;
-  align-items: center;
+  /* justify-content: right;
+  align-items: center; */
   padding: 10rpx;
 }
 .container-upload .text-written textarea {
     padding: 10rpx;
+    width: 100%;
     height: 240rpx;
 }
 
@@ -95,11 +99,37 @@ page{
 }
 
 /* 分类选择按键 */
-.choose-category {
+.choose-categorybig {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
-.button-category {
+.choose-categorybig .radio{
+    padding: 5rpx;
+}
+.choose-categorysmall {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    margin: 5rpx 20rpx;
+    align-items: center;
+}
+.choose-categorysmall .catesmall-blocks {
+    background-color: #E1D5EC;
+    width: 55px;
+    margin: 10rpx;
+    padding: 10rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.choose-categorysmall .catesmall-blocks text {
+    font-size: 30rpx;
+}
+
+/* .button-category {
   width: 80%;
   background-color: #E1D9EC;
   border-radius: 3%;
@@ -107,28 +137,30 @@ page{
 }
 .change-button-category{
   background-color: #e5e2eb;
-}
+} */
 
 /* 发表 */
 .container-upload .buttons-upload {
-    position: fixed;
-    bottom: 0rpx;
-    left: 0rpx;
-    width: 100%;
+    position: relative;
+    margin: 0rpx auto;
+    margin-bottom: 10rpx;
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
 }
 .container-upload .buttons-upload .button-upload {
-  width: 50%;
+  width: 90px;
   background-color: #4fc4e7; 
-  /* font-size: 15px; */
-  /* border-radius: 30rpx; */
-  float: right;
+  font-size: 14px;
+  border-radius: 30rpx;
 }
 .container-upload .buttons-upload .button-save {
-    width: 50%;
-    background-color: #e18aec; 
-    /* font-size: 15px; */
-    /* border-radius: 30rpx; */
-    float: left;
+    width: 90px;
+    background-color: #c797ce; 
+    font-size: 14px; 
+    border-radius: 30rpx;
   }
 .container-upload .buttons-upload .change-button-upload{
   background-color: #e5e2eb;
