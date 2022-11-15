@@ -5,7 +5,8 @@ App({
     global: {
         openid: "",
         id: "",
-        loginStatus: false
+        loginStatus: false,
+        lujing:""
     },
 
     /**

@@ -11,7 +11,8 @@
         "pages/logs/logs",
         "pages/upload/choose_category/category",
         "pages/upload/editor/editor",
-        "pages/search/search"
+        "pages/search/search",
+        "pages/category/info1/info1"
     ],
     "window": {
         "navigationBarTextStyle": "black",
