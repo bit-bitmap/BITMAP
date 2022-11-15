@@ -6,7 +6,6 @@ let comments = []
 let like = 0
 let ID = ''
 let OpenID = ''
-let artArr = []
 Page({
 
     /**
