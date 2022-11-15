@@ -72,6 +72,15 @@ Page({
     async onSave() {
         wx.showLoading()
         const form = this.data.form
+        // 判断用户名是否为空
+        if (form.username.length == 0) {
+            await wx.hideLoading()
+            await wx.showToast({
+                title: '姓名不能为空',
+                icon: 'error'
+            })
+            return
+        }
         // 判断个人简介字数是否超限
         if (form.info.length > 100) {
             await wx.hideLoading()
@@ -83,6 +92,7 @@ Page({
         }
         // 将上传数据包装为对象
         const data = {
+            articles: [],
             birthday: form.birthday,
             college: form.department,
             grade: form.grade,
