@@ -180,7 +180,9 @@ Page({
         }).then(res=>{
             console.log("评论成功",res)
             this.setData({
-                comments:commentArr
+                comments:commentArr,
+                titlewritten:'',
+                titleNum:0
             })
         }).catch(res=>{
             console.log("评论失败",res)
