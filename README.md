@@ -14,7 +14,6 @@ BITMAP
 │  ├─ ChangeCondition       // 更新数据云函数
 │  └─ quickstartFunctions   // 初始云函数
 ├─ miniprogram              // 小程序源码目录
-│  ├─ components            // 作为组件引入的页面
 │  ├─ images                // 小程序中使用的图片
 │  ├─ pages                 // 小程序各级页面
 │  ├─ app.js                // 小程序主逻辑
@@ -26,3 +25,6 @@ BITMAP
 ├─ project.config.json      // 小程序项目配置文件
 └─ README.md                // 项目描述文件
 ```
+
+## 依赖
+[`miniprogram/pages/weui.wxss`](https://github.com/bit-bitmap/BITMAP/blob/main/miniprogram/pages/weui.wxss)为WeUI小程序样式库，引用自[Tencent/weui-wxss](https://github.com/Tencent/weui-wxss/)。
