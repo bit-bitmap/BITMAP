@@ -11,6 +11,7 @@
 ```
 BITMAP
 ├─ cloudfunctions           // 云函数
+│  ├─ ChangeCondition       // 更新数据云函数
 │  └─ quickstartFunctions   // 初始云函数
 ├─ miniprogram              // 小程序源码目录
 │  ├─ components            // 作为组件引入的页面
@@ -19,7 +20,7 @@ BITMAP
 │  ├─ app.js                // 小程序主逻辑
 │  ├─ app.json              // 小程序公共配置
 │  ├─ app.wxss              // 小程序公共样式表
-│  └─ sitemap.json          // 这是什么呢？
+│  └─ sitemap.json          // 微信索引收录配置
 ├─ .gitattributes           // Git 配置文件
 ├─ .gitignore               // Git 忽略文件
 ├─ project.config.json      // 小程序项目配置文件
