@@ -5,9 +5,10 @@
     </view>
 </view>
 
-<view class="recommandbox">
+<!-- 判断info是否有值来进行渲染，若info为空则展示，否则不展示 -->
+<view class="recommandbox"   wx:if="{{!info}}" >  
     <view class="recommandbox-top">大家都在搜</view>
-    <block wx:for="{{recommandlist}}">
+    <block wx:for="{{recommandlist}}"  >
         <view class="recommand-content" bindtap="goContent" data-id="{{item._id}}">
         <!--界面跳转 -->
           <navigator url="/pages/info/info">

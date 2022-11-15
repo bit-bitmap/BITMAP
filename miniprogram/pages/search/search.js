@@ -5,19 +5,21 @@ Page({
      * 页面的初始数据
      */
     data: {
+        info:'',
         pagesize:3,
         datalist:[
 
         ],
         recommandlist:[
 
-        ]
+        ] //推荐列表
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        //给推荐列表拉取数据
         wx.cloud.database().collection("articlelist")
         .where({flag:true})
         .limit(this.data.pagesize)
@@ -30,6 +32,7 @@ Page({
         })
     },
 
+    //搜索函数，根据输入的数据实时查询并展示
     searchinput:function(e){
         console.log(e.detail)
         var inputvalue = e.detail.value;
@@ -63,7 +66,7 @@ Page({
     onReady() {
 
     },
-
+    //跳转到详情页函数
     goContent(event){
         console.log("点击获取的数据",event.currentTarget.dataset.id)
         wx.navigateTo({
