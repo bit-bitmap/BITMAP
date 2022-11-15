@@ -12,16 +12,20 @@ Page({
      */
     data: {
       titleNum: 0,
+      textNum: 0,
       titlewritten:"",
       textwritten: "",
       titleplaceholder:"好的标题让别人更容易关注你~",
       textplaceholder:"至少5个字嗷~",
       Imagespath:[],
-      choosecate: 0,
-    //   image:[],  //云数据库中articlelist存储的图片网址
+      choosecatebig: 0,
+      choosecatesmall:[],
+      image:[],  //云数据库中articlelist存储的图片网址
       isNineImages:true,  //是否显示上传"+"按键
       isSubmit:false,  //article是否发表
-      isAccess:false  //article是否通过审核
+      isAccess:false,  //article是否通过审核
+      buttoncatedisp:"多种分类，任意选择",
+      ImageNumMax:8
     },
 
 //标题字数动态监测，实时获取标题文本
@@ -29,42 +33,53 @@ inputtitleNum: function (e) {
     var value=e.detail.value;
     var length=parseInt(value.length);
     upbasetitle = value;
+    // console.log(value.length)
     this.setData({
         titleNum: length
     });
+
 },
 //实时获取内容文本
 inputtext(e){
     var value=e.detail.value;
+    var length=parseInt(value.length);
+    // console.log(value.length)
     upbasetext = value;
-},
-
-handleFormSubmit(e){
-    db.collection("articlelist").add({
-        data:{
-          title: upbasetitle,
-          detail: upbasetext
-        }
-      }).then(res=>{
-        wx.showToast({
-          title: '上传成功',
-        })
-      }).catch(error => {
-        // handle error
-        console.log(error)
-      })
-},
-
-handleRemoveImages: function(e){
-    //获取被点击的组件的索引
-    const index = e.currentTarget.dataset;
-    //获取data中的图片数组
-    let arr= this.data.Imagespath;
-    //删除元素
-    arr.splice(index, 1);
     this.setData({
-      Imagespath:arr
-    })
+        textNum: length
+    });
+},
+
+//点击保存
+handleFormSave(e){
+    let that = this
+},
+//点击发表
+handleFormSubmit(e){
+    let that=this
+    if (that.data.textNum<5 || that.data.titleNum==0) {
+        if (that.data.textNum<5 && that.data.titleNum==0) {
+            wx.showToast({
+                title: '未填写资讯标题且内容字数不足5个字',
+                icon: 'none'
+              })
+        }
+        if (that.data.textNum<5 && that.data.titleNum!=0) {
+            wx.showToast({
+                title: '内容字数不足5个字',
+                icon: 'none'
+              })
+        }
+        if (that.data.textNum>=5 && that.data.titleNum==0) {
+            wx.showToast({
+                title: '未填写资讯标题',
+                icon: 'none'
+              })
+        }
+    } else {
+    //资讯内容存入数据库
+      this.handleFormSubmitText_Images()
+    }
 },
 
 //将图片上传并显示
@@ -72,21 +87,24 @@ handleUpImages(){
     let that=this
     wx.chooseImage({
       // 同时选中的图片的数量
-      count: 9,
+      count: that.data.ImageNumMax-that.data.Imagespath.length,
       // 图片的格式  原图  压缩（手机）
       sizeType: ['original', 'compressed'],
       // 图片的来源  相册  照相机（手机）
       sourceType: ['album', 'camera'],
       success: (result) => {
-        console.log(result.tempFilePaths)
+        // console.log(result.tempFilePaths)
+        let tempArr = that.data.Imagespath.concat(result.tempFilePaths)
         that.setData({
           //将图片显示于界面
           //将上传的图片地址赋值给Imagespath
-          Imagespath: result.tempFilePaths
+          Imagespath: tempArr
         })
-      //   wx.showLoading({
-      //     title: '上传中',
-      //   })
+        if (that.data.Imagespath.length>=that.data.ImageNumMax) {
+            that.setData({
+                isNineImages:false
+            })
+        }
       }
     })
   },
@@ -103,10 +121,28 @@ viewimage(e){
     urls: that.data.Imagespath ,//需要预览图片的http链接列表
   })
 },
-
+//删除图片
+handleRemoveImages: function(e){
+    let that=this
+    //获取被点击的组件的索引
+    const index = e.currentTarget.dataset;
+    //获取data中的图片数组
+    let arr= this.data.Imagespath;
+    //删除元素
+    arr.splice(index, 1);
+    this.setData({
+      Imagespath:arr
+    })
+    if (that.data.Imagespath.length<that.data.ImageNumMax) {
+        that.setData({
+            isNineImages:true
+        })
+    }
+},
 //将图片上传到云存储、云数据库
-handleFormSubmitImages(){
+handleFormSubmitText_Images(){
   let that=this
+  let address=app.global.openid
   //云存储图片
   wx.showLoading({
     title: '上传中',
@@ -116,14 +152,14 @@ handleFormSubmitImages(){
   for(let i=0;i<that.data.Imagespath.length;i++) {
     wx.cloud.uploadFile({
       //上传多张图片-时间戳，保证用户上传的图片不会重复
-      cloudPath: 'example.png/'+time+i,  //上传图片到云存储的命名
+      cloudPath: address+'.png/'+time+i,  //上传图片到云存储的命名
       filePath: that.data.Imagespath[i], //图片的临时地址
     }).then(res => {
       // get resource ID
       wx.showToast({
         title: '上传成功',
       })
-      // console.log(res.fileID,i)
+    //   console.log(res.fileID,i)
       upbase[i]=res.fileID
     }).catch(error => {
       // handle error
@@ -138,7 +174,9 @@ upbase(){
   console.log("upbase的值",upbase)
   db.collection("articlelist").add({
     data:{
-      image:upbase
+      image:upbase,
+      title: upbasetitle,
+      detail: upbasetext
     }
   }).then(res=>{
     wx.showToast({
@@ -150,14 +188,20 @@ upbase(){
   })
 },
 
-//显示数据库中的图片
+//选择分类
+actionchoosecate: function() {
+  var that = this;
+  that.popup.changeRange(); //调用子组件内的函数
+},
+
+// 显示数据库中的图片
 // basemessage(){
 //   let that=this
-//   db.collection("baseimage_test").get()
+//   db.collection("articlelist").get()
 //   .then(res=>{
 //     // console.log(res)
 //     that.setData({
-//       src:res.data
+//       image:res.data
 //     })
 //   })
 // },
@@ -220,16 +264,6 @@ upbase(){
 //   }
 // },
 
-//选择分类
-gotoCategory: function() {
-  // wx.switchTab({
-  //   url: '/pages/category/category',
-  // })
-  wx.navigateTo({
-    url: 'choose_category/category',
-  })
-},
-
     /**
      * 生命周期函数--监听页面加载
      */
@@ -240,16 +274,32 @@ gotoCategory: function() {
             data: { type: "getOpenId" }
         }).then(res => {
             app.global.openid = res.result.openid
+            console.log("openid",app.global.openid)
         }).catch(err => {
             console.log("openid",err)
         })
+
+        //退出页面提醒
+        wx.enableAlertBeforeUnload({ 
+            message:"确定要退出页面吗？",//弹窗文案
+            success:function(res){ //成功回调
+               
+            }, 
+            fail:function(errMsg){ //失败回调
+               
+            },
+            complete:function(){ //调用结束
+            
+            }
+          }) 
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady() {
-
+      var that=this;
+      that.popup = that.selectComponent("#choosecate"); //获取
     },
 
     /**

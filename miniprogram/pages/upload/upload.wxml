@@ -13,25 +13,30 @@
   </view>
 
   <!-- 上传图片 -->
-  <view class="uploadimages-title">上传图片（最多9张）</view>
+  <view class="uploadimages-title">上传图片（最多8张）</view>
   <view class="Images-tool">        
         <view class="Images-disp" wx:for="{{Imagespath}}" wx:key="*this">
-         <image bindtap="viewimage" src="{{item}}" data-index="{{index}}"></image>
-         <icon type="clear" size="23" color="#E1D5EC" bindtap="handleRemoveImages" data-index="{{index}}"></icon>
+         <image bindtap="viewimage" mode="aspectFill" src="{{item}}" data-index="{{index}}"></image>
+         <icon type="clear" size="18" color="#E1D5EC" bindtap="handleRemoveImages" data-index="{{index}}"></icon>
         </view>
-        <button class="button-uploadimages" wx:if="{{isNineImages}}" bindtap="handleUpImages">+</button>  
+        <button wx:if="{{isNineImages}}" bindtap="handleUpImages">+</button>  
     </view>
 
  <!-- 点击分类按键选择 -->
- <view class="remind-subtitle">分类选择</view>
+ <view class="remind-subtitle">选一选分类</view>
   <view class="choose-category">
-   <button class="button-category" hover-class="change-button-category" bindtap="gotoCategory">click here</button>
+   <button class="button-category" hover-class="change-button-category" bindtap="actionchoosecate">{{buttoncatedisp}}</button>
+   <choosecate id="upcate"></choosecate>
   </view>
-  <!-- 点击发表 返回首页 -->
-  <button class="button-upload" hover-class="change-button-upload" bindtap="handleFormSave">
-  <icon type="waiting" size="15" color="black"></icon>
-保存</button>
- <button class="button-upload" hover-class="change-button-upload" bindtap="handleFormSubmit">
-  <icon type="success_no_circle" size="15" color="black"></icon>
-发表</button>
+
+  <!-- 点击保存或发表 返回个人页 等待审核 -->
+  <view class="buttons-upload">
+    <button class="button-save" hover-class="change-button-upload" bindtap="handleFormSave">
+     <icon type="waiting" size="15" color="black"></icon>
+    保存</button>
+    <button class="button-upload" hover-class="change-button-upload" bindtap="handleFormSubmit">
+    <icon type="success_no_circle" size="15" color="black"></icon>
+    发表</button>
+  </view>
 </view>
+
