@@ -1,5 +1,6 @@
 // pages/search/search.js
-let db = wx.cloud.database()
+const app = getApp()
+const db = wx.cloud.database()
 Page({
 
     /**
@@ -53,16 +54,22 @@ Page({
         // 仅在搜索词不为空时进行搜索
         // 有传入参数时也总是搜索，此时显示全部文章
         if (inputvalue || this.data.hasOptions) {
+            // 使用正则表达式匹配标题
+            const regexp = db.RegExp({
+                regexp: inputvalue,
+                options: 'i'
+            })
             // 将标题关键词和传入参数合并为一个对象
             const conditions = Object.assign(
                 this.data.options,
-                {
-                    title: db.RegExp({
-                        regexp: inputvalue,
-                        options: 'i'
-                    }),
-                    flag: true
-                })
+                this.data.hasOptions
+                    ? {
+                        title: regexp
+                    }
+                    : {
+                        title: regexp,
+                        flag: true
+                    })
             db.collection("articlelist")
                 .where(conditions)
                 .get()
