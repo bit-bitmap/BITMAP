@@ -16,6 +16,7 @@ BITMAP
 ├─ miniprogram              // 小程序源码目录
 │  ├─ images                // 小程序中使用的图片
 │  ├─ pages                 // 小程序各级页面
+│  ├─ utils                 // 小程序公共函数
 │  ├─ app.js                // 小程序主逻辑
 │  ├─ app.json              // 小程序公共配置
 │  ├─ app.wxss              // 小程序公共样式表
