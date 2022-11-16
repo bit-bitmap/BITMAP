@@ -1,10 +1,12 @@
 // pages/upload/upload.js
 const app = getApp()
+var util=require('../../utils/util.js')
+var upbasetime =""  //点击发表的时间
 var upbaseimages = []  //上传数据库的图片
-var upbasetitle = ""  //标题
-var upbasetext = ""  //内容
-var upbasecate = ""
-var upbasearticlesID = []
+var upbasetitle = ""  //上传数据库的标题
+var upbasetext = ""  //上传数据库的资讯内容
+var upbasecate = []  //上传数据库的分类数组，可以属于多个小类
+var upbasearticlesID = []  //上传数据库的文章ID
 let db = wx.cloud.database()
 
 Page({
@@ -30,7 +32,7 @@ Page({
             { id: 4, name: '活动', choose: false }
         ],
 
-        studycate: [{ subid: "101xuanke", subname: "选课", checked: false }, { subid: "102zuoye", subname: "作业", checked: false }, { subid: "103kaoshi", subname: "考试", checked: false }, { subid: "104baoyan", subname: "保研", checked: false }, { subid: "105kaoyan", subname: "考研", checked: false }, { subid: "106liuxue", subname: "留学", checked: false }, { subid: "107fudao", subname: "辅导/组队", checked: false }],
+        studycate: [{id:1, subid: "101xuanke", subname: "选课", checked: false }, {id:2, subid: "102zuoye", subname: "作业", checked: false }, {id:3, subid: "103kaoshi", subname: "考试", checked: false }, {id:4, subid: "104baoyan", subname: "保研", checked: false }, {id:5, subid: "105kaoyan", subname: "考研", checked: false }, {id:6, subid: "106liuxue", subname: "留学", checked: false }, {id:7, subid: "107fudao", subname: "辅导/组队", checked: false }],
 
         lifecate: [{ id: 1, subid: "201qushi", subname: "趣事", checked: false }, { id: 2, subid: "202laoren", subname: "捞人/群", checked: false }, { id: 3, subid: "203tixing", subname: "提醒", checked: false }, { id: 4, subid: "204biaobai", subname: "表白/征婚", checked: false }, { id: 5, subid: "205shiwu", subname: "失物", checked: false }, { id: 6, subid: "206tuijian", subname: "推荐", checked: false }, { id: 7, subid: "207jiaqi", subname: "假期", checked: false }],
 
@@ -41,40 +43,35 @@ Page({
         activitycate: [{ id: 1, subid: "501bisai", subname: "比赛", checked: false }, { id: 2, subid: "502shetuan", subname: "社团活动", checked: false }, { id: 3, subid: "503jiaqi", subname: "假期出行", checked: false }, { id: 4, subid: "504xiaoyuan", subname: "校园活动", checked: false }],
 
         image: [],  //云数据库中articlelist存储的图片网址
-        isNineImages: true,  //是否显示上传"+"按键
-        isSubmit: false,  //article是否发表
+        isEightImages: true,  //是否显示上传"+"按键
+        // isSubmit: false,  //article是否发表
         isAccess: false,  //article是否通过审核
-        buttoncatedisp: "多种分类，任意选择",
+        isChoosecatebig:false,
         ImageNumMax: 8,
-        isUpImagesSuccess: false
+        isUpImagesSuccess: false,
     },
 
     //大类选择 单选
     handlecatechoose(e) {
         let catebig = e.detail.value
         this.setData({
-            usercatebig: catebig
+            usercatebig: catebig,
+            isChoosecatebig:false
         })
         // console.log(catebig)
     },
     //小类选择 多选
     smallcateschoose(e) {
-        let that = this
-        let catebig = that.data.usercatebig
-        if (catebig == 0) {
-            upbasecate="101xuanke"
-        }
-        if (catebig == 1) {
-            upbasecate="201qushi"
-        }
-        if (catebig == 2) {
-            upbasecate="301bisai"
-        }
-        if (catebig == 3) {
-            upbasecate="401meishi"
-        }
-        if (catebig == 4) {
-            upbasecate="501bisai"
+        console.log("分类选择",e.detail.value)
+        upbasecate=e.detail.value
+        if (upbasecate.length!=0) {
+            this.setData({
+                isChoosecatebig:true
+            })
+        }else{
+            this.setData({
+                isChoosecatebig:false
+            })
         }
     },
 
@@ -100,66 +97,101 @@ Page({
         });
     },
 
-    //点击保存
-    handleFormSave(e) {
-        let that = this
-    },
     //点击发表
     handleFormSubmit() {
         let that = this
-        // if (app.global.loginStatus) {
-        if (that.data.textNum < 5 || that.data.titleNum == 0) {
-            if (that.data.textNum < 5 && that.data.titleNum == 0) {
-                wx.showToast({
-                    title: '未填写资讯标题且内容字数不足5个字',
-                    icon: 'none'
+        if (app.global.loginStatus) { //判断登录状态
+            if (that.data.textNum < 5 || that.data.titleNum == 0) {
+                if (that.data.textNum < 5 && that.data.titleNum == 0) {
+                    if (that.data.isChoosecatebig) {
+                        wx.showToast({
+                            title: '未填写资讯标题且内容字数不足5个字',
+                            icon: 'none'
+                        })
+                    }else{
+                        wx.showToast({
+                            title: '未填写资讯标题,内容字数不足5个字,且未选择分类',
+                            icon: 'none'
+                        })
+                    }
+                }
+                if (that.data.textNum < 5 && that.data.titleNum != 0) {
+                    if (that.data.isChoosecatebig) {
+                        wx.showToast({
+                            title: '内容字数不足5个字',
+                            icon: 'none'
+                        })
+                    }else{
+                        wx.showToast({
+                            title: '内容字数不足5个字,且未选择分类',
+                            icon: 'none'
+                        })
+                    }
+                }
+                if (that.data.textNum >= 5 && that.data.titleNum == 0) {
+                    if (that.data.isChoosecatebig) {
+                        wx.showToast({
+                            title: '未填写资讯标题',
+                            icon: 'none'
+                        })
+                    }else{
+                        wx.showToast({
+                            title: '未填写资讯标题,且未选择分类',
+                            icon: 'none'
+                        })
+                    }
+                }
+            } else {
+                upbasetime=util.formatTime(new Date())
+                wx.showLoading({
+                    title: '上传中',
                 })
-            }
-            if (that.data.textNum < 5 && that.data.titleNum != 0) {
-                wx.showToast({
-                    title: '内容字数不足5个字',
-                    icon: 'none'
-                })
-            }
-            if (that.data.textNum >= 5 && that.data.titleNum == 0) {
-                wx.showToast({
-                    title: '未填写资讯标题',
-                    icon: 'none'
-                })
+                //资讯图片存入云存储
+                that.handleFormSubmitImages()
+                setTimeout(() => {
+                    that.handleFormSubmitImages()
+                }, 2000)
+                // console.log("up", upbaseimages)
+                //资讯内容、图片存入云数据库
+                setTimeout(() => {
+                    that.upbaseDB()
+                }, 2000)
+                if (that.data.isUpImagesSuccess || (that.data.Imagespath.length == 0)) {
+                    wx.showToast({
+                        title: '上传成功，再写一篇吧',
+                        icon:'none'
+                    })
+                    //上传成功，上传页清空
+                    that.setData({
+                        choosecate: [
+                            { id: 0, name: '学习', choose: false },
+                            { id: 1, name: '生活', choose: false },
+                            { id: 2, name: '运动', choose: false },
+                            { id: 3, name: '美食', choose: false },
+                            { id: 4, name: '活动', choose: false }
+                        ],
+                        textNum: 0,
+                        textwritten: "",
+                        titleNum: 0,
+                        titlewritten: "",
+                        Imagespath: [],
+                        usercatebig: 5,
+                        image: [],  //云数据库中articlelist存储的图片网址
+                        isEightImages: true,  //是否显示上传"+"按键
+                        isSubmit: false,  //article是否发表
+                        isAccess: false,  //article是否通过审核
+                        // ImageNumMax: 8,
+                        isUpImagesSuccess: false
+                    })
+                }
             }
         } else {
-            //资讯图片存入云存储
-            that.handleFormSubmitImages()
-            setTimeout(() => {
-                that.handleFormSubmitImages()
-            }, 2000)
-            // console.log("up", upbaseimages)
-            //资讯内容、图片存入云数据库
-            setTimeout(() => {
-                that.upbaseImagesDB()
-            }, 2000)
-            that.setData({
-                textNum:0,
-                textwritten:"",
-                titleNum:0,
-                titlewritten:"",
-                Imagespath: [],
-                usercatebig: 5,
-                image: [],  //云数据库中articlelist存储的图片网址
-                isNineImages: true,  //是否显示上传"+"按键
-                isSubmit: false,  //article是否发表
-                isAccess: false,  //article是否通过审核
-                buttoncatedisp: "多种分类，任意选择",
-                ImageNumMax: 8,
-                isUpImagesSuccess: false
+            wx.showToast({
+                title: '请登录后再编辑资讯',
+                icon: 'none',
+                duration: 900
             })
         }
-        // } else {
-        //     wx.showToast({
-        //       title: '请登录后再编辑',
-        //       icon:'none'
-        //     })
-        // }
     },
 
     //将图片上传并显示
@@ -183,7 +215,7 @@ Page({
                 console.log("Imagespath", tempArr)
                 if (that.data.Imagespath.length >= that.data.ImageNumMax) {
                     that.setData({
-                        isNineImages: false
+                        isEightImages: false
                     })
                 }
             }
@@ -218,18 +250,16 @@ Page({
         console.log("ImagespathRemove", arr)
         if (that.data.Imagespath.length < that.data.ImageNumMax) {
             that.setData({
-                isNineImages: true
+                isEightImages: true
             })
         }
     },
     //将图片上传到云存储
     async handleFormSubmitImages() {
         let that = this
+        let sumuploadsucess = 0
         let address = app.global.openid
         //云存储图片
-        wx.showLoading({
-            title: '上传中',
-        })
         let time = Date.parse(new Date()) / 1000
         console.log(that.data.Imagespath.length)
         for (let i = 0; i < that.data.Imagespath.length; i++) {
@@ -239,12 +269,7 @@ Page({
                 filePath: that.data.Imagespath[i], //图片的临时地址
             }).then(res => {
                 // get resource ID
-                wx.showToast({
-                    title: '上传成功',
-                })
-                that.setData({
-                    isUpImagesSuccess: true
-                })
+                sumuploadsucess = sumuploadsucess + 1
                 //   console.log(res.fileID,i)
                 upbaseimages[i] = res.fileID
             }).catch(error => {
@@ -252,38 +277,32 @@ Page({
                 console.log(error)
                 wx.showToast({
                     title: '上传失败',
-                    icon: 'error'
+                    icon: 'error',
+                    duration: 900
                 })
             })
         }
-        console.log("upbase的值", upbaseimages)
+        //判断所有图片是否均成功上传至云存储
+        if (sumuploadsucess == that.data.Imagespath.length - 1) {
+            that.setData({
+                isUpImagesSuccess: true
+            })
+        } console.log("upbase的值", upbaseimages)
     },
 
-    // 随机产生六位的字符串
-randomWord() {undefined
-
-    var chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-    
-    var nums = "";
-    
-    for (var i = 0; i < 6; i++) {undefined
-    var id = parseInt(Math.random() * 61);
-      nums += chars[id];
-    }
-    return nums;
-  },
-  
-    //图片上传至云数据库
-    async upbaseImagesDB() {
+    //资讯上传至云数据库文章列表，添加文章ID至对应用户列表
+    async upbaseDB() {
         console.log("upbase的值", upbaseimages)
         let that = this;
-        var articleidget=( await db.collection("articlelist").add({
+        //文章列表
+        console.log("time",upbasetime)
+        var articleidget = (await db.collection("articlelist").add({
             data: {
-                // articleid: articleidget,
+                time: upbasetime,
                 image: upbaseimages,
                 title: upbasetitle,
                 detail: upbasetext,
-                cate:  upbasecate,
+                cate: upbasecate,
                 flag: that.data.isAccess,
                 dianzan: false,
                 like: 0,
@@ -292,114 +311,93 @@ randomWord() {undefined
                 comments: []
             }
         }))._id
-console.log(articleidget)
-        wx.showToast({
-            title: '上传成功',
-        })
-        // var userarticle = []
-        console.log(articleidget)
+        // console.log(articleidget)
         upbasearticlesID = articleidget
-        console.log(app.global.id)
+        // console.log(app.global.id)
+        //用户列表
         let userarticle = (await db.collection("account").doc(app.global.id).get()).data.articles
-        const ids = (
-            await db.collection("account").doc(app.global.id).get()
-        ).data.articles
-        console.log(ids)
         console.log(userarticle)
-        console.log(app.global.id)
         userarticle.push(upbasearticlesID)
-        db.collection("account").doc(app.global.id).update({ 
-            data:{
+        db.collection("account").doc(app.global.id).update({
+            data: {
                 articles: userarticle
-            }})
-        //     .then(res => {
-        //         wx.showToast({
-        //             title: '上传成功',
-        //         })
-        //         // upbasearticlesID = res.data
-        //     })
-        // }).catch(error => {
-        //     // handle error
-        //     console.log(error)
+            }
+        })
+    },
+
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad() {
+        // 获取 open id
+        wx.cloud.callFunction({
+            name: "quickstartFunctions",
+            data: { type: "getOpenId" }
+        }).then(res => {
+            app.global.openid = res.result.openid
+            console.log("openid", app.global.openid)
+        }).catch(err => {
+            console.log("openid", err)
+        })
+
+        //退出页面提醒
+        // wx.enableAlertBeforeUnload({
+        //     message: "确定要退出页面吗？",//弹窗文案
+        //     success: function (res) { //成功回调
+        //     },
+        //     fail: function (errMsg) { //失败回调
+        //     },
+        //     complete: function () { //调用结束
+        //     }
         // })
+    },
 
-},
-        /**
-         * 生命周期函数--监听页面加载
-         */
-        onLoad() {
-            // 获取 open id
-            wx.cloud.callFunction({
-                name: "quickstartFunctions",
-                data: { type: "getOpenId" }
-            }).then(res => {
-                app.global.openid = res.result.openid
-                console.log("openid", app.global.openid)
-            }).catch(err => {
-                console.log("openid", err)
-            })
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady() {
 
-            //退出页面提醒
-            wx.enableAlertBeforeUnload({
-                message: "确定要退出页面吗？",//弹窗文案
-                success: function (res) { //成功回调
+    },
 
-                },
-                fail: function (errMsg) { //失败回调
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow() {
 
-                },
-                complete: function () { //调用结束
+    },
 
-                }
-            })
-        },
+    /**
+     * 生命周期函数--监听页面隐藏
+     */
+    onHide() {
 
-        /**
-         * 生命周期函数--监听页面初次渲染完成
-         */
-        onReady() {
+    },
 
-        },
+    /**
+     * 生命周期函数--监听页面卸载
+     */
+    onUnload() {
 
-        /**
-         * 生命周期函数--监听页面显示
-         */
-        onShow() {
+    },
 
-        },
+    /**
+     * 页面相关事件处理函数--监听用户下拉动作
+     */
+    onPullDownRefresh() {
 
-        /**
-         * 生命周期函数--监听页面隐藏
-         */
-        onHide() {
+    },
 
-        },
+    /**
+     * 页面上拉触底事件的处理函数
+     */
+    onReachBottom() {
 
-        /**
-         * 生命周期函数--监听页面卸载
-         */
-        onUnload() {
+    },
 
-        },
+    /**
+     * 用户点击右上角分享
+     */
+    onShareAppMessage() {
 
-        /**
-         * 页面相关事件处理函数--监听用户下拉动作
-         */
-        onPullDownRefresh() {
-
-        },
-
-        /**
-         * 页面上拉触底事件的处理函数
-         */
-        onReachBottom() {
-
-        },
-
-        /**
-         * 用户点击右上角分享
-         */
-        onShareAppMessage() {
-
-        }
-    })
+    }
+})

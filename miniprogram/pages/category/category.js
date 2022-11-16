@@ -6,7 +6,7 @@ Page({
       curNav: 1,
       curIndex: 0
     },
-  //gotoo
+  //gotoo分类跳转
   gotoo1(e){
       console.log(e)
       app.global.lujing=e.currentTarget.dataset.lujing
@@ -17,7 +17,7 @@ Page({
 
     },
 
-
+   //数据
   data: {
     cateItems:[]
 },

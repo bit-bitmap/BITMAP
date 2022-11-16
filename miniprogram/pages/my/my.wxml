@@ -6,13 +6,16 @@
         <view class="weui-panel weui-panel_access">
             <view class="weui-panel__bd">
                 <view class="weui-media-box weui-media-box_appmsg">
+                    <!--Avatar-->
                     <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
                         <image class="weui-media-box__thumb" src="{{avatar}}" />
                     </view>
+                    <!--Name & info-->
                     <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
                         <view class="weui-media-box__title">{{name}}</view>
                         <view class="weui-media-box__desc">{{info}}</view>
                     </view>
+                    <!--Edit & login button-->
                     <button wx:if="{{loginStatus}}" bindtap="onEdit">Edit</button>
                     <button wx:else bindtap="onLogin">Log in</button>
                 </view>
@@ -21,7 +24,9 @@
 
         <!--My Articles-->
         <view wx:if="{{articles.length}}" class="weui-panel weui-panel_access">
+            <!--Panel header-->
             <view class="weui-panel__hd">我的文章</view>
+            <!--Panel body-->
             <view class="weui-panel__bd" wx:for="{{articles}}" wx:key="_id">
                 <navigator url="../content/content?id={{item._id}}" class="weui-media-box weui-media-box_appmsg"
                     hover-class="weui-cell_active">
@@ -31,10 +36,11 @@
                         <view class="weui-media-box__desc">{{item.views}} 阅读 · {{item.comments.length}} 评论</view>
                     </view>
                     <view wx:if="{{item.image.length}}" class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                        <image class="weui-media-box__thumb" src="{{item.image[0]}}" />
+                        <image class="weui-media-box__thumb" src="{{item.image[0]}}" mode="aspectFill" />
                     </view>
                 </navigator>
             </view>
+            <!--Panel footer-->
             <navigator url="../search/search?_openid={{_openid}}" class="weui-panel__ft">
                 <view class="weui-cell weui-cell_access weui-cell_link">
                     <view class="weui-cell__bd">查看更多</view>
@@ -44,6 +50,7 @@
         </view>
 
         <view class="weui-panel">
+            <!--Panel body-->
             <view class="weui-panel__bd">
                 <view class="weui-media-box weui-media-box_small-appmsg">
                     <view class="weui-cells weui-cells_in-small-appmsg">

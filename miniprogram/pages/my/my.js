@@ -127,15 +127,24 @@ Page({
                 const length = (ids.length < 3) ? ids.length : 3
                 // 根据 id 列表获取每篇文章的信息
                 for (let i = 0; i < length; i++) {
-                    const article = (
-                        await articlelist.doc(ids[i]).get()
-                    ).data
-                    articles.push(article)
+                    articlelist.doc(ids[i]).get()
+                        .then(res => {
+                            if (res.data) {
+                                articles.push(res.data)
+                            }
+                            this.setData({
+                                articles: articles
+                            })
+                        }).catch(err => {
+                            console.log('Article', ids[i], 'not found:')
+                            console.log(err)
+                        })
                 }
             }
+        } else {
+            this.setData({
+                articles: articles
+            })
         }
-        this.setData({
-            articles: articles
-        })
     }
 })

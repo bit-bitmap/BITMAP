@@ -74,7 +74,7 @@ page{
 } 
 .container-upload .Images-tool .Images-disp image{
     width: 150rpx;
-    height: 125rpx;
+    height: 150rpx;
     /* margin: 5rpx; */
     border-radius: 5%;
     position: relative; 
@@ -87,7 +87,7 @@ page{
 .container-upload .Images-tool button{
   margin: 5rpx 10rpx;
   width: 150rpx;
-  height: 125rpx;
+  height: 150rpx;
   font-size: 60px;
   padding: 0;
   display: flex;
@@ -109,40 +109,24 @@ page{
     padding: 5rpx;
 }
 .choose-categorysmall {
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: center; */
-    margin: 5rpx 20rpx;
     align-items: center;
+    justify-content: center;
 }
 .choose-categorysmall .catesmall-blocks {
     background-color: #E1D5EC;
-    width: 60px;
-    margin: 10rpx;
-    padding: 10rpx;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 10rpx 10rpx;
+    padding: 5rpx;
+    border-radius: 10rpx;
+    text-align: center;
 }
-.choose-categorysmall .catesmall-blocks text {
-    font-size: 27rpx;
-}
-
-/* .button-category {
-  width: 80%;
-  background-color: #E1D9EC;
-  border-radius: 3%;
-  margin: 10rpx auto;
-}
-.change-button-category{
-  background-color: #e5e2eb;
-} */
 
 /* 发表 */
 .container-upload .buttons-upload {
     position: relative;
     margin: 10rpx auto;
+    margin-top: 30rpx;
     /* margin-bottom: 10rpx; */
     width: 70%;
     display: flex;
@@ -152,16 +136,16 @@ page{
 }
 .container-upload .buttons-upload .button-upload {
   width: 90px;
-  background-color: #4fc4e7; 
+  background-color: #c797ce; 
   font-size: 14px;
   border-radius: 30rpx;
 }
-.container-upload .buttons-upload .button-save {
+/* .container-upload .buttons-upload .button-save {
     width: 90px;
     background-color: #c797ce; 
     font-size: 14px; 
     border-radius: 30rpx;
-  }
+  } */
 .container-upload .buttons-upload .change-button-upload{
   background-color: #e5e2eb;
 }
