@@ -74,7 +74,7 @@ page{
 } 
 .container-upload .Images-tool .Images-disp image{
     width: 150rpx;
-    height: 125rpx;
+    height: 150rpx;
     /* margin: 5rpx; */
     border-radius: 5%;
     position: relative; 
@@ -87,7 +87,7 @@ page{
 .container-upload .Images-tool button{
   margin: 5rpx 10rpx;
   width: 150rpx;
-  height: 125rpx;
+  height: 150rpx;
   font-size: 60px;
   padding: 0;
   display: flex;
@@ -126,6 +126,7 @@ page{
 .container-upload .buttons-upload {
     position: relative;
     margin: 10rpx auto;
+    margin-top: 30rpx;
     /* margin-bottom: 10rpx; */
     width: 70%;
     display: flex;
