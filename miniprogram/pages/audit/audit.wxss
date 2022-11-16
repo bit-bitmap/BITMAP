@@ -42,6 +42,7 @@ page{
     color: indigo;
     font-weight: bold;
 }
+/* 图片 */
 .swiperImage {
     margin: 20rpx;
     height: 550rpx;
@@ -54,7 +55,7 @@ page{
     justify-content: center;
     align-items: center;
 }
-
+/* 审核按钮 */
 .audit button{
     margin: 30rpx;
 }

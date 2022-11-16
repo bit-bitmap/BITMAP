@@ -73,10 +73,6 @@ Page({
         }).catch(err => {
             console.log("获取openid失败", err)
         })
-        /**
-         * 获取用户名
-         */
-        
     },
 
     /**
@@ -144,6 +140,9 @@ Page({
         this.setData({
             titleNum: length
         });
+        /**
+         * 获取用户名
+         */
         wx.cloud.database().collection("account").where({
             _openid:app.global.openid
         }).get()
@@ -155,7 +154,9 @@ Page({
             console.log("获取用户名失败",res)
         })
     },
-
+    /**
+     * 评论发布、显示评论者用户名
+     */
     contentUp(){
         if(pinglun<1){
             wx.showToast({

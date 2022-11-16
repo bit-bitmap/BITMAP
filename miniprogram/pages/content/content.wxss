@@ -42,6 +42,7 @@ page{
     color: indigo;
     font-weight: bold;
 }
+/* 图片显示 */
 .swiperImage {
     margin: 30rpx;
     height: 550rpx;
