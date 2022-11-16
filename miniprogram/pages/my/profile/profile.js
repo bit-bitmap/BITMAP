@@ -73,7 +73,7 @@ Page({
         wx.showLoading()
         const form = this.data.form
         // 判断用户名是否为空
-        if (form.username.length == 0) {
+        if (form.username && form.username.length == 0) {
             await wx.hideLoading()
             await wx.showToast({
                 title: '姓名不能为空',
@@ -82,7 +82,7 @@ Page({
             return
         }
         // 判断个人简介字数是否超限
-        if (form.info.length > 100) {
+        if (form.info && form.info.length > 100) {
             await wx.hideLoading()
             await wx.showToast({
                 title: '个人简介太长啦',
