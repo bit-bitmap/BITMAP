@@ -8,7 +8,8 @@
 <!-- 若 showRecommend 为 true 且 datalist 为空则展示-->
 <mp-cells ext-class="my-cells" wx:if="{{showRecommend && datalist.length == 0}}" title="大家都在搜">
     <block wx:for="{{recommendList}}" wx:key="_id">
-            <mp-cell link value="{{item.title}}" footer="{{item.like}} 人赞过" bindtap="goContent" data-id="{{item._id}}"></mp-cell>
+        <mp-cell link value="{{item.title}}" footer="{{item.like}} 人赞过" bindtap="goContent" data-id="{{item._id}}">
+        </mp-cell>
     </block>
 </mp-cells>
 
@@ -21,7 +22,7 @@
                 <view class="weui-media-box__desc">{{item.views}} 阅读 · {{item.comments.length}} 评论</view>
             </view>
             <view wx:if="{{item.image}}" class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                <image class="weui-media-box__thumb" src="{{item.image[0]}}" />
+                <image class="weui-media-box__thumb" src="{{item.image[0]}}" mode="aspectFill" />
             </view>
         </navigator>
     </view>

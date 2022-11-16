@@ -31,7 +31,7 @@
                         <view class="weui-media-box__desc">{{item.views}} 阅读 · {{item.comments.length}} 评论</view>
                     </view>
                     <view wx:if="{{item.image.length}}" class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                        <image class="weui-media-box__thumb" src="{{item.image[0]}}" />
+                        <image class="weui-media-box__thumb" src="{{item.image[0]}}" mode="aspectFill" />
                     </view>
                 </navigator>
             </view>
