@@ -1,21 +1,20 @@
 <!--pages/audit0/audit0.wxml-->
 
-<view class="searchbox" >
-    <view class = "search" >
+<view class="searchbox">
+    <view class="search">
         <navigator url="../search/search">点我就能搜索</navigator>
     </view>
 </view>
 
-
 <view class="page__bd">
-    <view class="weui-panel" wx:for="{{datalist}}" >
-        <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">   
+    <view class="weui-panel" wx:for="{{datalist}}">
+        <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" bindtap="goAudit" data-id="{{item._id}}">
                 <view class="weui-media-box__title">{{item.title}}</view>
                 <view class="weui-media-box__desc">{{item.detail}}</view>
                 <view class="weui-media-box__desc">{{item.views}} 阅读 · {{item.comments.length}} 评论</view>
             </view>
-            <view wx:if= "{{item.image}}"   class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+            <view wx:if="{{item.image}}" class="weui-media-box__hd weui-media-box__hd_in-appmsg">
                 <image class="weui-media-box__thumb" src="{{item.image[0]}}" />
             </view>
         </navigator>

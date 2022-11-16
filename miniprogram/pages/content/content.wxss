@@ -1,28 +1,29 @@
 /* pages/content/content.wxss */
-page{
+page {
     background-color: #F0EEF6;
 }
 
-
 /* 标题栏 */
-.title{
+.title {
     font-size: 48rpx;
     margin: 10rpx;
     padding: 10rpx;
     border-radius: 13rpx;
-    color:rebeccapurple;
+    color: rebeccapurple;
 }
-.title view{
+
+.title view {
     border-radius: 13rpx;
     font-weight: bold;
 }
-.title text{
+
+.title text {
     color: gray;
     font-size: 28rpx;
 }
 
 /* 主要内容 */
-.information .content1{
+.information .content1 {
     border-radius: 13rpx;
     line-height: 50rpx;
     text-indent: 2em;
@@ -33,15 +34,16 @@ page{
     padding: 10rpx;
 }
 
-.information view{
-    background-color:#F0EEF6;
+.information view {
+    background-color: #F0EEF6;
 }
 
-.information tip{
+.information tip {
     margin-top: 30rpx;
     color: indigo;
     font-weight: bold;
 }
+
 /* 图片显示 */
 .swiperImage {
     margin: 30rpx;
@@ -49,14 +51,16 @@ page{
     border-radius: 10rpx;
     display: flex;
 }
-.swiperImage swiper-item{
+
+.swiperImage swiper-item {
     vertical-align: middle;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
-.al-image{
+
+.al-image {
     border-radius: 20rpx;
     width: 100%;
     display: flex;
@@ -65,40 +69,47 @@ page{
     align-items: center;
 
 }
+
 /* 评论区 */
-.tip{
+.tip {
     margin-top: 20rpx;
     color: indigo;
     font-weight: bold;
     font-size: 42rpx;
 }
-.commentItem{
+
+.commentItem {
     margin-left: 25rpx;
     margin-top: 20rpx;
     overflow-y: scroll;
 }
-.commIn{
+
+.commIn {
     border: solid white;
     margin-top: 100rpx;
 }
-.commIn text{
+
+.commIn text {
     color: gray;
 }
-.commIn button{
+
+.commIn button {
     margin: 30rpx;
 }
+
 /* 底栏 */
-.bottom image{
+.bottom image {
     margin: 10rpx;
     width: 60rpx;
     height: 60rpx;
 }
 
-.bottom{
+.bottom {
     position: fixed;
     bottom: 0%;
     right: 0%;
 }
-.bottom text{
-    color:gray;
+
+.bottom text {
+    color: gray;
 }

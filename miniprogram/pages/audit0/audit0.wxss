@@ -3,21 +3,21 @@ page {
     background-color: var(--weui-BG-0);
 }
 
-.searchbox{
+.searchbox {
     height: 55px;
     background-color: #fff;
     align-items: center;
     display: flex;
 }
 
-.text{
+.text {
     width: 100rpx;
     text-align: center;
 }
 
-.search{
+.search {
     background-color: #f1f1f1;
-    color:black;
+    color: black;
     flex: 1;
     margin-right: 5%;
     margin-left: 5%;
@@ -34,6 +34,7 @@ page {
     width: 100%;
     border: rgb(226, 185, 226);
 }
+
 .list-title {
     padding: 15px 10px;
     font-size: 16px;
@@ -61,7 +62,6 @@ page {
     border-top: none;
 }
 
-
 scroll-view ::-webkit-scrollbar {
     display: none;
     width: 0;
@@ -70,11 +70,11 @@ scroll-view ::-webkit-scrollbar {
 }
 
 .page__bd {
-  padding-bottom: 40px
+    padding-bottom: 40px
 }
 
 .weui-media-box__info__meta {
-  margin-top: 3%;
+    margin-top: 3%;
 }
 
 .weui-media-box_thumb {
@@ -83,9 +83,8 @@ scroll-view ::-webkit-scrollbar {
 }
 
 .weui-panel {
-	background-color: var(--weui-BG-2);
-	margin-top: 0px;
-	position: relative;
-	overflow: hidden
+    background-color: var(--weui-BG-2);
+    margin-top: 0px;
+    position: relative;
+    overflow: hidden
 }
-

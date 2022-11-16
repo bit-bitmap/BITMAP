@@ -1,28 +1,29 @@
 /* pages/audit/audit.wxss */
-page{
+page {
     background-color: #F0EEF6;
 }
 
-
 /* 标题栏 */
-.title{
+.title {
     font-size: 48rpx;
     margin: 10rpx;
     padding: 10rpx;
     border-radius: 13rpx;
-    color:rebeccapurple;
+    color: rebeccapurple;
 }
-.title view{
+
+.title view {
     border-radius: 13rpx;
     font-weight: bold;
 }
-.title text{
+
+.title text {
     color: gray;
     font-size: 28rpx;
 }
 
 /* 主要内容 */
-.information .content1{
+.information .content1 {
     border-radius: 13rpx;
     line-height: 50rpx;
     text-indent: 2em;
@@ -33,29 +34,32 @@ page{
     padding: 10rpx;
 }
 
-.information view{
-    background-color:#F0EEF6;
+.information view {
+    background-color: #F0EEF6;
 }
 
-.information tip{
+.information tip {
     margin-top: 30rpx;
     color: indigo;
     font-weight: bold;
 }
+
 /* 图片 */
 .swiperImage {
     margin: 20rpx;
     height: 550rpx;
     border-radius: 10rpx;
 }
-.swiperImage swiper-item{
+
+.swiperImage swiper-item {
     vertical-align: middle;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
+
 /* 审核按钮 */
-.audit button{
+.audit button {
     margin: 30rpx;
 }

@@ -1,28 +1,28 @@
 <!--pages/content/content.wxml-->
 
 <!--标题栏-->
-<view class = "title"  bindtap="goAudit">
+<view class="title" bindtap="goAudit">
     <view>{{detail.title}}</view>
     <text>作者：{{name}}</text>
 </view>
 
 <!--内容、图片展示-->
-<view class = "information">
-    <view class = "content1">{{detail.detail}}</view>
-    <swiper class="swiperImage" indicator-dots="true" indicator-color="white" indicator-active-color="gray" autoplay="false" wx:if="{{!info}}" wx:if="{{detail.image[0]}}">
+<view class="information">
+    <view class="content1">{{detail.detail}}</view>
+    <swiper class="swiperImage" indicator-dots="true" indicator-color="white" indicator-active-color="gray"
+        autoplay="false" wx:if="{{!info}}" wx:if="{{detail.image[0]}}">
         <swiper-item wx:for="{{detail.image.length}}" wx:for-index="i" wx:key="i" data-id="{{item._id}}">
             <image class="al-image" src="{{detail.image[i]}}" mode="heightFix" show-menu-by-longpress="true"></image>
         </swiper-item>
     </swiper>
     <view class="tip">评论区</view>
-        <block wx:for="{{comments}}" wx:key="index">
-            <view class="commentItem">
-                <text>{{item.who}}：</text>   
-                <text>{{item.content}}</text>
-            </view>   
-        </block>
+    <block wx:for="{{comments}}" wx:key="index">
+        <view class="commentItem">
+            <text>{{item.who}}：</text>
+            <text>{{item.content}}</text>
+        </view>
+    </block>
 </view>
-
 
 <!--发布评论-->
 <view class="commIn">
@@ -32,9 +32,8 @@
 </view>
 
 <!--底栏-->
-<view class = "bottom" >
+<view class="bottom">
     <image src="{{imgurl1}}" bindtap="clickMe"></image>
     <image src="{{imgurl2}}" bindtap="favorMe"></image>
     <text>{{likes}}</text>
 </view>
-

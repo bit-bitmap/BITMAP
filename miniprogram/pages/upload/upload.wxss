@@ -1,25 +1,25 @@
 /* pages/upload/upload.wxss */
 @import '../weui.wxss';
 
-page{
-  background-color: #F0EEF6;
+page {
+    background-color: #F0EEF6;
 }
 
 /* 总容器 */
 .container-upload {
-  padding: 20rpx;
-  padding-top: 10rpx;
-  padding-bottom: 5rpx;
+    padding: 20rpx;
+    padding-top: 10rpx;
+    padding-bottom: 5rpx;
 }
 
 /* 副标题提示 */
 .container-upload .remind-subtitle {
-  text-align: center;
-  font-weight: bold;
+    text-align: center;
+    font-weight: bold;
 }
 
 /* 标题输入 */
-.container-upload .title-written{
+.container-upload .title-written {
     background-color: #E1D5EC;
     border-radius: 10rpx;
     margin: 10rpx auto;
@@ -29,27 +29,30 @@ page{
     justify-content: right;
     align-items: center;
     padding: 10rpx;
-} 
-.container-upload .title-written textarea {
-  padding: 10rpx;
-  height: 40rpx;
 }
+
+.container-upload .title-written textarea {
+    padding: 10rpx;
+    height: 40rpx;
+}
+
 .container-upload .limit-number {
     color: grey;
-} 
+}
 
 /* 资讯输入 */
-.container-upload .text-written { 
-  background-color: #E1D5EC;
-  border-radius: 10rpx;
-  margin: 10rpx auto;
-  /* width: 90%; */
-  display: flex;
-  flex-direction: row;
-  /* justify-content: right;
+.container-upload .text-written {
+    background-color: #E1D5EC;
+    border-radius: 10rpx;
+    margin: 10rpx auto;
+    /* width: 90%; */
+    display: flex;
+    flex-direction: row;
+    /* justify-content: right;
   align-items: center; */
-  padding: 10rpx;
+    padding: 10rpx;
 }
+
 .container-upload .text-written textarea {
     padding: 10rpx;
     width: 100%;
@@ -57,63 +60,70 @@ page{
 }
 
 /* 图片九宫格 */
-.container-upload .Images-tool{ 
+.container-upload .Images-tool {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     /* justify-content: center; */
 }
-.container-upload .Images-tool .Images-disp{
+
+.container-upload .Images-tool .Images-disp {
     width: 21%;
     display: flex;
     /* align-items: center; */
     /* justify-content: space-around; */
     margin: 5rpx 10rpx;
-    position: relative; 
+    position: relative;
     /* flex-direction: column; */
-} 
-.container-upload .Images-tool .Images-disp image{
+}
+
+.container-upload .Images-tool .Images-disp image {
     width: 150rpx;
     height: 150rpx;
     /* margin: 5rpx; */
     border-radius: 5%;
-    position: relative; 
+    position: relative;
 }
-.container-upload .Images-tool .Images-disp icon{
+
+.container-upload .Images-tool .Images-disp icon {
     position: absolute;
     /* width: -10rpx; */
 }
+
 /* 上传图片按键 */
-.container-upload .Images-tool button{
-  margin: 5rpx 10rpx;
-  width: 150rpx;
-  height: 150rpx;
-  font-size: 60px;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #E6E6E6;
-  position: relative;
-  border-radius: 5%;
+.container-upload .Images-tool button {
+    margin: 5rpx 10rpx;
+    width: 150rpx;
+    height: 150rpx;
+    font-size: 60px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #E6E6E6;
+    position: relative;
+    border-radius: 5%;
 }
 
 /* 分类选择按键 */
 .choose-categorybig {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
-.choose-categorybig .radio{
+
+.choose-categorybig .radio {
     padding: 5rpx;
 }
+
 .choose-categorysmall {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
+
 .choose-categorysmall .catesmall-blocks {
     background-color: #E1D5EC;
     margin: 10rpx 10rpx;
@@ -134,18 +144,14 @@ page{
     align-content: center;
     align-items: center;
 }
+
 .container-upload .buttons-upload .button-upload {
-  width: 90px;
-  background-color: #c797ce; 
-  font-size: 14px;
-  border-radius: 30rpx;
-}
-/* .container-upload .buttons-upload .button-save {
     width: 90px;
-    background-color: #c797ce; 
-    font-size: 14px; 
+    background-color: #c797ce;
+    font-size: 14px;
     border-radius: 30rpx;
-  } */
-.container-upload .buttons-upload .change-button-upload{
-  background-color: #e5e2eb;
+}
+
+.container-upload .buttons-upload .change-button-upload {
+    background-color: #e5e2eb;
 }

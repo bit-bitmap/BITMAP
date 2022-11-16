@@ -4,21 +4,21 @@ page {
     background-color: var(--weui-BG-0);
 }
 
-.searchbox{
+.searchbox {
     height: 55px;
     background-color: #fff;
     align-items: center;
     display: flex;
 }
 
-.text{
+.text {
     width: 100rpx;
     text-align: center;
 }
 
-.search{
+.search {
     background-color: #f1f1f1;
-    color:black;
+    color: black;
     flex: 1;
     margin-right: 5%;
     margin-left: 5%;
@@ -27,33 +27,33 @@ page {
     border-radius: 15rpx;
 }
 
-.swiper-container{
+.swiper-container {
     height: 150px;
     width: 100%;
     margin: 4%;
 }
 
-.gf-image{
-  height: 150px;
-  width: 92%;
+.gf-image {
+    height: 150px;
+    width: 92%;
 }
 
-.item{
+.item {
     height: 100%;
     line-height: 100px;
     text-align: center;
 }
 
-.swiper-container :nth-child(1) .item{
-    background-color:lightblue;
+.swiper-container :nth-child(1) .item {
+    background-color: lightblue;
 }
 
-.swiper-container :nth-child(2) .item{
-    background-color:lightgoldenrodyellow;
+.swiper-container :nth-child(2) .item {
+    background-color: lightgoldenrodyellow;
 }
 
-.swiper-container :nth-child(3) .item{
-    background-color:lightgreen;
+.swiper-container :nth-child(3) .item {
+    background-color: lightgreen;
 }
 
 
@@ -65,6 +65,7 @@ page {
     width: 100%;
     border: rgb(226, 185, 226);
 }
+
 .list-title {
     padding: 15px 10px;
     font-size: 16px;
@@ -101,11 +102,11 @@ scroll-view ::-webkit-scrollbar {
 }
 
 .page__bd {
-  padding-bottom: 40px
+    padding-bottom: 40px
 }
 
 .weui-media-box__info__meta {
-  margin-top: 3%;
+    margin-top: 3%;
 }
 
 .weui-media-box_thumb {
@@ -114,10 +115,8 @@ scroll-view ::-webkit-scrollbar {
 }
 
 .weui-panel {
-	background-color: var(--weui-BG-2);
-	margin-top: 0px;
-	position: relative;
-	overflow: hidden
+    background-color: var(--weui-BG-2);
+    margin-top: 0px;
+    position: relative;
+    overflow: hidden
 }
-
-

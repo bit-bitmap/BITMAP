@@ -1,7 +1,7 @@
 // pages/upload/upload.js
 const app = getApp()
-var util=require('../../utils/util.js')
-var upbasetime =""  //点击发表的时间
+var util = require('../../utils/util.js')
+var upbasetime = ""  //点击发表的时间
 var upbaseimages = []  //上传数据库的图片
 var upbasetitle = ""  //上传数据库的标题
 var upbasetext = ""  //上传数据库的资讯内容
@@ -32,7 +32,7 @@ Page({
             { id: 4, name: '活动', choose: false }
         ],
 
-        studycate: [{id:1, subid: "101xuanke", subname: "选课", checked: false }, {id:2, subid: "102zuoye", subname: "作业", checked: false }, {id:3, subid: "103kaoshi", subname: "考试", checked: false }, {id:4, subid: "104baoyan", subname: "保研", checked: false }, {id:5, subid: "105kaoyan", subname: "考研", checked: false }, {id:6, subid: "106liuxue", subname: "留学", checked: false }, {id:7, subid: "107fudao", subname: "辅导/组队", checked: false }],
+        studycate: [{ id: 1, subid: "101xuanke", subname: "选课", checked: false }, { id: 2, subid: "102zuoye", subname: "作业", checked: false }, { id: 3, subid: "103kaoshi", subname: "考试", checked: false }, { id: 4, subid: "104baoyan", subname: "保研", checked: false }, { id: 5, subid: "105kaoyan", subname: "考研", checked: false }, { id: 6, subid: "106liuxue", subname: "留学", checked: false }, { id: 7, subid: "107fudao", subname: "辅导/组队", checked: false }],
 
         lifecate: [{ id: 1, subid: "201qushi", subname: "趣事", checked: false }, { id: 2, subid: "202laoren", subname: "捞人/群", checked: false }, { id: 3, subid: "203tixing", subname: "提醒", checked: false }, { id: 4, subid: "204biaobai", subname: "表白/征婚", checked: false }, { id: 5, subid: "205shiwu", subname: "失物", checked: false }, { id: 6, subid: "206tuijian", subname: "推荐", checked: false }, { id: 7, subid: "207jiaqi", subname: "假期", checked: false }],
 
@@ -44,43 +44,41 @@ Page({
 
         image: [],  //云数据库中articlelist存储的图片网址
         isEightImages: true,  //是否显示上传"+"按键
-        // isSubmit: false,  //article是否发表
         isAccess: false,  //article是否通过审核
-        isChoosecatebig:false,
+        isChoosecatebig: false,
         ImageNumMax: 8,
         isUpImagesSuccess: false,
     },
 
     //大类选择 单选
     handlecatechoose(e) {
-        let catebig = e.detail.value
+        const catebig = e.detail.value
         this.setData({
             usercatebig: catebig,
-            isChoosecatebig:false
+            isChoosecatebig: false
         })
-        // console.log(catebig)
     },
+
     //小类选择 多选
     smallcateschoose(e) {
-        console.log("分类选择",e.detail.value)
-        upbasecate=e.detail.value
-        if (upbasecate.length!=0) {
+        console.log("分类选择", e.detail.value)
+        upbasecate = e.detail.value
+        if (upbasecate.length != 0) {
             this.setData({
-                isChoosecatebig:true
+                isChoosecatebig: true
             })
-        }else{
+        } else {
             this.setData({
-                isChoosecatebig:false
+                isChoosecatebig: false
             })
         }
     },
 
     //标题字数动态监测，实时获取标题文本
-    inputtitleNum: function (e) {
-        var value = e.detail.value;
-        var length = parseInt(value.length);
+    inputtitleNum(e) {
+        const value = e.detail.value;
+        const length = parseInt(value.length);
         upbasetitle = value;
-        // console.log(value.length)
         this.setData({
             titleNum: length
         });
@@ -88,8 +86,8 @@ Page({
     },
     //实时获取内容文本
     inputtext(e) {
-        var value = e.detail.value;
-        var length = parseInt(value.length);
+        const value = e.detail.value;
+        const length = parseInt(value.length);
         // console.log(value.length)
         upbasetext = value;
         this.setData({
@@ -108,7 +106,7 @@ Page({
                             title: '未填写资讯标题且内容字数不足5个字',
                             icon: 'none'
                         })
-                    }else{
+                    } else {
                         wx.showToast({
                             title: '未填写资讯标题,内容字数不足5个字,且未选择分类',
                             icon: 'none'
@@ -121,7 +119,7 @@ Page({
                             title: '内容字数不足5个字',
                             icon: 'none'
                         })
-                    }else{
+                    } else {
                         wx.showToast({
                             title: '内容字数不足5个字,且未选择分类',
                             icon: 'none'
@@ -134,7 +132,7 @@ Page({
                             title: '未填写资讯标题',
                             icon: 'none'
                         })
-                    }else{
+                    } else {
                         wx.showToast({
                             title: '未填写资讯标题,且未选择分类',
                             icon: 'none'
@@ -142,7 +140,7 @@ Page({
                     }
                 }
             } else {
-                upbasetime=util.formatTime(new Date())
+                upbasetime = util.formatTime(new Date())
                 wx.showLoading({
                     title: '上传中',
                 })
@@ -151,7 +149,6 @@ Page({
                 setTimeout(() => {
                     that.handleFormSubmitImages()
                 }, 2000)
-                // console.log("up", upbaseimages)
                 //资讯内容、图片存入云数据库
                 setTimeout(() => {
                     that.upbaseDB()
@@ -159,7 +156,7 @@ Page({
                 if (that.data.isUpImagesSuccess || (that.data.Imagespath.length == 0)) {
                     wx.showToast({
                         title: '上传成功，再写一篇吧',
-                        icon:'none'
+                        icon: 'none'
                     })
                     //上传成功，上传页清空
                     that.setData({
@@ -180,7 +177,6 @@ Page({
                         isEightImages: true,  //是否显示上传"+"按键
                         isSubmit: false,  //article是否发表
                         isAccess: false,  //article是否通过审核
-                        // ImageNumMax: 8,
                         isUpImagesSuccess: false
                     })
                 }
@@ -205,7 +201,6 @@ Page({
             // 图片的来源  相册  照相机（手机）
             sourceType: ['album', 'camera'],
             success: (result) => {
-                // console.log(result.tempFilePaths)
                 let tempArr = that.data.Imagespath.concat(result.tempFilePaths)
                 that.setData({
                     //将图片显示于界面
@@ -295,8 +290,8 @@ Page({
         console.log("upbase的值", upbaseimages)
         let that = this;
         //文章列表
-        console.log("time",upbasetime)
-        var articleidget = (await db.collection("articlelist").add({
+        console.log("time", upbasetime)
+        const articleidget = (await db.collection("articlelist").add({
             data: {
                 time: upbasetime,
                 image: upbaseimages,
@@ -311,11 +306,9 @@ Page({
                 comments: []
             }
         }))._id
-        // console.log(articleidget)
         upbasearticlesID = articleidget
-        // console.log(app.global.id)
         //用户列表
-        let userarticle = (await db.collection("account").doc(app.global.id).get()).data.articles
+        const userarticle = (await db.collection("account").doc(app.global.id).get()).data.articles
         console.log(userarticle)
         userarticle.push(upbasearticlesID)
         db.collection("account").doc(app.global.id).update({

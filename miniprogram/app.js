@@ -6,7 +6,7 @@ App({
         openid: "",
         id: "",
         loginStatus: false,
-        lujing:""
+        lujing: ""
     },
 
     /**
