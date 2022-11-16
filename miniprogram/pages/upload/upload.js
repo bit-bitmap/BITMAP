@@ -306,14 +306,10 @@ Page({
                 comments: []
             }
         }))._id
-        upbasearticlesID = articleidget
         //用户列表
-        const userarticle = (await db.collection("account").doc(app.global.id).get()).data.articles
-        console.log(userarticle)
-        userarticle.push(upbasearticlesID)
         db.collection("account").doc(app.global.id).update({
             data: {
-                articles: userarticle
+                articles: db.command.push([articleidget])
             }
         })
     },
