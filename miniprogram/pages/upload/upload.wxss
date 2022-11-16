@@ -136,7 +136,7 @@ page{
 }
 .container-upload .buttons-upload .button-upload {
   width: 90px;
-  background-color: #4fc4e7; 
+  background-color: #c797ce; 
   font-size: 14px;
   border-radius: 30rpx;
 }
