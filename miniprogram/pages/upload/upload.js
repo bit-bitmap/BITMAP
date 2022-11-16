@@ -96,7 +96,7 @@ Page({
     },
 
     //点击发表
-    handleFormSubmit() {
+    async handleFormSubmit() {
         let that = this
         if (app.global.loginStatus) { //判断登录状态
             if (that.data.textNum < 5 || that.data.titleNum == 0) {
@@ -145,14 +145,9 @@ Page({
                     title: '上传中',
                 })
                 //资讯图片存入云存储
-                that.handleFormSubmitImages()
-                setTimeout(() => {
-                    that.handleFormSubmitImages()
-                }, 2000)
+                await that.handleFormSubmitImages()
                 //资讯内容、图片存入云数据库
-                setTimeout(() => {
-                    that.upbaseDB()
-                }, 2000)
+                await that.upbaseDB()
                 if (that.data.isUpImagesSuccess || (that.data.Imagespath.length == 0)) {
                     wx.showToast({
                         title: '上传成功，再写一篇吧',
@@ -258,31 +253,24 @@ Page({
         let time = Date.parse(new Date()) / 1000
         console.log(that.data.Imagespath.length)
         for (let i = 0; i < that.data.Imagespath.length; i++) {
-            wx.cloud.uploadFile({
+            const res = await wx.cloud.uploadFile({
                 //上传多张图片-时间戳，保证用户上传的图片不会重复
                 cloudPath: address + '.png/' + time + i,  //上传图片到云存储的命名
                 filePath: that.data.Imagespath[i], //图片的临时地址
-            }).then(res => {
-                // get resource ID
-                sumuploadsucess = sumuploadsucess + 1
-                //   console.log(res.fileID,i)
-                upbaseimages[i] = res.fileID
-            }).catch(error => {
-                // handle error
-                console.log(error)
-                wx.showToast({
-                    title: '上传失败',
-                    icon: 'error',
-                    duration: 900
-                })
             })
+            // get resource ID
+            sumuploadsucess = sumuploadsucess + 1
+            //   console.log(res.fileID,i)
+            upbaseimages[i] = res.fileID
         }
         //判断所有图片是否均成功上传至云存储
-        if (sumuploadsucess == that.data.Imagespath.length - 1) {
+        if (sumuploadsucess == that.data.Imagespath.length) {
             that.setData({
                 isUpImagesSuccess: true
             })
-        } console.log("upbase的值", upbaseimages)
+            wx.hideLoading()
+        }
+
     },
 
     //资讯上传至云数据库文章列表，添加文章ID至对应用户列表
